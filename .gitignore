@@ -1,0 +1,34 @@
+# Environment variables
+.env
+
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data files (cache, logs, etc.)
+data/raw/
+data/processed/
+experiments/logs/
+
+# Temporary files
+*.tmp
+*.log

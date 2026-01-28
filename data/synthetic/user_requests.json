@@ -1,0 +1,122 @@
+[
+  {
+    "request_id": "req_001",
+    "text": "I want a 10–14 day Alaska cruise in May under $5000 for two people.",
+    "difficulty": "easy",
+    "notes": "Baseline Alaska request with clear hard constraints."
+  },
+  {
+    "request_id": "req_002",
+    "text": "Looking for a Holland America Alaska cruise in late spring, preferably around two weeks.",
+    "difficulty": "easy",
+    "notes": "Clear destination and cruise line, flexible duration."
+  },
+  {
+    "request_id": "req_003",
+    "text": "Find me an Alaska cruise in summer that focuses on glaciers and scenic ports.",
+    "difficulty": "medium",
+    "notes": "Destination clear, timing vague, scenic preference implied."
+  },
+  {
+    "request_id": "req_004",
+    "text": "I want a cruise to Alaska, but I don’t want it to be too long or too expensive.",
+    "difficulty": "medium",
+    "notes": "Budget and duration ambiguous; should map to soft constraints."
+  },
+  {
+    "request_id": "req_005",
+    "text": "Looking for a luxury Alaska cruise with great food and entertainment.",
+    "difficulty": "medium",
+    "notes": "Luxury is ambiguous; no explicit budget or duration."
+  },
+  {
+    "request_id": "req_006",
+    "text": "I want a 5-day Alaska cruise in July for $300.",
+    "difficulty": "hard",
+    "notes": "Likely infeasible due to unrealistic budget and duration."
+  },
+  {
+    "request_id": "req_007",
+    "text": "Plan an Alaska cruise for two people sometime next year.",
+    "difficulty": "hard",
+    "notes": "Very under-specified request."
+  },
+  {
+    "request_id": "req_008",
+    "text": "I want an Alaska cruise leaving from Vancouver, lasting about two weeks, and not sold out.",
+    "difficulty": "easy",
+    "notes": "Departure port preference and availability constraint."
+  },
+  {
+    "request_id": "req_009",
+    "text": "I want the cheapest Alaska cruise possible, dates don’t matter.",
+    "difficulty": "medium",
+    "notes": "Strong cost optimization, weak temporal constraints."
+  },
+  {
+    "request_id": "req_010",
+    "text": "Surprise me with a cruise that I would love.",
+    "difficulty": "hard",
+    "notes": "No explicit constraints; tests failure handling."
+  },
+  {
+    "request_id": "req_011",
+    "text": "I want a 7–10 day Caribbean cruise in January under $3000 for two people.",
+    "difficulty": "easy",
+    "notes": "Clear Caribbean request with budget and duration."
+  },
+  {
+    "request_id": "req_012",
+    "text": "Looking for a warm-weather cruise in the Caribbean sometime this winter.",
+    "difficulty": "medium",
+    "notes": "Season implied, dates ambiguous."
+  },
+  {
+    "request_id": "req_013",
+    "text": "Find me a Mediterranean cruise visiting Italy and Greece in the summer.",
+    "difficulty": "medium",
+    "notes": "Destination-specific ports, no budget."
+  },
+  {
+    "request_id": "req_014",
+    "text": "I want a luxury Mediterranean cruise with great food and cultural excursions.",
+    "difficulty": "medium",
+    "notes": "Luxury preference without explicit constraints."
+  },
+  {
+    "request_id": "req_015",
+    "text": "I want the cheapest Mediterranean cruise you can find, dates don’t matter.",
+    "difficulty": "medium",
+    "notes": "Strong cost optimization, weak temporal constraints."
+  },
+  {
+    "request_id": "req_016",
+    "text": "Plan a cruise through the Panama Canal for two people next spring.",
+    "difficulty": "medium",
+    "notes": "Unique route with loose time constraints."
+  },
+  {
+    "request_id": "req_017",
+    "text": "I want a transatlantic cruise from Europe to the US this fall.",
+    "difficulty": "medium",
+    "notes": "Route-based request, seasonal."
+  },
+  {
+    "request_id": "req_018",
+    "text": "I want a short cruise somewhere warm for under $500.",
+    "difficulty": "hard",
+    "notes": "Under-specified and possibly infeasible."
+  },
+  {
+    "request_id": "req_019",
+    "text": "Surprise me with a cruise, but I hate cold weather.",
+    "difficulty": "hard",
+    "notes": "Negative preference (avoid cold destinations)."
+  },
+  {
+    "request_id": "req_020",
+    "text": "I want a cruise that visits at least three countries.",
+    "difficulty": "hard",
+    "notes": "Structural constraint without region."
+  }
+]
