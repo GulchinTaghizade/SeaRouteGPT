@@ -6,7 +6,7 @@ import json
 
 
 def load_cached_cruises():
-    with open("data/raw/cruise_snapshot_20260125_181933.json", "r") as f:
+    with open("data/raw/cruise_snapshot_20260201_222236.json", "r") as f:
         return json.load(f)["data"]
 
 
@@ -27,12 +27,16 @@ def main():
             req["text"],
             request_id=req["request_id"]
         )
+        print(f"  📋 Extracted constraints: {constraints.get('hard_constraints', {})}")
 
         # 3️⃣ VALIDATE CONSTRAINTS  
         validation = validator.validate(constraints)
 
+        print(f"  🔍 Validated {len(cruises)} total cruises")
+        print(f"  ✔️  Found {validation['feasible_count']} feasible cruises")
+
         if not validation["is_feasible"]:
-            print("⚠️ No feasible cruises found")
+            print("  ⚠️ No feasible cruises found")
             continue
 
         feasible_cruises = validation["feasible_cruises"]
@@ -41,10 +45,10 @@ def main():
         itinerary = planner.plan(feasible_cruises, constraints)
 
         if itinerary is None:
-            print("⚠️ Planner failed to select cruise")
+            print("  ⚠️ Planner failed to select cruise")
             continue
 
-        print("✅ Selected cruise:", itinerary["cruiseId"])
+        print(f"  ✅ Selected cruise: {itinerary['cruiseId']}")
 
 
 if __name__ == "__main__":

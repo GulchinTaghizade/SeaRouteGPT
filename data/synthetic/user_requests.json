@@ -7,116 +7,116 @@
   },
   {
     "request_id": "req_002",
-    "text": "Looking for a Holland America Alaska cruise in late spring, preferably around two weeks.",
+    "text": "Looking for a 7-day Caribbean cruise in June for a family of four, around $3500 total.",
     "difficulty": "easy",
-    "notes": "Clear destination and cruise line, flexible duration."
+    "notes": "Caribbean destination with clear budget and duration."
   },
   {
     "request_id": "req_003",
-    "text": "Find me an Alaska cruise in summer that focuses on glaciers and scenic ports.",
+    "text": "Find me a Mediterranean cruise visiting Italy and Greece in July for two weeks.",
     "difficulty": "medium",
-    "notes": "Destination clear, timing vague, scenic preference implied."
+    "notes": "European destination, specific ports requested."
   },
   {
     "request_id": "req_004",
-    "text": "I want a cruise to Alaska, but I don’t want it to be too long or too expensive.",
+    "text": "I want a short 5-day Bahamas cruise in March, preferably all-inclusive, for under $2000.",
     "difficulty": "medium",
-    "notes": "Budget and duration ambiguous; should map to soft constraints."
+    "notes": "Budget and duration specified, warm weather destination."
   },
   {
     "request_id": "req_005",
-    "text": "Looking for a luxury Alaska cruise with great food and entertainment.",
+    "text": "Looking for a luxury Norwegian Fjords cruise in August, around 10 days, for two couples.",
     "difficulty": "medium",
-    "notes": "Luxury is ambiguous; no explicit budget or duration."
+    "notes": "Scandinavia destination, luxury preference."
   },
   {
     "request_id": "req_006",
-    "text": "I want a 5-day Alaska cruise in July for $300.",
+    "text": "I want a budget-friendly Caribbean cruise anytime in the summer under $1500 per person.",
     "difficulty": "hard",
-    "notes": "Likely infeasible due to unrealistic budget and duration."
+    "notes": "Strong cost constraint, flexible on dates."
   },
   {
     "request_id": "req_007",
-    "text": "Plan an Alaska cruise for two people sometime next year.",
-    "difficulty": "hard",
-    "notes": "Very under-specified request."
+    "text": "Plan an Alaska cruise for two people sometime in June or July.",
+    "difficulty": "easy",
+    "notes": "Alaska, seasonal request with loose duration."
   },
   {
     "request_id": "req_008",
-    "text": "I want an Alaska cruise leaving from Vancouver, lasting about two weeks, and not sold out.",
+    "text": "I want a Mexico Pacific coast cruise lasting about 7-10 days, departing in May.",
     "difficulty": "easy",
-    "notes": "Departure port preference and availability constraint."
+    "notes": "Pacific Mexico destination, clear dates and duration."
   },
   {
     "request_id": "req_009",
-    "text": "I want the cheapest Alaska cruise possible, dates don’t matter.",
+    "text": "Find me the cheapest Alaska cruise in July, I'm flexible on everything else.",
     "difficulty": "medium",
-    "notes": "Strong cost optimization, weak temporal constraints."
+    "notes": "Cost optimization, summer Alaska focus."
   },
   {
     "request_id": "req_010",
-    "text": "Surprise me with a cruise that I would love.",
-    "difficulty": "hard",
-    "notes": "No explicit constraints; tests failure handling."
+    "text": "I want a warm-weather cruise somewhere in the Caribbean or Bahamas for 5-7 days in April.",
+    "difficulty": "medium",
+    "notes": "Multiple destination options, clear timing."
   },
   {
     "request_id": "req_011",
-    "text": "I want a 7–10 day Caribbean cruise in January under $3000 for two people.",
+    "text": "Looking for a Bermuda cruise in May, 8-10 days, for two couples under $6000 total.",
     "difficulty": "easy",
-    "notes": "Clear Caribbean request with budget and duration."
+    "notes": "Atlantic destination with clear constraints."
   },
   {
     "request_id": "req_012",
-    "text": "Looking for a warm-weather cruise in the Caribbean sometime this winter.",
+    "text": "I want an all-inclusive Caribbean resort cruise with water activities in August for two weeks.",
     "difficulty": "medium",
-    "notes": "Season implied, dates ambiguous."
+    "notes": "Activity-focused Caribbean cruise, specific season."
   },
   {
     "request_id": "req_013",
-    "text": "Find me a Mediterranean cruise visiting Italy and Greece in the summer.",
+    "text": "Find me a Greek Islands cruise starting in June, lasting 10-12 days.",
     "difficulty": "medium",
-    "notes": "Destination-specific ports, no budget."
+    "notes": "Mediterranean specific, clear destination focus."
   },
   {
     "request_id": "req_014",
-    "text": "I want a luxury Mediterranean cruise with great food and cultural excursions.",
+    "text": "I want a luxury transatlantic cruise from Europe to New York in June.",
     "difficulty": "medium",
-    "notes": "Luxury preference without explicit constraints."
+    "notes": "Transatlantic route, luxury preference, specific departure."
   },
   {
     "request_id": "req_015",
-    "text": "I want the cheapest Mediterranean cruise you can find, dates don’t matter.",
+    "text": "Looking for the cheapest Caribbean cruise departing in July for 4-5 days.",
     "difficulty": "medium",
-    "notes": "Strong cost optimization, weak temporal constraints."
+    "notes": "Cost-focused, Caribbean, short duration."
   },
   {
     "request_id": "req_016",
-    "text": "Plan a cruise through the Panama Canal for two people next spring.",
+    "text": "Plan a Panama Canal transit cruise for two people in May, around 10 days.",
     "difficulty": "medium",
-    "notes": "Unique route with loose time constraints."
+    "notes": "Unique route, specific timing, clear duration."
   },
   {
     "request_id": "req_017",
-    "text": "I want a transatlantic cruise from Europe to the US this fall.",
-    "difficulty": "medium",
-    "notes": "Route-based request, seasonal."
+    "text": "I want a summer Alaska cruise with glacier viewing, 12-14 days in June.",
+    "difficulty": "easy",
+    "notes": "Alaska summer season, activity-focused."
   },
   {
     "request_id": "req_018",
-    "text": "I want a short cruise somewhere warm for under $500.",
-    "difficulty": "hard",
-    "notes": "Under-specified and possibly infeasible."
+    "text": "Looking for a Caribbean cruise departing in April for 7 days, budget under $2500 per person.",
+    "difficulty": "easy",
+    "notes": "Spring Caribbean with clear budget constraint."
   },
   {
     "request_id": "req_019",
-    "text": "Surprise me with a cruise, but I hate cold weather.",
-    "difficulty": "hard",
-    "notes": "Negative preference (avoid cold destinations)."
+    "text": "I want a Mediterranean cruise visiting Spain, France, and Italy in June, around 8 days.",
+    "difficulty": "medium",
+    "notes": "Western Mediterranean focus with specific ports."
   },
   {
     "request_id": "req_020",
-    "text": "I want a cruise that visits at least three countries.",
-    "difficulty": "hard",
-    "notes": "Structural constraint without region."
+    "text": "Find me an Alaska cruise in May for two people, preferably with wildlife viewing, under $4000.",
+    "difficulty": "easy",
+    "notes": "Alaska focus with activity preference and budget."
   }
 ]

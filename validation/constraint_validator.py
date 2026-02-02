@@ -21,9 +21,10 @@ class ConstraintValidator:
     def _satisfies_hard_constraints(self, cruise: Dict, constraints: Dict) -> bool:
         hc = constraints["hard_constraints"]
 
-        # Budget check - skip if no budget specified
-        if hc["max_budget"] is not None and cruise["roomPriceWithTaxesFees"] > hc["max_budget"]:
-            return False
+        # Budget check - skip if no budget specified or if price is None
+        if hc["max_budget"] is not None and cruise.get("roomPriceWithTaxesFees") is not None:
+            if cruise["roomPriceWithTaxesFees"] > hc["max_budget"]:
+                return False
 
         # Duration check - skip if no duration specified
         if hc["duration_range"] is not None:
