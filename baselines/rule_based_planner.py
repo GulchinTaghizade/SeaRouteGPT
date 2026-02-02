@@ -2,9 +2,6 @@ from typing import List, Dict
 
 
 class RuleBasedPlanner:
-    """
-    Simple rule-based cruise planner that selects the cheapest feasible cruise.
-    """
 
     def __init__(self):
         pass
@@ -30,24 +27,42 @@ class RuleBasedPlanner:
         else:
             preferred_duration = constraints["soft_preferences"].get("preferred_duration_days")
 
+            # Get maximum price for normalization
             max_price = max(c["roomPriceWithTaxesFees"] for c in cruises_with_prices)
 
+            # Calculate all duration deviations to find max for normalization
+            duration_deviations = []
+            for cruise in cruises_with_prices:
+                if preferred_duration is not None:
+                    dev = abs(cruise["duration"] - preferred_duration)
+                    duration_deviations.append(dev)
+                else:
+                    duration_deviations.append(0)
+
+            max_duration_deviation = max(duration_deviations) if duration_deviations else 1
+
             def score(cruise):
+                # Step 2: Normalize price
                 if cruise["roomPriceWithTaxesFees"] is None:
                     normalized_price = 1.0  # Penalize unknown prices
                 else:
                     normalized_price = cruise["roomPriceWithTaxesFees"] / max_price if max_price > 0 else 0
 
+                # Step 2: Normalize duration deviation
                 if preferred_duration is not None:
-                    duration_deviation = abs(cruise["duration"] - preferred_duration) / preferred_duration
+                    duration_deviation = abs(cruise["duration"] - preferred_duration)
+                    # Normalize by max deviation across all candidates
+                    normalized_duration_deviation = duration_deviation / max_duration_deviation if max_duration_deviation > 0 else 0
                 else:
-                    duration_deviation = 0
+                    normalized_duration_deviation = 0
 
+                # Step 2: Apply weights (α and β are fixed globally)
                 alpha = 0.6
                 beta = 0.4
 
-                return alpha * normalized_price + beta * duration_deviation
+                return alpha * normalized_price + beta * normalized_duration_deviation
 
+            # Step 3: Select cruise with lowest score (greedy minimum cost approach)
             best_cruise = min(cruises_with_prices, key=score)
 
         return {
@@ -59,7 +74,11 @@ class RuleBasedPlanner:
         }
 
     def _satisfies_constraints(self, cruise: Dict, constraints: Dict) -> bool:
-        """Check if a cruise satisfies the given constraints."""
+        """Check if a cruise satisfies the given constraints.
+
+        Step 1 of the Rule-Based Planner: Hard Filtering
+        Applies strict, must-satisfy constraints to all candidate cruises.
+        """
         hc = constraints["hard_constraints"]
 
         # Budget check - skip if no budget specified or if price is None
@@ -67,9 +86,30 @@ class RuleBasedPlanner:
             if cruise["roomPriceWithTaxesFees"] > hc["max_budget"]:
                 return False
 
+        # Departure date window check
+        if hc["departure_date_window"] is not None:
+            dep_date = cruise.get("departureDate")
+            if dep_date:
+                earliest = hc["departure_date_window"].get("earliest")
+                latest = hc["departure_date_window"].get("latest")
+                if not (earliest <= dep_date <= latest):
+                    return False
+
         # Duration check - skip if no duration specified
         if hc["duration_range"] is not None:
             if not (hc["duration_range"]["min_days"] <= cruise["duration"] <= hc["duration_range"]["max_days"]):
+                return False
+
+        # Number of guests check - skip if no num_guests specified
+        if hc["num_guests"] is not None:
+            cruise_max_guests = cruise.get("max_guests")
+            if cruise_max_guests is not None and hc["num_guests"] > cruise_max_guests:
+                return False
+
+        # Required ports check - skip if no required ports specified
+        if hc["required_ports"] is not None and len(hc["required_ports"]) > 0:
+            cruise_ports = cruise.get("itineraryPorts", [])
+            if not any(port in cruise_ports for port in hc["required_ports"]):
                 return False
 
         # Destination check - skip if no destinations specified
