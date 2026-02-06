@@ -1,0 +1,4 @@
+{
+  "request_id": "req_009",
+  "llm_output": "```json\n{\n  \"selected_cruise_id\": \"AjwyWUQkdxENElE8RFNFfkgtdTMxKEdlQVBJU2VjcmUA\",\n  \"reason\": \"The user requested the cheapest Alaska cruise in July. This cruise departs on 2026-07-01, is an Alaska tour, and has the lowest available price ($2054.00) among all matching options.\"\n}\n```"
+}

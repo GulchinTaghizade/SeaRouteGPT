@@ -1,0 +1,4 @@
+{
+  "request_id": "req_012",
+  "llm_output": "```json\n{\n  \"selected_cruise_id\": null,\n  \"reason\": \"No cruise found matching all criteria: 'Caribbean' destination in 'August' for approximately 'two weeks' (14 days).\"\n}\n```"
+}

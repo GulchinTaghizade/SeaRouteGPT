@@ -1,0 +1,4 @@
+{
+  "request_id": "req_007",
+  "llm_output": "```json\n{\n  \"selected_cruise_id\": \"cUFGWUVRdWgWZlJaQFB0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"reason\": \"This cruise to Alaska departs on June 1, 2026, and is designed for two guests, matching all your criteria.\"\n}\n```"
+}

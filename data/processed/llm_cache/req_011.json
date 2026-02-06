@@ -1,0 +1,4 @@
+{
+  "request_id": "req_011",
+  "llm_output": "```json\n{\n  \"selected_cruise_id\": \"cUZHXkZUcGAWZlJaS1d0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"reason\": \"This 'Boston Cruisetour' departs on 2026-05-01, is 9 days long (within 8-10 days), includes Bermuda (BMWRF port), and for two couples (assuming two cabins, each for 2 guests) would cost $1798 * 2 = $3596, which is under the $6000 budget. All listed cruises are for 2 guests.\"\n}\n```"
+}

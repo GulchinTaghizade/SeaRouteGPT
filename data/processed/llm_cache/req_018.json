@@ -1,0 +1,4 @@
+{
+  "request_id": "req_018",
+  "llm_output": "```json\n{\n  \"selected_cruise_id\": null,\n  \"reason\": \"No cruises are available departing in April. All available cruises depart in May, June, or July.\"\n}\n```"
+}

@@ -1,0 +1,4 @@
+{
+  "request_id": "req_015",
+  "llm_output": "```json\n{\n  \"selected_cruise_id\": null,\n  \"reason\": \"No cruises found that match all criteria: Caribbean destination, departing in July 2026, and lasting between 4 and 5 days. All listed Caribbean cruises depart in May and have a duration of 9 days.\"\n}\n```"
+}

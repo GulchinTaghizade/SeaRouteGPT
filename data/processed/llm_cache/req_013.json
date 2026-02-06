@@ -1,0 +1,4 @@
+{
+  "request_id": "req_013",
+  "llm_output": "```json\n{\n  \"selected_cruise_id\": null,\n  \"reason\": \"No cruises found matching Greek Islands, starting in June, and lasting 10-12 days.\"\n}\n```"
+}

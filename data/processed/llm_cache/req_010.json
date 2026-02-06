@@ -1,0 +1,4 @@
+{
+  "request_id": "req_010",
+  "llm_output": "```json\n{\n  \"selected_cruise_id\": null,\n  \"reason\": \"No cruises match the request for a 5-7 day cruise in the Caribbean or Bahamas departing in April. All available cruises for those destinations depart in May and are 9 days in duration.\"\n}\n```"
+}
