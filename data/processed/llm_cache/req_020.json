@@ -1,4 +1,4 @@
 {
   "request_id": "req_020",
-  "llm_output": "```json\n{\n  \"selected_cruise_id\": \"ED9EWDJTcWMWYVVRREhEfkhJe3J1aXNlQVBJU2VjcmUA\",\n  \"reason\": \"The 'Alaska Wildlife Encounter Cruisetour (Post Tour)' from Celebrity Cruises departs on 2026-05-08, is for 2 guests, costs $2754.98 (under $4000), goes to Alaska, and explicitly includes a 'Wildlife Encounter' in its name, perfectly matching your preferences.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No Alaska cruises are available for departure in May 2026 within the provided list. All available Alaska cruises depart in June 2026.\"\n}\n```"
 }

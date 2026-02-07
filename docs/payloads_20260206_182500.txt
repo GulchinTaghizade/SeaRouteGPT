@@ -1,0 +1,122 @@
+search_payloads = [
+        # Alaska – early season
+        {
+            "destinations": ["AK"],
+            "earliestStartDate": "2026-05-01",
+            "latestStartDate": "2026-05-31",
+            "durationMin": 7,
+            "durationMax": 14,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Alaska – peak summer
+        {
+            "destinations": ["AK"],
+            "earliestStartDate": "2026-06-01",
+            "latestStartDate": "2026-07-31",
+            "durationMin": 7,
+            "durationMax": 14,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Caribbean – short cruises
+        {
+            "destinations": ["CB"],
+            "earliestStartDate": "2026-03-01",
+            "latestStartDate": "2026-05-31",
+            "durationMin": 4,
+            "durationMax": 7,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Caribbean – summer week-long
+        {
+            "destinations": ["CB"],
+            "earliestStartDate": "2026-06-01",
+            "latestStartDate": "2026-08-31",
+            "durationMin": 7,
+            "durationMax": 10,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Bahamas
+        {
+            "destinations": ["BH"],
+            "earliestStartDate": "2026-03-01",
+            "latestStartDate": "2026-06-30",
+            "durationMin": 3,
+            "durationMax": 5,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Mexico Pacific
+        {
+            "destinations": ["MX"],
+            "earliestStartDate": "2026-04-01",
+            "latestStartDate": "2026-07-31",
+            "durationMin": 7,
+            "durationMax": 10,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Western Mediterranean
+        {
+            "destinations": ["MED"],
+            "earliestStartDate": "2026-05-01",
+            "latestStartDate": "2026-07-31",
+            "durationMin": 7,
+            "durationMax": 12,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Greek Islands / Eastern Med
+        {
+            "destinations": ["GR"],
+            "earliestStartDate": "2026-06-01",
+            "latestStartDate": "2026-08-31",
+            "durationMin": 10,
+            "durationMax": 14,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Transatlantic
+        {
+            "destinations": ["TA"],
+            "earliestStartDate": "2026-04-01",
+            "latestStartDate": "2026-06-30",
+            "durationMin": 12,
+            "durationMax": 21,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Panama Canal
+        {
+            "destinations": ["PAN"],
+            "earliestStartDate": "2026-03-01",
+            "latestStartDate": "2026-05-31",
+            "durationMin": 8,
+            "durationMax": 14,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+        # Controlled fallback
+        {
+            "earliestStartDate": "2026-03-01",
+            "latestStartDate": "2026-08-31",
+            "durationMin": 5,
+            "durationMax": 21,
+            "numberOfGuests": [2],
+            "cruiseTypes": ["OCEAN_TOUR"],
+            "removeSoldOut": False,
+        },
+    ]

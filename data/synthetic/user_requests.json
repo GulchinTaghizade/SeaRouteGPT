@@ -7,7 +7,7 @@
   },
   {
     "request_id": "req_002",
-    "text": "Looking for a 7-day Caribbean cruise in June for a family of four, around $3500 total.",
+    "text": "Looking for a 7-day Caribbean cruise in June, around $3500 total for two people",
     "difficulty": "easy",
     "notes": "Caribbean destination with clear budget and duration."
   },
@@ -25,7 +25,7 @@
   },
   {
     "request_id": "req_005",
-    "text": "Looking for a luxury Norwegian Fjords cruise in August, around 10 days, for two couples.",
+    "text": "Looking for a luxury Norwegian Fjords cruise in August, around 10 days, for two people.",
     "difficulty": "medium",
     "notes": "Scandinavia destination, luxury preference."
   },
@@ -61,7 +61,7 @@
   },
   {
     "request_id": "req_011",
-    "text": "Looking for a Bermuda cruise in May, 8-10 days, for two couples under $6000 total.",
+    "text": "Looking for a Bermuda cruise in May, 8-10 days, for two people under $6000 total.",
     "difficulty": "easy",
     "notes": "Atlantic destination with clear constraints."
   },

@@ -1,0 +1,110 @@
+search_payloads = [
+        #Alaska peak season
+        {
+            "destinations": ["AK"],
+            "earliestStartDate": "2026-06-01",
+            "latestStartDate": "2026-08-31",
+            "durationMin": 7,
+            "durationMax": 14,
+            "numberOfGuests": [2]
+        },
+        #Arctic - Shoulder
+        {
+            "destinations": ["AR"],
+            "earliestStartDate": "2026-05-01",
+            "latestStartDate": "2026-06-15",
+            "durationMin": 7,
+            "durationMax": 14,
+            "numberOfGuests": [2]
+        },
+        #Caribbean - Winter Peak
+        {
+            "destinations": ["CA"],
+            "earliestStartDate": "2026-02-07",
+            "latestStartDate": "2026-03-31",
+            "durationMin": 5,
+            "durationMax": 10,
+            "numberOfGuests": [2]
+        },
+
+        #Caribbean - Summer Low Season
+        {
+            "destinations": ["CA"],
+            "earliestStartDate": "2026-08-01",
+            "latestStartDate": "2026-10-15",
+            "durationMin": 5,
+            "durationMax": 9,
+            "numberOfGuests": [2]
+        },
+        #Europe - Summer Peak
+        {
+            "destinations": ["EA"],
+            "earliestStartDate": "2026-06-01",
+            "latestStartDate": "2026-09-15",
+            "durationMin": 7,
+            "durationMax": 14,
+            "numberOfGuests": [2]
+        },
+        #Europe - Shoulder
+        {
+            "destinations": ["EA"],
+            "earliestStartDate": "2026-04-01",
+            "latestStartDate": "2026-05-15",
+            "durationMin": 7,
+            "durationMax": 12,
+            "numberOfGuests": [2]
+        },
+        #Mediterranean - Classic
+        {
+            "destinations": ["MA"],
+            "earliestStartDate": "2026-05-01",
+            "latestStartDate": "2026-09-30",
+            "durationMin": 7,
+            "durationMax": 12,
+            "numberOfGuests": [2]
+        },
+        # Asia - Long-haul
+        {
+            "destinations": ["AS"],
+            "earliestStartDate": "2026-10-01",
+            "latestStartDate": "2026-12-15",
+            "durationMin": 10,
+            "durationMax": 21,
+            "numberOfGuests": [2]
+        },
+        #Antarctida - Expedition
+        {
+            "destinations": ["AN"],
+            "earliestStartDate": "2026-11-01",
+            "latestStartDate": "2027-02-28",
+            "durationMin": 10,
+            "durationMax": 20,
+            "numberOfGuests": [2]
+        },
+        #South America - Seasonal FLip
+        {
+            "destinations": ["SA"],
+            "earliestStartDate": "2026-11-01",
+            "latestStartDate": "2027-03-31",
+            "durationMin": 7,
+            "durationMax": 16,
+            "numberOfGuests": [2]
+        },
+        #Transatlantic - Repositioning
+        {
+            "destinations": ["TC"],
+            "earliestStartDate": "2026-04-01",
+            "latestStartDate": "2026-06-30",
+            "durationMin": 12,
+            "durationMax": 21,
+            "numberOfGuests": [2]
+        },
+        # World - Control group
+        {
+            "destinations": ["WO"],
+            "earliestStartDate": "2026-02-07",
+            "latestStartDate": "2026-12-31",
+            "durationMin": 7,
+            "durationMax": 30,
+            "numberOfGuests": [2]
+        }

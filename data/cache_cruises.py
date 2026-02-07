@@ -77,96 +77,116 @@ if __name__ == "__main__":
 
     # Define multiple search payloads to get diverse cruise data
     search_payloads = [
-        # Alaska cruises in May
-        {
-            "destinations": ["AK"],
-            "earliestStartDate": "2026-05-01",
-            "latestStartDate": "2026-05-31",
-            "durationMin": 7,
-            "durationMax": 14,
-            "numberOfGuests": [2],
-            "cruiseTypes": ["OCEAN_TOUR"],
-            "removeSoldOut": False,
-            "sortBy": "departureDate",
-            "sortOrder": "asc",
-        },
-        # Alaska cruises in June (summer season)
+        #Alaska peak season
         {
             "destinations": ["AK"],
             "earliestStartDate": "2026-06-01",
-            "latestStartDate": "2026-06-30",
-            "durationMin": 7,
-            "durationMax": 14,
-            "numberOfGuests": [2],
-            "cruiseTypes": ["OCEAN_TOUR"],
-            "removeSoldOut": False,
-            "sortBy": "departureDate",
-            "sortOrder": "asc",
-        },
-        # Alaska cruises in July (summer season)
-        {
-            "destinations": ["AK"],
-            "earliestStartDate": "2026-07-01",
-            "latestStartDate": "2026-07-31",
-            "durationMin": 7,
-            "durationMax": 14,
-            "numberOfGuests": [2],
-            "cruiseTypes": ["OCEAN_TOUR"],
-            "removeSoldOut": False,
-            "sortBy": "departureDate",
-            "sortOrder": "asc",
-        },
-        # Caribbean cruises (Spring/Summer)
-        {
-            "destinations": ["CB"],
-            "earliestStartDate": "2026-05-01",
-            "latestStartDate": "2026-06-30",
-            "durationMin": 7,
-            "durationMax": 10,
-            "numberOfGuests": [2],
-            "cruiseTypes": ["OCEAN_TOUR"],
-            "removeSoldOut": False,
-            "sortBy": "departureDate",
-            "sortOrder": "asc",
-        },
-        # Europe cruises (Summer)
-        {
-            "destinations": ["EU"],
-            "earliestStartDate": "2026-05-01",
             "latestStartDate": "2026-08-31",
             "durationMin": 7,
             "durationMax": 14,
-            "numberOfGuests": [2],
-            "cruiseTypes": ["OCEAN_TOUR"],
-            "removeSoldOut": False,
-            "sortBy": "departureDate",
-            "sortOrder": "asc",
+            "numberOfGuests": [2]
         },
-        # Alaska cruises for 4 guests
+        #Arctic - Shoulder
         {
-            "destinations": ["AK"],
+            "destinations": ["AR"],
             "earliestStartDate": "2026-05-01",
-            "latestStartDate": "2026-07-31",
-            "durationMin": 10,
+            "latestStartDate": "2026-06-15",
+            "durationMin": 7,
             "durationMax": 14,
-            "numberOfGuests": [4],
-            "cruiseTypes": ["OCEAN_TOUR"],
-            "removeSoldOut": False,
-            "sortBy": "departureDate",
-            "sortOrder": "asc",
+            "numberOfGuests": [2]
         },
-        # All destinations, flexible dates (to catch everything)
+        #Caribbean - Winter Peak
         {
-            "earliestStartDate": "2026-05-01",
-            "latestStartDate": "2026-08-31",
+            "destinations": ["CA"],
+            "earliestStartDate": "2026-02-07",
+            "latestStartDate": "2026-03-31",
             "durationMin": 5,
-            "durationMax": 21,
-            "numberOfGuests": [2],
-            "cruiseTypes": ["OCEAN_TOUR"],
-            "removeSoldOut": False,
-            "sortBy": "departureDate",
-            "sortOrder": "asc",
+            "durationMax": 10,
+            "numberOfGuests": [2]
         },
+
+        #Caribbean - Summer Low Season
+        {
+            "destinations": ["CA"],
+            "earliestStartDate": "2026-08-01",
+            "latestStartDate": "2026-10-15",
+            "durationMin": 5,
+            "durationMax": 9,
+            "numberOfGuests": [2]
+        },
+        #Europe - Summer Peak
+        {
+            "destinations": ["EA"],
+            "earliestStartDate": "2026-06-01",
+            "latestStartDate": "2026-09-15",
+            "durationMin": 7,
+            "durationMax": 14,
+            "numberOfGuests": [2]
+        },
+        #Europe - Shoulder
+        {
+            "destinations": ["EA"],
+            "earliestStartDate": "2026-04-01",
+            "latestStartDate": "2026-05-15",
+            "durationMin": 7,
+            "durationMax": 12,
+            "numberOfGuests": [2]
+        },
+        #Mediterranean - Classic
+        {
+            "destinations": ["MA"],
+            "earliestStartDate": "2026-05-01",
+            "latestStartDate": "2026-09-30",
+            "durationMin": 7,
+            "durationMax": 12,
+            "numberOfGuests": [2]
+        },
+        # Asia - Long-haul
+        {
+            "destinations": ["AS"],
+            "earliestStartDate": "2026-10-01",
+            "latestStartDate": "2026-12-15",
+            "durationMin": 10,
+            "durationMax": 21,
+            "numberOfGuests": [2]
+        },
+        #Antarctida - Expedition
+        {
+            "destinations": ["AN"],
+            "earliestStartDate": "2026-11-01",
+            "latestStartDate": "2027-02-28",
+            "durationMin": 10,
+            "durationMax": 20,
+            "numberOfGuests": [2]
+        },
+        #South America - Seasonal FLip
+        {
+            "destinations": ["SA"],
+            "earliestStartDate": "2026-11-01",
+            "latestStartDate": "2027-03-31",
+            "durationMin": 7,
+            "durationMax": 16,
+            "numberOfGuests": [2]
+        },
+        #Transatlantic - Repositioning
+        {
+            "destinations": ["TC"],
+            "earliestStartDate": "2026-04-01",
+            "latestStartDate": "2026-06-30",
+            "durationMin": 12,
+            "durationMax": 21,
+            "numberOfGuests": [2]
+        },
+        # World - Control group
+        {
+            "destinations": ["WO"],
+            "earliestStartDate": "2026-02-07",
+            "latestStartDate": "2026-12-31",
+            "durationMin": 7,
+            "durationMax": 30,
+            "numberOfGuests": [2]
+        }
+
     ]
 
     # Collect all cruises from multiple searches
@@ -224,7 +244,7 @@ if __name__ == "__main__":
                     break
 
                 page += 1
-                # Respect rate limit with 5 second delay
+                # Respect rate limit with 5 seconds delay
                 print(f"  ⏳ Waiting 5 seconds before next request...", end="", flush=True)
                 time.sleep(5)
                 print(f"\r" + " " * 50 + "\r", end="", flush=True)

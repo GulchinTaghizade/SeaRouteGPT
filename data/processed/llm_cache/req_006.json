@@ -1,4 +1,4 @@
 {
   "request_id": "req_006",
-  "llm_output": "```json\n{\n  \"selected_cruise_id\": null,\n  \"reason\": \"No cruises match the criteria. All available Caribbean cruises depart in May 2026, which is not considered summer (June, July, August).\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"cUNNUEJlQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise is a 6-day Eastern Caribbean cruise departing on August 2, 2026, which is in the summer. The total price for 2 guests is $509, making it $254.50 per person, well within the budget-friendly criteria of under $1500 per person. It is the cheapest option that meets all user requirements.\"\n}\n```"
 }

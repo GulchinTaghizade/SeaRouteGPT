@@ -1,4 +1,4 @@
 {
   "request_id": "req_017",
-  "llm_output": "```json\n{\n  \"selected_cruise_id\": \"AiUyWURVdxEDEVA8M1NGeUgtdTM_K0ZlQVBJU2VjcmUA\",\n  \"reason\": \"This '12-Day Denali Explorer - Tour JB5' cruise departs on 2026-06-01, fits the requested 12-14 day duration (12 days), is in Alaska ('AK' destination), and includes iconic glacier viewing ports like Hubbard Glacier (USHG1) and Glacier Bay (USGB1).\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"cUFGWUVRcGIWZlJaQFB0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This 'Authentic Alaska - Northbound Cruisetour' perfectly matches your request for a summer (June 2026) Alaska cruise. It has a duration of 14 days, falling within your 12-14 day preference, and its itinerary explicitly includes glacier viewing opportunities at Hubbard Glacier (USHG1) and Whittier Glacier (USWQF), satisfying your key preference.\"\n}\n```"
 }

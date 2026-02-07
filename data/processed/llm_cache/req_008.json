@@ -1,4 +1,4 @@
 {
   "request_id": "req_008",
-  "llm_output": "```json\n{\n  \"selected_cruise_id\": null,\n  \"reason\": \"No cruises found that specifically match the 'Mexico Pacific coast' destination. The available cruises visiting Mexico are on the Caribbean side.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No available cruise matches all the user's criteria. Specifically, no cruises departing in May visit the Mexico Pacific coast. The only cruise identified with Mexico Pacific ports (Cabo San Lucas, Puerto Vallarta) departs in November and has a duration of 14 days, which does not match the requested departure month or duration of 7-10 days.\"\n}\n```"
 }

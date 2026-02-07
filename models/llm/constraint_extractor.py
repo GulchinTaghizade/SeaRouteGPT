@@ -1,8 +1,6 @@
 import json
 from pathlib import Path
-from pydoc import text
 import re
-import warnings
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PROMPT_PATH = (
@@ -13,11 +11,16 @@ PROMPT_PATH = (
 )
 
 DESTINATION_KEYWORDS = {
-    "alaska": "AK",
-    "caribbean": "CAR",
-    "mediterranean": "MED",
-    "panama": "PANAMA",
-    "transatlantic": "TA"
+    "alaska": ["AK"],
+    "caribbean": ["CA", "CS", "CW"],
+    "bahamas": ["BH"],
+    "bermuda": ["BM"],
+    "mediterranean": ["MA"],
+    "panama": ["PC"],
+    "transatlantic": ["TC"],
+    "mexico": ["MC"],
+    "norway": ["NO"],
+    "greek islands": ["GI"],
 }
 
 CRUISE_LINE_KEYWORDS = {
@@ -65,7 +68,7 @@ class ConstraintExtractor:
     Sprint 1: uses a mock LLM response for deterministic testing.
     """
 
-    
+
     def __init__(self):
         if not PROMPT_PATH.exists():
             raise FileNotFoundError(
@@ -74,11 +77,12 @@ class ConstraintExtractor:
         self.prompt_template = PROMPT_PATH.read_text()
 
     def _extract_destination(self, text: str):
-         for keyword, code in DESTINATION_KEYWORDS.items():
-               if keyword in text:
-                 return [code]
-         return None
-    
+        destinations = []
+        for keyword, codes in DESTINATION_KEYWORDS.items():
+            if keyword in text.lower():
+                destinations.extend(codes)
+        return destinations if destinations else None
+
     def _extract_budget(self, text: str):
         match = re.search(r"\$(\d+)", text)
         if match:
@@ -86,14 +90,36 @@ class ConstraintExtractor:
         return None
 
     def _extract_duration(self, text: str):
-        match = re.search(r"(\d+)[–-](\d+)\s*day", text)
+        """Extract duration range from text (supports both days and weeks)."""
+        # Try to match "X-Y day/days" pattern first
+        match = re.search(r"(\d+)[–-](\d+)\s*days?", text)
         if match:
             return {
                 "min_days": int(match.group(1)),
                 "max_days": int(match.group(2))
             }
+
+        # Try to match "X-Y weeks" or "X to Y weeks" pattern
+        weeks_range_match = re.search(r"(\d+)\s*(?:to|-)\s*(\d+)\s*weeks?", text)
+        if weeks_range_match:
+            start_weeks = int(weeks_range_match.group(1))
+            end_weeks = int(weeks_range_match.group(2))
+            return {
+                "min_days": start_weeks * 7,
+                "max_days": end_weeks * 7
+            }
+
+        # Try to match single "X weeks" pattern (e.g., "2 weeks", "a 2 week cruise")
+        single_week_match = re.search(r"(?:a\s+)?(\d+)\s*weeks?(?:\s+cruise)?", text)
+        if single_week_match:
+            weeks = int(single_week_match.group(1))
+            return {
+                "min_days": weeks * 7,
+                "max_days": weeks * 7
+            }
+
         return None
-    
+
 
     def _extract_guests(self, text: str):
         if "two people" in text or "for two" in text:
@@ -101,8 +127,9 @@ class ConstraintExtractor:
         return None
 
     def extract_constraints(self, user_request: str, request_id: str):
+        """Extract hard and soft constraints from user request."""
         text = user_request.lower()
-        warnings = []
+        warnings_list = []
         hard_constraints = {
             "departure_date_window": None,
             "duration_range": None,
@@ -122,53 +149,82 @@ class ConstraintExtractor:
             "cruise_type": None
         }
 
+        # Extract destination
         destination = self._extract_destination(text)
         if destination:
-             hard_constraints["allowed_destinations"] = destination
+            hard_constraints["allowed_destinations"] = destination
         else:
-             warnings.append("No destination specified")
+            warnings_list.append("No destination specified")
 
+        # Extract duration
         duration = self._extract_duration(text)
         if duration is None:
-            warnings.append("No duration specified")
+            warnings_list.append("No duration specified")
+            soft_preferences["preferred_duration_days"] = 7  # Default 7-day cruise
         else:
             hard_constraints["duration_range"] = duration
             soft_preferences["preferred_duration_days"] = (
                 duration["min_days"] + duration["max_days"]
             ) // 2
 
+        # Extract budget
         budget = self._extract_budget(text)
         hard_constraints["max_budget"] = budget
+        if budget is None:
+            warnings_list.append("No budget specified")
 
+        # Extract guests
         guests = self._extract_guests(text)
         hard_constraints["num_guests"] = guests
 
-        for season, (start, end) in SEASON_KEYWORDS.items():
-            if season in text:
-                hard_constraints["departure_date_window"] = {
-                    "earliest": start,
-                    "latest": end
-                }
-
+        # Extract departure date window
+        date_window = None
+        found_months = []
         for month, (start, end) in MONTH_TO_RANGE.items():
             if month in text.lower():
-                hard_constraints["departure_date_window"] = {
+                found_months.append((month, start, end))
+
+        if found_months:
+            if len(found_months) > 1:
+                first_start = found_months[0][1]
+                last_end = found_months[-1][2]
+                date_window = {
+                    "earliest": f"2026-{first_start}",
+                    "latest": f"2026-{last_end}"
+                }
+            else:
+                start, end = found_months[0][1], found_months[0][2]
+                date_window = {
                     "earliest": f"2026-{start}",
                     "latest": f"2026-{end}"
                 }
+        else:
+            for season, (start, end) in SEASON_KEYWORDS.items():
+                if season in text.lower():
+                    date_window = {
+                        "earliest": start,
+                        "latest": end
+                    }
+                    break
 
+        hard_constraints["departure_date_window"] = date_window
+        if date_window is None:
+            warnings_list.append("No departure date specified")
+
+        # Extract preferred ports
         preferred_ports = []
-
         for name, code in PORT_KEYWORDS.items():
             if name in text.lower():
                 preferred_ports.append(code)
-
         soft_preferences["preferred_ports"] = preferred_ports
 
+        # Extract cruise line preference
         for name, code in CRUISE_LINE_KEYWORDS.items():
             if name in text:
                 soft_preferences["preferred_cruise_line"] = code
+                break
 
+        # Extract cruise type
         if any(word in text.lower() for word in ["luxury", "premium", "high-end"]):
             soft_preferences["price_sensitivity"] = "low"
             soft_preferences["cruise_type"] = "luxury"
@@ -178,8 +234,8 @@ class ConstraintExtractor:
 
         if "entertainment" in text.lower():
             soft_preferences["cruise_type"] = "entertainment"
-            
-        confidence = "high" if not warnings else "low"
+
+        confidence = "high" if not warnings_list else "low"
 
         return {
             "hard_constraints": hard_constraints,
@@ -187,6 +243,6 @@ class ConstraintExtractor:
             "metadata": {
                 "request_id": request_id,
                 "confidence": confidence,
-                "warnings": warnings
+                "warnings": warnings_list
             }
         }

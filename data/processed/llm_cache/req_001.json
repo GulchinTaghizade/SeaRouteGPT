@@ -1,4 +1,4 @@
 {
   "request_id": "req_001",
-  "llm_output": "```json\n{\n  \"selected_cruise_id\": \"AjwyWUQkdxEIElY8KlNFeEgtdTM0KEBlQVBJU2VjcmUA\",\n  \"reason\": \"This 10-day Denali Explorer cruise departs on 2026-05-09, is for 2 guests, includes Alaska in its destinations, and costs $1129, which meets all criteria (10-14 days, in May, under $5000).\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No available Alaska cruises depart in May 2026 within the specified duration and price range. All Alaska cruises in the provided list depart in June 2026 or later.\"\n}\n```"
 }
