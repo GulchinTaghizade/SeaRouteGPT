@@ -1,5 +1,5 @@
 from data.synthetic.load_requests import load_user_requests
-from models.llm.constraint_extractor import ConstraintExtractor
+from models.baseline.baseline_constraint_extractor import ConstraintExtractor
 import json
 
 def main():

@@ -1,4 +1,4 @@
-from models.llm.constraint_extractor import ConstraintExtractor
+from models.llm.llm_constraint_extractor import LLMConstraintExtractor
 import json
 from data.synthetic.load_requests import load_user_requests
 
@@ -20,7 +20,8 @@ def load_cached_cruises():
 
 
 def main():
-    print("\n🚢 SeaRouteGPT — MILP Optimization Pipeline\n")
+    print("\n🚢 SeaRouteGPT — Hybrid MILP Optimization Pipeline\n")
+    print("   🧠 LLM-based constraint extraction → 🔧 MILP optimization\n")
 
     # 1️⃣ Load data
     cruises = load_cached_cruises()
@@ -30,7 +31,7 @@ def main():
     print(f"✔ Loaded {len(user_requests)} user requests\n")
 
     # 2️⃣ Initialize components
-    extractor = ConstraintExtractor()
+    extractor = LLMConstraintExtractor()
 
     # 3️⃣ Run pipeline
     for req in user_requests:

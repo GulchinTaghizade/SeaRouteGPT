@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 import re
 
@@ -64,10 +63,17 @@ SEASON_KEYWORDS = {
 
 class ConstraintExtractor:
     """
-    LLM-based constraint extraction interface.
-    Sprint 1: uses a mock LLM response for deterministic testing.
+    Rule-based constraint extraction for baseline planner.
+    Uses regex patterns and keyword matching for deterministic, offline extraction.
     """
 
+    # Mapping of written numbers to digits
+    WORD_NUMBERS = {
+        "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+        "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
+        "eleven": 11, "twelve": 12, "thirteen": 13, "fourteen": 14,
+        "fifteen": 15, "twenty": 20, "thirty": 30
+    }
 
     def __init__(self):
         if not PROMPT_PATH.exists():
@@ -75,6 +81,10 @@ class ConstraintExtractor:
                 f"Constraint extraction prompt not found at {PROMPT_PATH}"
             )
         self.prompt_template = PROMPT_PATH.read_text()
+
+    def _convert_word_number(self, word: str) -> int:
+        """Convert written number (e.g., 'two') to integer."""
+        return self.WORD_NUMBERS.get(word.lower(), None)
 
     def _extract_destination(self, text: str):
         destinations = []
@@ -90,8 +100,8 @@ class ConstraintExtractor:
         return None
 
     def _extract_duration(self, text: str):
-        """Extract duration range from text (supports both days and weeks)."""
-        # Try to match "X-Y day/days" pattern first
+        """Extract duration range from text (supports days, weeks, written numbers, fuzzy expressions)."""
+        # Try to match "X-Y day/days" pattern with digits (e.g., "7-14 days")
         match = re.search(r"(\d+)[–-](\d+)\s*days?", text)
         if match:
             return {
@@ -99,7 +109,7 @@ class ConstraintExtractor:
                 "max_days": int(match.group(2))
             }
 
-        # Try to match "X-Y weeks" or "X to Y weeks" pattern
+        # Try to match "X-Y weeks" or "X to Y weeks" pattern with digits
         weeks_range_match = re.search(r"(\d+)\s*(?:to|-)\s*(\d+)\s*weeks?", text)
         if weeks_range_match:
             start_weeks = int(weeks_range_match.group(1))
@@ -109,13 +119,46 @@ class ConstraintExtractor:
                 "max_days": end_weeks * 7
             }
 
-        # Try to match single "X weeks" pattern (e.g., "2 weeks", "a 2 week cruise")
+        # Try to match single "X weeks" pattern with digits (e.g., "2 weeks")
         single_week_match = re.search(r"(?:a\s+)?(\d+)\s*weeks?(?:\s+cruise)?", text)
         if single_week_match:
             weeks = int(single_week_match.group(1))
             return {
                 "min_days": weeks * 7,
                 "max_days": weeks * 7
+            }
+
+        # Try to match written number weeks (e.g., "two weeks", "a two week cruise")
+        written_week_match = re.search(
+            r"(?:a\s+)?(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|twenty|thirty)\s*weeks?(?:\s+cruise)?",
+            text
+        )
+        if written_week_match:
+            weeks = self._convert_word_number(written_week_match.group(1))
+            if weeks:
+                return {
+                    "min_days": weeks * 7,
+                    "max_days": weeks * 7
+                }
+
+        # Try to match "around/about X days" pattern (e.g., "around 8 days")
+        around_days_match = re.search(r"(?:around|about|approx|approximately)\s+(\d+)\s*days?", text)
+        if around_days_match:
+            days = int(around_days_match.group(1))
+            # For "around X days", use a range of ±2 days
+            return {
+                "min_days": max(1, days - 2),
+                "max_days": days + 2
+            }
+
+        # Try to match "X-day" or "X day" pattern (e.g., "7-day cruise", "5 day", "7-day")
+        # Supports both hyphenated (7-day) and non-hyphenated (7 day) formats
+        hyphenated_or_spaced_day_match = re.search(r"(\d+)(?:[–-]\s*|\s+)days?(?:\s+cruise)?", text)
+        if hyphenated_or_spaced_day_match:
+            days = int(hyphenated_or_spaced_day_match.group(1))
+            return {
+                "min_days": days,
+                "max_days": days
             }
 
         return None

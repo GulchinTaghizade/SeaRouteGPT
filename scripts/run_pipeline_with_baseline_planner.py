@@ -1,6 +1,6 @@
-from models.llm.constraint_extractor import ConstraintExtractor
+from models.baseline.baseline_constraint_extractor import ConstraintExtractor
 from validation.constraint_validator import ConstraintValidator
-from baselines.rule_based_planner import RuleBasedPlanner
+from models.baseline.rule_based_planner import RuleBasedPlanner
 import json
 from data.synthetic.load_requests import load_user_requests
 
@@ -32,12 +32,21 @@ def main():
 
     for req in user_requests:
         print(f"\n🔹 Processing {req['request_id']}")
+        print(f"   📝 Request: {req['text']}")
 
         # 2️⃣ Extract constraints
         constraints = extractor.extract_constraints(
             req["text"],
             request_id=req["request_id"]
         )
+
+        # Print extracted constraints
+        hard_constraints = constraints.get('hard_constraints', {})
+        print(f"   📋 Hard constraints: {hard_constraints}")
+
+        soft_preferences = constraints.get('soft_preferences', {})
+        if any(v is not None for v in soft_preferences.values()):
+            print(f"   🎯 Soft preferences: {soft_preferences}")
 
         # 3️⃣ VALIDATE CONSTRAINTS
         validation = validator.validate(constraints)
