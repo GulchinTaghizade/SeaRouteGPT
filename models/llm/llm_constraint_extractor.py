@@ -1,5 +1,14 @@
 import json
 from google import genai
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROMPT_PATH = (
+    PROJECT_ROOT
+    / "prompts"
+    / "LLM_constraint_extraction"
+    / "v1.txt"
+)
 
 
 class LLMConstraintExtractor:
@@ -29,6 +38,11 @@ class LLMConstraintExtractor:
                 raise ValueError("GOOGLE_API_KEY not found in environment")
 
         self.client = genai.Client(api_key=api_key)
+
+        # Load prompt template from v1.txt
+        if not PROMPT_PATH.exists():
+            raise FileNotFoundError(f"Prompt template not found at {PROMPT_PATH}")
+        self.prompt_template = PROMPT_PATH.read_text()
 
     def extract_constraints(self, user_request: str, request_id: str) -> dict:
         """
@@ -65,73 +79,13 @@ class LLMConstraintExtractor:
         }
 
     def _build_extraction_prompt(self, user_request: str) -> str:
-        """Build the prompt for constraint extraction."""
-        return f"""You are a cruise constraint extraction specialist.
-
-Extract structured constraints from the user's cruise request.
-
-IMPORTANT CONSTRAINTS TO EXTRACT:
-1. departure_date_window: Extract the month or date range the user wants to travel
-   - Format: {{"earliest": "YYYY-MM-DD", "latest": "YYYY-MM-DD"}}
-   - If month mentioned, use the full month range (e.g., August = 2026-08-01 to 2026-08-31)
-   - If season mentioned, map appropriately
-   
-2. duration_range: Extract the desired cruise duration
-   - Format: {{"min_days": number, "max_days": number}}
-   - Support all duration formats:
-     * Written numbers: "two weeks" = 14 days, "three days" = 3 days
-     * Hyphenated: "7-day cruise", "14-day"
-     * Spaced: "7 day cruise", "14 day"
-     * Ranges: "7-14 days", "1-2 weeks"
-     * Fuzzy: "around 8 days" = 6-10 days, "about 10 days" = 8-12 days
-   - If no duration mentioned, set to null
-   
-3. max_budget: Extract the maximum budget if mentioned
-   - Format: number (dollars)
-   - Set to null if no budget mentioned
-   
-4. allowed_destinations: Extract desired cruise regions
-   - Valid codes: AK (Alaska), CA/CS/CW (Caribbean), BH (Bahamas), BM (Bermuda),
-     MA (Mediterranean), PC (Panama Canal), TC (Transatlantic), MC (Mexico), 
-     NO (Norway), GI (Greek Islands)
-   - Format: ["CODE1", "CODE2", ...]
-   - Set to null if no destination mentioned
-   
-5. required_ports: List of specific ports required
-   - Format: ["PORT_CODE", ...]
-   - Set to [] if none mentioned
-
-6. num_guests: Number of people traveling
-   - Format: number
-   - Set to null if not mentioned
-
-7. exclude_sold_out: Always set to true for now
-
-SOFT PREFERENCES (optional):
-- preferred_cruise_line: Brand preference (e.g., "Royal Caribbean")
-- cruise_type: Type preference (e.g., "luxury", "budget", "entertainment")
-- price_sensitivity: "low" (luxury), "high" (budget), or null
+        """Build the prompt for constraint extraction using template from v1.txt."""
+        return f"""{self.prompt_template}
 
 USER REQUEST:
-"{user_request}"
+{user_request}
 
-RESPONSE FORMAT (MUST BE VALID JSON):
-{{
-  "hard_constraints": {{
-    "departure_date_window": {{"earliest": "YYYY-MM-DD", "latest": "YYYY-MM-DD"}} or null,
-    "duration_range": {{"min_days": number, "max_days": number}} or null,
-    "max_budget": number or null,
-    "allowed_destinations": ["CODE1", "CODE2"] or null,
-    "required_ports": [],
-    "num_guests": number or null,
-    "exclude_sold_out": true
-  }},
-  "soft_preferences": {{
-    "preferred_cruise_line": "name" or null,
-    "cruise_type": "type" or null,
-    "price_sensitivity": "low"|"high"|null
-  }}
-}}"""
+Please extract constraints and respond with ONLY valid JSON."""
 
     def _parse_fallback_response(self, response_text: str, user_request: str) -> dict:
         """

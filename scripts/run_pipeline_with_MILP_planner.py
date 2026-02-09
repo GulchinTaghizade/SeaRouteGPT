@@ -3,8 +3,7 @@ import json
 from data.synthetic.load_requests import load_user_requests
 
 from solvers.milp_solver import MILPSolver
-from solvers.objective import minimize_price
-
+from solvers.objective import minimize_price, weighted_objective
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -51,7 +50,8 @@ def main():
         best_cruise = solver.solve(
             cruises=cruises,
             constraints=constraints,
-            objective_fn=minimize_price
+            objective_fn=weighted_objective,
+            weights={"price": 1.0, "duration": 0.5}
         )
 
         if best_cruise is None:

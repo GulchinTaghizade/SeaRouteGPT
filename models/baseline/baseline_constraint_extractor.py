@@ -1,13 +1,4 @@
-from pathlib import Path
 import re
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-PROMPT_PATH = (
-    PROJECT_ROOT
-    / "prompts"
-    / "constraint_extraction"
-    / "v1.txt"
-)
 
 DESTINATION_KEYWORDS = {
     "alaska": ["AK"],
@@ -76,11 +67,8 @@ class ConstraintExtractor:
     }
 
     def __init__(self):
-        if not PROMPT_PATH.exists():
-            raise FileNotFoundError(
-                f"Constraint extraction prompt not found at {PROMPT_PATH}"
-            )
-        self.prompt_template = PROMPT_PATH.read_text()
+        """Initialize the baseline constraint extractor."""
+        pass
 
     def _convert_word_number(self, word: str) -> int:
         """Convert written number (e.g., 'two') to integer."""

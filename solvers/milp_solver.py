@@ -11,11 +11,12 @@ class MILPSolver:
         if not self.solver:
             raise RuntimeError("CBC solver is not available.")
 
-    def solve(self, cruises, constraints, objective_fn):
+    def solve(self, cruises, constraints, objective_fn,**kwargs):
         """
         cruises: List[Dict] – cruise catalog
         constraints: Dict – structured constraints from LLM
         objective_fn: callable – objective function from objective.py
+         **kwargs: additional arguments (like weights) passed to objective_fn
         """
 
         #  Filter cruises with invalid prices
@@ -76,7 +77,7 @@ class MILPSolver:
                 self.solver.Add(x[i] == 0)
 
         # Apply objective function
-        objective_fn(self.solver, x, cruises)
+        objective_fn(self.solver, x, cruises,**kwargs)
 
         status = self.solver.Solve()
 
