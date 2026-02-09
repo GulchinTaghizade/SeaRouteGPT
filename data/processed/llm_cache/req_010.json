@@ -1,4 +1,4 @@
 {
   "request_id": "req_010",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No available cruises match all criteria. There are no cruises departing in April 2026 for 5-7 days that are destined for the Caribbean or Bahamas. All April cruises in the catalog are for other destinations (e.g., Mediterranean, Europe, or Transatlantic routes) or are longer than the requested duration.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The provided candidate set does not contain any cruises that satisfy all the user's constraints: a Caribbean or Bahamas destination, a duration of 5-7 days, and a departure date in April. While there are 5-7 day Caribbean cruises available in February and August, all cruises departing in April are either located in different regions (such as the Mediterranean, Canary Islands, or Norwegian Fjords) or are longer Transatlantic voyages ranging from 11 to 21 days.\"\n}\n```"
 }

@@ -1,4 +1,4 @@
 {
   "request_id": "req_008",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No available cruise matches all the user's criteria. Specifically, no cruises departing in May visit the Mexico Pacific coast. The only cruise identified with Mexico Pacific ports (Cabo San Lucas, Puerto Vallarta) departs in November and has a duration of 14 days, which does not match the requested departure month or duration of 7-10 days.\"\n}\n```"
+  "llm_output": "{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the provided list that visit the Mexico Pacific coast (such as Cabo San Lucas or Puerto Vallarta) and depart in May. The cruises available for May 2026 are exclusively located in the Mediterranean and Northern Europe (Arctic Circle).\"\n}"
 }

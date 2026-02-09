@@ -1,4 +1,4 @@
 {
   "request_id": "req_016",
-  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"No available Panama Canal transit cruises depart in May. All cruises explicitly identified as Panama Canal or Transatlantic with Panama Canal destinations depart in April or November.\"}"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that satisfy both the destination (Panama Canal transit) and the departure month (May) constraints. The available cruises departing in May 2026 are exclusively located in the Mediterranean, Northern Europe, or the Arctic Circle. The Panama Canal transit cruises in the provided data are only available in February, August, and November.\"\n}\n```"
 }

@@ -1,4 +1,4 @@
 {
   "request_id": "req_002",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises available in the Caribbean destination for the month of June based on the provided list. All Caribbean cruises depart in February, April, August, or November, while all June cruises are for Alaska or European destinations.\"\n}\n```"
+  "llm_output": "{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the provided list that satisfy the combined criteria of a 7-day Caribbean itinerary departing in June. All June departures in the candidate set are for destinations in Alaska, the Mediterranean, or Northern Europe. The available Caribbean cruises in the list depart only in February, April, August, and November.\"\n}"
 }

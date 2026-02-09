@@ -38,7 +38,7 @@ class LLMPlanner:
         prompt = self._build_prompt(cruises, user_request)
 
         response = self.client.models.generate_content(
-            model="models/gemini-2.5-flash",
+            model="models/gemini-3-flash-preview",
             contents=prompt
         )
 

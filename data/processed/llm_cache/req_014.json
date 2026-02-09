@@ -1,4 +1,4 @@
 {
   "request_id": "req_014",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No available cruise matches all criteria. There are no transatlantic cruises departing from Europe to New York in June 2026. The few transatlantic cruises from Europe to the US are scheduled for April 2026 and land in Florida (Miami or Port Canaveral), not New York.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that satisfy the specific requirements for a transatlantic voyage from Europe to New York in the month of June. The provided transatlantic cruises are scheduled for April and November, and none of them feature New York as a destination port (those mentioning Manhattan depart from there toward Europe).\"\n}\n```"
 }

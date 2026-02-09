@@ -1,4 +1,4 @@
 {
   "request_id": "req_001",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No available Alaska cruises depart in May 2026 within the specified duration and price range. All Alaska cruises in the provided list depart in June 2026 or later.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The available list of cruises does not contain any Alaska cruises departing in May. While there are several Alaska cruises that satisfy the 10\u201314 day duration and the sub-$5000 budget, they all depart on June 1 or June 2, 2026.\"\n}\n```"
 }

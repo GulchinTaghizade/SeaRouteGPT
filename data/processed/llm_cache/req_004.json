@@ -1,4 +1,4 @@
 {
   "request_id": "req_004",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No available 5-day cruise departs in March 2026. All 5-day options depart in February or August 2026.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The provided candidate set does not contain any cruises departing in March. While there are short 5-day cruises to the Bahamas and Caribbean, they are scheduled for February and August, and no sailings in the dataset match the requested March timeframe.\"\n}\n```"
 }

@@ -1,4 +1,4 @@
 {
   "request_id": "req_005",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no available Norwegian Fjords cruises departing in August in the provided list. All Norwegian Fjords cruises depart in April, May, or June 2026.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise in the provided list matches the user's request for a Norwegian Fjords itinerary in August. While there are several Norwegian Fjords and Arctic Circle cruises (such as those by Holland America and Celebrity), they all depart in April, May, or June. Conversely, all available cruises departing in August are focused on Caribbean destinations.\"\n}\n```"
 }

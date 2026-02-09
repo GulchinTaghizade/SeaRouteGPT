@@ -1,4 +1,4 @@
 {
   "request_id": "req_012",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The user requested a Caribbean cruise in August for two weeks (14 days). While several Caribbean cruises are available in August, none of them have a duration of 14 days. The available durations for Caribbean cruises in August range from 5 to 8 days.\"\n}\n```"
+  "llm_output": "{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"None of the Caribbean cruises departing in August 2026 from the provided list meet the requested two-week (14-day) duration requirement; the maximum duration available for a Caribbean itinerary in August is 8 days.\"\n}"
 }
