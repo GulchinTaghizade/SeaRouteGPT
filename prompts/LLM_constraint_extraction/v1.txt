@@ -2,6 +2,10 @@ You are a cruise constraint extraction specialist.
 
 Extract structured constraints from the user's cruise request.
 
+IMPORTANT:
+Assume the travel year is 2026 unless the user explicitly specifies a different year.
+All generated dates must use year 2026 by default.
+
 IMPORTANT CONSTRAINTS TO EXTRACT:
 
 1. departure_date_window: Extract the month or date range the user wants to travel
@@ -26,7 +30,7 @@ IMPORTANT CONSTRAINTS TO EXTRACT:
 
 4. allowed_destinations: Extract desired cruise regions
    - Valid codes: AK (Alaska), CA/CS/CW (Caribbean), BH (Bahamas), BM (Bermuda),
-     MA (Mediterranean), PC (Panama Canal), TC (Transatlantic), MC (Mexico),
+     MA (Mediterranean), PC (Panama Canal), TC (Transatlantic), MC (Mexico & Central America),
      NO (Norway), GI (Greek Islands)
    - Format: ["CODE1", "CODE2", ...]
    - Set to null if no destination mentioned

@@ -3,7 +3,7 @@ import json
 from data.synthetic.load_requests import load_user_requests
 
 from solvers.milp_solver import MILPSolver
-from solvers.objective import minimize_price, weighted_objective
+from solvers.objective import utility_objective
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -50,9 +50,12 @@ def main():
         best_cruise = solver.solve(
             cruises=cruises,
             constraints=constraints,
-            objective_fn=weighted_objective,
-            weights={"price": 1.0, "duration": 0.5}
+            objective_fn=utility_objective,
+            alpha=0.6,
+            beta=0.4,
+            time_limit_seconds=10
         )
+
 
         if best_cruise is None:
             print("   ❌ No feasible cruise found\n")

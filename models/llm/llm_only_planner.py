@@ -78,7 +78,7 @@ class LLMPlanner:
         }
 
         # Create a set of valid cruise IDs for O(1) lookup
-        valid_cruise_ids = {cruise.get("cruise_id") or cruise.get("id") for cruise in cruises}
+        valid_cruise_ids = {c.get("cruiseId") or c.get("cruise_id") or c.get("id") for c in cruises}
 
         # Try to parse LLM output as JSON
         try:

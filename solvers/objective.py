@@ -1,51 +1,51 @@
-def minimize_price(solver, x, cruises):
+from typing import Dict, List, Optional
+from ortools.linear_solver import pywraplp
+
+
+def utility_objective(
+    solver: pywraplp.Solver,
+    x: Dict[int, pywraplp.Variable],
+    cruises: List[Dict],
+    preferred_duration: Optional[int] = None,
+    alpha: float = 0.6,
+    beta: float = 0.4,
+):
     """
-    Minimize total cruise price.
+    Maximize utility:
+        U = alpha * (1 - C_hat) + beta * (1 - T_hat)
+
+    where:
+        C_hat = (C - Cmin) / (Cmax - Cmin)
+        T_hat = |D - D*| / max|D - D*|  (over candidate cruises)
+
+    OR-Tools CBC minimizes, so we minimize (-U).
     """
-    solver.Minimize(
-        sum(
-            x[i] * cruises[i]["roomPriceWithTaxesFees"]
-            for i in x
-        )
-    )
 
+    # Collect numeric prices
+    prices = [float(c["roomPriceWithTaxesFees"]) for c in cruises]
+    cmin, cmax = min(prices), max(prices)
+    cden = (cmax - cmin) if (cmax - cmin) != 0 else 1.0
 
-def maximize_duration(solver, x, cruises):
-    """
-    Maximize cruise duration (converted to minimization).
-    """
-    solver.Minimize(
-        sum(
-            -x[i] * cruises[i]["duration"]
-            for i in x
-        )
-    )
+    # Duration deviation normalization
+    if preferred_duration is None:
+        tden = 1.0
+        deviations = [0.0 for _ in cruises]
+    else:
+        deviations = [abs(int(c["duration"]) - int(preferred_duration)) for c in cruises]
+        tden = max(deviations) if max(deviations) != 0 else 1.0
 
+    # Build linear objective: minimize (-U)
+    utility_terms=[]
+    for i, c in enumerate(cruises):
+        price = float(c["roomPriceWithTaxesFees"])
+        c_hat = (price - cmin) / cden
 
+        if preferred_duration is None:
+            t_hat = 0.0
+        else:
+            t_hat = deviations[i] / tden
 
-def weighted_objective(solver, x, cruises, weights=None):
-    """
-    Weighted objective: balance price and duration.
+        u_i = alpha * (1.0 - c_hat) + beta * (1.0 - t_hat)
+        utility_terms.append(x[i] * (-u_i))
 
-    Args:
-        solver: MILP solver instance
-        x: decision variables (cruise selection)
-        cruises: list of cruise objects
-        weights: dict with "price" and "duration" keys
-    """
-    if weights is None:
-        weights = {"price": 1.0, "duration": 0.5}
-
-    price_weight = weights.get("price", 1.0)
-    duration_weight = weights.get("duration", 0.5)
-
-    solver.Minimize(
-        sum(
-            x[i] * (
-                    price_weight * cruises[i]["roomPriceWithTaxesFees"]
-                    - duration_weight * cruises[i]["duration"]
-            )
-            for i in x
-        )
-    )
-
+    solver.Minimize(solver.Sum(utility_terms))
