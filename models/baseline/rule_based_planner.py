@@ -27,8 +27,10 @@ class RuleBasedPlanner:
         else:
             preferred_duration = constraints["soft_preferences"].get("preferred_duration_days")
 
-            # Get maximum price for normalization
-            max_price = max(c["roomPriceWithTaxesFees"] for c in cruises_with_prices)
+            # Prices for min-max normalization
+            prices = [float(c["roomPriceWithTaxesFees"]) for c in cruises_with_prices]
+            cmin, cmax = min(prices), max(prices)
+            den = (cmax - cmin) if (cmax - cmin) != 0 else 1.0
 
             # Calculate all duration deviations to find max for normalization
             duration_deviations = []
@@ -42,24 +44,25 @@ class RuleBasedPlanner:
             max_duration_deviation = max(duration_deviations) if duration_deviations else 1
 
             def score(cruise):
-                # Step 2: Normalize price
-                if cruise["roomPriceWithTaxesFees"] is None:
-                    normalized_price = 1.0  # Penalize unknown prices
+                # Step 2: Normalize price (min-max)
+                price = cruise.get("roomPriceWithTaxesFees")
+                if price is None:
+                    normalized_price = 1.0 # Penalize unknown prices
                 else:
-                    normalized_price = cruise["roomPriceWithTaxesFees"] / max_price if max_price > 0 else 0
+                    normalized_price = (float(price) - cmin) / den
 
                 # Step 2: Normalize duration deviation
                 if preferred_duration is not None:
                     duration_deviation = abs(cruise["duration"] - preferred_duration)
-                    # Normalize by max deviation across all candidates
-                    normalized_duration_deviation = duration_deviation / max_duration_deviation if max_duration_deviation > 0 else 0
+                    normalized_duration_deviation = (
+                        duration_deviation / max_duration_deviation if max_duration_deviation > 0 else 0
+                    )
                 else:
                     normalized_duration_deviation = 0
 
                 # Step 2: Apply weights (α and β are fixed globally)
                 alpha = 0.6
                 beta = 0.4
-
                 return alpha * normalized_price + beta * normalized_duration_deviation
 
             # Step 3: Select cruise with lowest score (greedy minimum cost approach)
