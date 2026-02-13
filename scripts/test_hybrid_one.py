@@ -13,9 +13,9 @@ def load_cached_cruises():
 def main():
     cruises = load_cached_cruises()
 
-    # ✅ Pick ONE request to test
+    #  Pick ONE request to test
     user_request = "I want a 10–14 day Alaska cruise departing on June 1, 2026 for two people under $5000."
-    request_id = "debug_req_001"
+    request_id = "debug_req_002"
 
     solver = HybridSolver(api_key=os.getenv("GOOGLE_API_KEY"))
 

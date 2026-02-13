@@ -55,9 +55,9 @@
   },
   {
     "request_id": "req_010",
-    "text": "I want a warm-weather cruise somewhere in the Caribbean or Bahamas for 5-7 days in April.",
+    "text": "I want a 12-day river cruise through the Danube visiting Austria and Hungary in September.",
     "difficulty": "medium",
-    "notes": "Multiple destination options, clear timing."
+    "notes": "River cruise alternative, European Central focus."
   },
   {
     "request_id": "req_011",
@@ -67,9 +67,9 @@
   },
   {
     "request_id": "req_012",
-    "text": "I want an all-inclusive Caribbean resort cruise with water activities in August for two weeks.",
-    "difficulty": "medium",
-    "notes": "Activity-focused Caribbean cruise, specific season."
+    "text": "I want an all-inclusive activity cruise with water sports in August for two weeks in Southeast Asia.",
+    "difficulty": "hard",
+    "notes": "Activity-focused Far East cruise, specific season."
   },
   {
     "request_id": "req_013",
@@ -85,9 +85,9 @@
   },
   {
     "request_id": "req_015",
-    "text": "Looking for the cheapest Caribbean cruise departing in July for 4-5 days.",
-    "difficulty": "medium",
-    "notes": "Cost-focused, Caribbean, short duration."
+    "text": "Looking for a 9-day cruise visiting Japan and South Korea in October for two people.",
+    "difficulty": "hard",
+    "notes": "Far East, extended duration, fall season."
   },
   {
     "request_id": "req_016",
@@ -103,7 +103,7 @@
   },
   {
     "request_id": "req_018",
-    "text": "Looking for a Caribbean cruise departing in April for 7 days, budget under $2500 per person.",
+    "text": "Looking for a 7-day cruise in the Caribbean departing in April, budget under $2500 per person.",
     "difficulty": "easy",
     "notes": "Spring Caribbean with clear budget constraint."
   },
@@ -118,5 +118,485 @@
     "text": "Find me an Alaska cruise in May for two people, preferably with wildlife viewing, under $4000.",
     "difficulty": "easy",
     "notes": "Alaska focus with activity preference and budget."
+  },
+  {
+    "request_id": "req_021",
+    "text": "I'm looking for a 14-day South American cruise visiting Chile and Argentina in September.",
+    "difficulty": "hard",
+    "notes": "Exotic destination, specific regions, off-season."
+  },
+  {
+    "request_id": "req_022",
+    "text": "Find a 10-day river cruise through the Rhine and Moselle in Germany for two in October.",
+    "difficulty": "medium",
+    "notes": "River cruise, wine regions, European focus, fall."
+  },
+  {
+    "request_id": "req_023",
+    "text": "I want a 7-day Iceland and Arctic cruise for adventure lovers in August.",
+    "difficulty": "hard",
+    "notes": "Arctic destination, adventure focus, summer."
+  },
+  {
+    "request_id": "req_024",
+    "text": "Looking for a 9-day Hawaii cruise in February for two people, luxury ship preferred.",
+    "difficulty": "medium",
+    "notes": "Island hopping, winter vacation, premium preference."
+  },
+  {
+    "request_id": "req_025",
+    "text": "Find the best value 7-day Mexican Riviera cruise for a family of four in July.",
+    "difficulty": "easy",
+    "notes": "Family cruise, summer destination, value-focused."
+  },
+  {
+    "request_id": "req_026",
+    "text": "I want a 5-day New England cruise in October with fall foliage viewing for two people.",
+    "difficulty": "medium",
+    "notes": "Seasonal activity-focused, regional US destination."
+  },
+  {
+    "request_id": "req_027",
+    "text": "Looking for a 12-day Western Mediterranean cruise visiting France and Spain in May.",
+    "difficulty": "easy",
+    "notes": "European spring cruise, multiple ports."
+  },
+  {
+    "request_id": "req_028",
+    "text": "Find me a 12-day Southeast Asia cruise visiting Vietnam, Thailand, and Cambodia in March.",
+    "difficulty": "hard",
+    "notes": "Far East, extended, exotic, spring."
+  },
+  {
+    "request_id": "req_029",
+    "text": "I want a 10-day Canada and New England cruise departing in September for a family of five.",
+    "difficulty": "medium",
+    "notes": "Larger group, regional destination, fall timing."
+  },
+  {
+    "request_id": "req_030",
+    "text": "Looking for a cruise in the Caribbean in November for 8 days, all-inclusive preferred.",
+    "difficulty": "easy",
+    "notes": "Caribbean, holiday season, all-inclusive preference."
+  },
+  {
+    "request_id": "req_031",
+    "text": "I want a 7-day South Pacific cruise visiting Fiji and Samoa in December for two couples.",
+    "difficulty": "hard",
+    "notes": "Exotic long-distance, holiday period, multiple groups."
+  },
+  {
+    "request_id": "req_032",
+    "text": "Find a 4-day weekend cruise from Miami in August under $1500 per person.",
+    "difficulty": "easy",
+    "notes": "Short cruise, summer, budget constraint."
+  },
+  {
+    "request_id": "req_033",
+    "text": "Looking for a 15-day round-trip Alaska cruise with Denali extension in July.",
+    "difficulty": "hard",
+    "notes": "Extended cruise, pre-cruise activities, premium offering."
+  },
+  {
+    "request_id": "req_034",
+    "text": "I want a 14-day Australia and New Zealand cruise in December.",
+    "difficulty": "hard",
+    "notes": "Exotic long-distance, Southern Hemisphere summer, luxury."
+  },
+  {
+    "request_id": "req_035",
+    "text": "Find me a family-friendly Disney cruise for four people in June under $6000.",
+    "difficulty": "medium",
+    "notes": "Specific cruise line, family focus, summer."
+  },
+  {
+    "request_id": "req_036",
+    "text": "I want a 9-day Eastern Mediterranean cruise visiting Greece and Turkey in September.",
+    "difficulty": "medium",
+    "notes": "Mediterranean region, specific ports, shoulder season."
+  },
+  {
+    "request_id": "req_037",
+    "text": "Looking for a 6-day Mexico Pacific coast cruise for honeymooners in May.",
+    "difficulty": "medium",
+    "notes": "Special occasion, romantic preference, Mexico."
+  },
+  {
+    "request_id": "req_038",
+    "text": "Find a 10-day Galápagos cruise for nature lovers in December.",
+    "difficulty": "hard",
+    "notes": "Exotic wildlife destination, niche market, holiday."
+  },
+  {
+    "request_id": "req_039",
+    "text": "I want a 11-day Northern Europe cruise visiting Scandinavia in July for two people.",
+    "difficulty": "medium",
+    "notes": "Nordic destination, peak season, extended duration."
+  },
+  {
+    "request_id": "req_040",
+    "text": "Looking for an 8-day Baltic Sea cruise visiting multiple countries in August.",
+    "difficulty": "medium",
+    "notes": "Northern Europe, extended, summer tourism."
+  },
+  {
+    "request_id": "req_041",
+    "text": "I want a 14-day Asian cruise visiting Singapore, Thailand, and Malaysia in April.",
+    "difficulty": "hard",
+    "notes": "Far East destination, extended duration, spring."
+  },
+  {
+    "request_id": "req_042",
+    "text": "Find me a 10-day New Zealand cruise in February for two people, under $5500.",
+    "difficulty": "hard",
+    "notes": "Long-distance, Southern Hemisphere, southern summer."
+  },
+  {
+    "request_id": "req_043",
+    "text": "Looking for a 6-day Central American cruise visiting Belize and Honduras in March.",
+    "difficulty": "easy",
+    "notes": "Central America, spring break period, clear duration."
+  },
+  {
+    "request_id": "req_044",
+    "text": "I want a transatlantic repositioning cruise from Europe to New York in May.",
+    "difficulty": "hard",
+    "notes": "Unique route type, specific season, premium offering."
+  },
+  {
+    "request_id": "req_045",
+    "text": "Find a 7-day Bermuda cruise for couples in July, preferably with beach days.",
+    "difficulty": "easy",
+    "notes": "Atlantic destination, couple focus, beach preference."
+  },
+  {
+    "request_id": "req_046",
+    "text": "Looking for a 9-day Australia cruise visiting Sydney and Melbourne in February.",
+    "difficulty": "hard",
+    "notes": "Long-distance, Southern Hemisphere, summer."
+  },
+  {
+    "request_id": "req_047",
+    "text": "I want a 10-day Adriatic Sea cruise visiting Croatia and Greece in June.",
+    "difficulty": "medium",
+    "notes": "Mediterranean region, extended, summer."
+  },
+  {
+    "request_id": "req_048",
+    "text": "Find me a luxury River Rhine cruise through Germany in September for two people.",
+    "difficulty": "medium",
+    "notes": "River cruise, wine country focus, fall timing."
+  },
+  {
+    "request_id": "req_049",
+    "text": "Looking for a 10-day Mexican Caribbean cruise in November under $2800.",
+    "difficulty": "medium",
+    "notes": "Mexico focus, holiday season, budget constraint."
+  },
+  {
+    "request_id": "req_050",
+    "text": "I want a 8-day Iceland and Greenland cruise in August for adventure lovers.",
+    "difficulty": "hard",
+    "notes": "Arctic destination, adventure focus, niche market."
+  },
+  {
+    "request_id": "req_051",
+    "text": "Find a 12-day South African cruise visiting Cape Town and safari experiences in November.",
+    "difficulty": "hard",
+    "notes": "African destination, off-season to Southern Hemisphere, exotic."
+  },
+  {
+    "request_id": "req_052",
+    "text": "Looking for a 5-day cruise in the Caribbean for two in June under $2500.",
+    "difficulty": "easy",
+    "notes": "Caribbean islands, summer, clear budget."
+  },
+  {
+    "request_id": "req_053",
+    "text": "I want a romantic 9-day Mediterranean cruise for anniversary celebration in September.",
+    "difficulty": "medium",
+    "notes": "Special occasion, romantic focus, Mediterranean."
+  },
+  {
+    "request_id": "req_054",
+    "text": "Find me a 7-day cruise with kids activities in the Caribbean for a family of four in July.",
+    "difficulty": "easy",
+    "notes": "Family-friendly focus, kids programs, summer."
+  },
+  {
+    "request_id": "req_055",
+    "text": "Looking for the cheapest 4-day cruise from Miami for two people in October.",
+    "difficulty": "hard",
+    "notes": "Extreme budget, short duration, off-season."
+  },
+  {
+    "request_id": "req_056",
+    "text": "I want a 10-day Scandinavian and Russian Baltic cruise in July for two people.",
+    "difficulty": "medium",
+    "notes": "Northern Europe, extended itinerary, peak season."
+  },
+  {
+    "request_id": "req_057",
+    "text": "Find a 6-day yacht-style luxury cruise in the Mediterranean for two in February.",
+    "difficulty": "hard",
+    "notes": "Ultra-luxury, intimate vessel, winter."
+  },
+  {
+    "request_id": "req_058",
+    "text": "Looking for an 8-day Alaskan Inside Passage cruise in June for nature enthusiasts.",
+    "difficulty": "easy",
+    "notes": "Alaska region, nature focus, peak season."
+  },
+  {
+    "request_id": "req_059",
+    "text": "I want a 12-day Japan and South Korea cruise in April for two people.",
+    "difficulty": "hard",
+    "notes": "Far East, extended duration, spring season."
+  },
+  {
+    "request_id": "req_060",
+    "text": "Find me a 5-day Mexico Pacific cruise for a seniors group of 10 in May.",
+    "difficulty": "medium",
+    "notes": "Group travel, seniors focus, Mexico."
+  },
+  {
+    "request_id": "req_061",
+    "text": "Looking for a 10-day Panama Canal cruise with Costa Rica stops in December.",
+    "difficulty": "medium",
+    "notes": "Unique route, holiday season, Central America."
+  },
+  {
+    "request_id": "req_062",
+    "text": "I want a 6-day Bermuda cruise for honeymooners in June with water sports.",
+    "difficulty": "medium",
+    "notes": "Special occasion, activity-focused, Atlantic."
+  },
+  {
+    "request_id": "req_063",
+    "text": "Find a 9-day cruise visiting islands in April for spring vacation.",
+    "difficulty": "easy",
+    "notes": "Caribbean islands alternative, spring, clear itinerary."
+  },
+  {
+    "request_id": "req_064",
+    "text": "Looking for the most affordable 8-day European river cruise for a family in August.",
+    "difficulty": "hard",
+    "notes": "Europe, family value-focused, peak season."
+  },
+  {
+    "request_id": "req_065",
+    "text": "I want a 7-day Iceland and Greenland adventure cruise in July for two people.",
+    "difficulty": "hard",
+    "notes": "Arctic, adventure-focused, extended duration."
+  },
+  {
+    "request_id": "req_066",
+    "text": "Find me a 7-day cruise in the Caribbean for adults-only in March.",
+    "difficulty": "medium",
+    "notes": "Adults-only preference, Caribbean, spring break."
+  },
+  {
+    "request_id": "req_067",
+    "text": "Looking for a 5-day Mexico Riviera cruise for a couple in July under $2000.",
+    "difficulty": "easy",
+    "notes": "Mexico, couple focus, budget constraint."
+  },
+  {
+    "request_id": "req_068",
+    "text": "I want a 10-day river cruise through France visiting wine regions in October.",
+    "difficulty": "medium",
+    "notes": "River cruise, wine focus, European, fall."
+  },
+  {
+    "request_id": "req_069",
+    "text": "Find a 6-day cruise for a corporate team building in Southeast Asia in February.",
+    "difficulty": "hard",
+    "notes": "Group/corporate event, Far East, winter."
+  },
+  {
+    "request_id": "req_070",
+    "text": "Looking for a 12-day European cruise visiting multiple countries in May.",
+    "difficulty": "hard",
+    "notes": "Extended European, multiple ports, spring."
+  },
+  {
+    "request_id": "req_071",
+    "text": "I want a 7-day Mexico Pacific cruise for a family of four in December under $4500.",
+    "difficulty": "easy",
+    "notes": "Family, Mexico, holiday season, budget."
+  },
+  {
+    "request_id": "req_072",
+    "text": "Find me a 14-day world cruise segment visiting multiple continents in April.",
+    "difficulty": "hard",
+    "notes": "Extended voyage, exotic, spring."
+  },
+  {
+    "request_id": "req_073",
+    "text": "Looking for a 5-day weekend cruise for two in Tampa departing in August.",
+    "difficulty": "easy",
+    "notes": "Short duration, specific port, summer."
+  },
+  {
+    "request_id": "req_074",
+    "text": "I want a 9-day New England and Canada cruise in October for leaf peeping.",
+    "difficulty": "medium",
+    "notes": "Regional, seasonal activity, fall."
+  },
+  {
+    "request_id": "req_075",
+    "text": "Find a 9-day cruise for a larger family of six in July under $7000.",
+    "difficulty": "medium",
+    "notes": "Large group, mixed destination, summer, budget."
+  },
+  {
+    "request_id": "req_076",
+    "text": "Looking for a luxury 10-day Mediterranean cruise visiting multiple countries in May.",
+    "difficulty": "hard",
+    "notes": "Luxury focus, extended, Mediterranean, spring."
+  },
+  {
+    "request_id": "req_077",
+    "text": "I want a 6-day Baja California cruise from San Diego in March under $1800.",
+    "difficulty": "easy",
+    "notes": "Regional US, spring, cost-conscious."
+  },
+  {
+    "request_id": "req_078",
+    "text": "Find me an 8-day river cruise through Asia in February for two people.",
+    "difficulty": "hard",
+    "notes": "River cruise, Far East, exotic, winter."
+  },
+  {
+    "request_id": "req_079",
+    "text": "Looking for a 7-day Bermuda cruise for a second honeymoon in September.",
+    "difficulty": "medium",
+    "notes": "Special occasion, Atlantic, shoulder season."
+  },
+  {
+    "request_id": "req_080",
+    "text": "I want the best value 10-day Alaska cruise with glacier activities in July.",
+    "difficulty": "medium",
+    "notes": "Alaska, activity-focused, peak season, value-conscious."
+  },
+  {
+    "request_id": "req_081",
+    "text": "Find a 5-day party cruise for young adults in the Bahamas in June.",
+    "difficulty": "medium",
+    "notes": "Young traveler focus, party atmosphere, Caribbean region."
+  },
+  {
+    "request_id": "req_082",
+    "text": "Looking for a 10-day Norwegian Fjords cruise with hiking activities in August.",
+    "difficulty": "medium",
+    "notes": "Scandinavia, activity-focused, peak season."
+  },
+  {
+    "request_id": "req_083",
+    "text": "I want an 8-day Europe and Mediterranean cruise for two in April under $3500.",
+    "difficulty": "easy",
+    "notes": "Mediterranean focus, spring, budget."
+  },
+  {
+    "request_id": "req_084",
+    "text": "Find me a 10-day cruise in Southeast Asia for a couple in September.",
+    "difficulty": "hard",
+    "notes": "Far East, extended, couple focus, off-season."
+  },
+  {
+    "request_id": "req_085",
+    "text": "Looking for a 14-day Mediterranean and Adriatic cruise in September for two.",
+    "difficulty": "hard",
+    "notes": "Extended European, extended duration, shoulder season."
+  },
+  {
+    "request_id": "req_086",
+    "text": "I want a 5-day budget cruise for a solo traveler in February under $1200.",
+    "difficulty": "hard",
+    "notes": "Solo, budget constraint, mixed destination, winter."
+  },
+  {
+    "request_id": "req_087",
+    "text": "Find a 9-day Australia cruise visiting Sydney and Melbourne in February.",
+    "difficulty": "hard",
+    "notes": "Long-distance, Southern Hemisphere, summer."
+  },
+  {
+    "request_id": "req_088",
+    "text": "Looking for a 7-day Hawaiian Islands cruise for two in May with beach time.",
+    "difficulty": "easy",
+    "notes": "Hawaii, couple focus, spring, beach preference."
+  },
+  {
+    "request_id": "req_089",
+    "text": "I want a 10-day river cruise through France visiting wine regions in October.",
+    "difficulty": "medium",
+    "notes": "River cruise, wine focus, European, fall."
+  },
+  {
+    "request_id": "req_090",
+    "text": "Find me a 6-day all-inclusive cruise for two in November under $3000.",
+    "difficulty": "medium",
+    "notes": "All-inclusive, mixed destination, holiday prep, budget."
+  },
+  {
+    "request_id": "req_091",
+    "text": "Looking for a 12-day Galápagos cruise for nature lovers in December.",
+    "difficulty": "hard",
+    "notes": "Exotic wildlife destination, niche market, holiday."
+  },
+  {
+    "request_id": "req_092",
+    "text": "I want a 10-day cruise for a family reunion of eight in July.",
+    "difficulty": "medium",
+    "notes": "Large group, family event, mixed destination, summer."
+  },
+  {
+    "request_id": "req_093",
+    "text": "Find a 5-day getaway cruise from New Orleans for two in June under $2000.",
+    "difficulty": "easy",
+    "notes": "US port departure, couple, summer, budget."
+  },
+  {
+    "request_id": "req_094",
+    "text": "Looking for a 10-day cruise visiting multiple islands in March.",
+    "difficulty": "easy",
+    "notes": "Island hopping, spring break period."
+  },
+  {
+    "request_id": "req_095",
+    "text": "I want a luxury 7-day cruise for an executive retreat in February.",
+    "difficulty": "hard",
+    "notes": "Luxury, business focus, mixed destination, winter."
+  },
+  {
+    "request_id": "req_096",
+    "text": "Find me the most affordable 9-day Alaska cruise for a group of four in June.",
+    "difficulty": "medium",
+    "notes": "Alaska, group travel, peak season, budget."
+  },
+  {
+    "request_id": "req_097",
+    "text": "Looking for a 6-day romantic Mediterranean getaway for two in May under $4000.",
+    "difficulty": "medium",
+    "notes": "Romantic, Mediterranean, spring, couple budget."
+  },
+  {
+    "request_id": "req_098",
+    "text": "I want an 8-day cruise with scuba diving activities for two in August.",
+    "difficulty": "medium",
+    "notes": "Activity-focused, water sports, mixed destination, summer."
+  },
+  {
+    "request_id": "req_099",
+    "text": "Find a 11-day South American adventure cruise visiting Argentina and Chile in January.",
+    "difficulty": "hard",
+    "notes": "South America, adventure focus, Southern summer."
+  },
+  {
+    "request_id": "req_100",
+    "text": "Looking for a 7-day all-inclusive cruise for a family of five in April under $5500.",
+    "difficulty": "easy",
+    "notes": "Family, all-inclusive, mixed destination, spring, budget."
   }
 ]

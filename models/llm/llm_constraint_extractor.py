@@ -117,7 +117,7 @@ class LLMConstraintExtractor:
         prompt = self._build_extraction_prompt(user_request)
 
         response = self.client.models.generate_content(
-            model="models/gemini-2.5-flash",
+            model="models/gemini-2.0-flash",
             contents=prompt
         )
 
