@@ -1,0 +1,4 @@
+{
+  "request_id": "req_075",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises with a duration of 9 days and suitable for 6 guests in July. The cruises available are only for 2 guests. Therefore, no cruise matches the user's request.\"\n}\n```"
+}

@@ -7,7 +7,7 @@ from models.hybrid.hybrid_planner import HybridSolver
 load_dotenv()
 
 def load_cached_cruises():
-    with open("data/raw/cruise_snapshot_20260206_192232.json", "r") as f:
+    with open("data/raw/cruises.json", "r") as f:
         return json.load(f)["data"]
 
 def main():

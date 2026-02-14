@@ -1,4 +1,4 @@
 {
   "request_id": "req_008",
-  "llm_output": "{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the provided list that visit the Mexico Pacific coast (such as Cabo San Lucas or Puerto Vallarta) and depart in May. The cruises available for May 2026 are exclusively located in the Mediterranean and Northern Europe (Arctic Circle).\"\n}"
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises to the Mexico Pacific Coast departing in May. Furthermore, none of the cruises satisfy the duration constraint of 7-10 days.\"}"
 }

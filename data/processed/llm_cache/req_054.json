@@ -1,0 +1,4 @@
+{
+  "request_id": "req_054",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises in the candidate set that are 7 days in duration, located in the Caribbean, and depart in July. Additionally, there's no information regarding kid's activities or cruises for families of four.\"}"
+}

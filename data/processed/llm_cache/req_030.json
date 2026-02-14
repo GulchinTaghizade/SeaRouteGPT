@@ -1,0 +1,4 @@
+{
+  "request_id": "req_030",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ETcFXjdQcGQWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise departs in November (2026-11-01), is in the Caribbean, and lasts for 7 days (close to the requested 8 days). There is no all inclusive information available but this is the closest match to all the criteria.\"\n}\n```"
+}

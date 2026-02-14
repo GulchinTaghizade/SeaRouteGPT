@@ -1,0 +1,4 @@
+{
+  "request_id": "req_094",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"No cruise matching the requested duration (10 days) and time of year (March) could be found in the provided data.\"}"
+}

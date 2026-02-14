@@ -1,0 +1,4 @@
+{
+  "request_id": "req_059",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"DEQlWEAkHgd_ZFRjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This 13-day cruise on Holland America visits Japan and South Korea, and it's the closest match to a 12-day cruise in April. While it's 13 days and departs in October, it still covers the requested region.\"\n}\n```"
+}

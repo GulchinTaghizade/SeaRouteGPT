@@ -1,0 +1,4 @@
+{
+  "request_id": "req_026",
+  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no 5-day New England cruises in October in the provided cruise list. Furthermore, no cruises are explicitly advertised as offering Fall Foliage viewing.\"}\n```"
+}

@@ -1,0 +1,4 @@
+{
+  "request_id": "req_069",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the list that are 6 days in duration and take place in Southeast Asia in February. Many cruises are in the Caribbean during that period, but that does not match the user's requested destination.\"\n}\n```"
+}

@@ -13,7 +13,7 @@ def load_cached_cruises():
     """
     Loads a frozen snapshot of cruise data.
     """
-    with open("data/raw/cruise_snapshot_20260206_192232.json", "r") as f:
+    with open("data/raw/cruises.json", "r") as f:
         return json.load(f)["data"]
 
 

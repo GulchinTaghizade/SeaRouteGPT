@@ -1,0 +1,4 @@
+{
+  "request_id": "req_031",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises in the list that match your request. There are no South Pacific cruises in December, and no cruises visit both Fiji and Samoa.\"}"
+}

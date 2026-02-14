@@ -1,0 +1,4 @@
+{
+  "request_id": "req_060",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises matching the request of a 5-day Mexico Pacific cruise for a group in May in the provided list. All cruises departing in May go to either Northern Europe, the Mediterranean, or the Arctic Circle and none are in the Pacific.\"\n}\n```"
+}

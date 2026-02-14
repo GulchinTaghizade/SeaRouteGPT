@@ -1,4 +1,4 @@
 {
   "request_id": "req_011",
-  "llm_output": "{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the dataset that visit Bermuda in May. While some cruises include Bermuda (BM) in their destinations, they are all Transatlantic itineraries departing in April or November with durations of 13 days or more, which does not meet the user's request for a May cruise of 8-10 days.\"\n}"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises to Bermuda for the month of May in the provided list. Furthermore, there are no cruises to Bermuda of 8-10 days duration in the provided dataset, regardless of the month.\"\n}\n```"
 }

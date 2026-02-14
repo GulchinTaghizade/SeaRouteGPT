@@ -1,4 +1,4 @@
 {
   "request_id": "req_012",
-  "llm_output": "{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"None of the Caribbean cruises departing in August 2026 from the provided list meet the requested two-week (14-day) duration requirement; the maximum duration available for a Caribbean itinerary in August is 8 days.\"\n}"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I am unable to locate a cruise that is two weeks long in Southeast Asia in August that advertises all-inclusive activities, especially water sports. There is a cruise that goes to Southeast Asia departing August 1, but it is only one week long.\"\n}\n```"
 }

@@ -1,0 +1,4 @@
+{
+  "request_id": "req_077",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no 6-day Baja California cruises departing from San Diego in March under $1800 within the provided cruise options.\"\n}\n```"
+}

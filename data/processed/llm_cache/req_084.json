@@ -1,0 +1,4 @@
+{
+  "request_id": "req_084",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that match your search criteria. Specifically, there are no cruises with a 10-day duration in Southeast Asia departing in September.\"\n}\n```"
+}

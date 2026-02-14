@@ -1,0 +1,4 @@
+{
+  "request_id": "req_085",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no 14-day Mediterranean and Adriatic cruises departing in September. The cruises with those destinations are in different months, and the September cruises do not have the correct itinerary.\"\n}\n```"
+}

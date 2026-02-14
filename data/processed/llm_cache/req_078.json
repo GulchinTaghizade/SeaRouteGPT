@@ -1,0 +1,4 @@
+{
+  "request_id": "req_078",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises that match the criteria of an 8-day RIVIER cruise through Asia in February for two people.\"}"
+}

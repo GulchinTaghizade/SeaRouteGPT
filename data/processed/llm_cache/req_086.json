@@ -1,0 +1,4 @@
+{
+  "request_id": "req_086",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no 5-day cruises for one traveler in February under $1200. The provided cruises are for 2 guests and either exceed the budget or are longer than 5 days.\"\n}\n```"
+}

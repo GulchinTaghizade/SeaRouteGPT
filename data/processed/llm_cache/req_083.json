@@ -1,0 +1,4 @@
+{
+  "request_id": "req_083",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"EzNFUUFTcWR5Z2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This Costa cruise departs on April 3, 2026, is 8 days in duration, and cruises the Western Mediterranean. The price of $849.30 is well under the $3500 budget for 2 guests. \"\n}\n```"
+}

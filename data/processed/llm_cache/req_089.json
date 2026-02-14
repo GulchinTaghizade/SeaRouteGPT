@@ -1,0 +1,4 @@
+{
+  "request_id": "req_089",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises in the provided list that are river cruises in France visiting wine regions. All cruises are ocean cruises.\"}"
+}

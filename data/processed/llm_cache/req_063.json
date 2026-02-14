@@ -1,0 +1,4 @@
+{
+  "request_id": "req_063",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no 9-day cruises visiting islands in April. The only cruises available in April are transatlantic cruises to Europe or Mediterranean cruises.\"\n}\n```"
+}

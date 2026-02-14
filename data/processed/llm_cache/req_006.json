@@ -1,4 +1,4 @@
 {
   "request_id": "req_006",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"cUNNUEJlQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This 6-day Eastern Caribbean cruise departing on August 2nd is the most budget-friendly Caribbean option during the summer timeframe. At a total room price of $509 for two guests, the cost per person is only $254.50, which is well below the $1,500 limit.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"cUBNUUJlQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This Carnival cruise is in August 2026, a summer month, is a 5-day Western Caribbean cruise, and costs $759 total, which is $379.50 per person, well under the $1500 budget.\"\n}\n```"
 }

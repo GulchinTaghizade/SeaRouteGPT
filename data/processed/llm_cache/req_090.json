@@ -1,0 +1,4 @@
+{
+  "request_id": "req_090",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find a 6-day all-inclusive cruise for two in November under $3000. The available cruises in November are longer than 6 days and many do not have price information available.\"\n}\n```"
+}

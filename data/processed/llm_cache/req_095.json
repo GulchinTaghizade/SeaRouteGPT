@@ -1,0 +1,4 @@
+{
+  "request_id": "req_095",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ByVHWEtdQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This is a 7-day cruise in February as requested. It is a luxury cruise due to it costing $18,306.5. There is no indication of what destination is wanted. \"\n}\n```"
+}

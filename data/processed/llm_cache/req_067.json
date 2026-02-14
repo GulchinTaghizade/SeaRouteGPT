@@ -1,0 +1,4 @@
+{
+  "request_id": "req_067",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise matching the Mexico Riviera destination and July date is available in the provided list. All cruises departing in July are outside of the desired region.\"\n}\n```"
+}

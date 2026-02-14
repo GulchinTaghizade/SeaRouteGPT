@@ -1,4 +1,4 @@
 {
   "request_id": "req_007",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AiQwWUQkHhV_YlBjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This 7-day Princess cruise to Alaska departs from Vancouver on June 2, 2026, fitting the requested timeframe. It offers an exceptional value for a Suite (category S) at $1,719 total for two guests. The itinerary visits major Alaskan ports including Juneau, Skagway, and Ketchikan, along with glacier viewing at Endicott Arm, providing a premium cruise experience.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AjxFXjJWeGkWYVVRREhEfUhJcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise is an Alaska Adventure Cruise for two people, departing on June 1, 2026, which falls within the user's preferred timeframe of June or July. It is also of cruise type OCEAN. \"\n}\n```"
 }

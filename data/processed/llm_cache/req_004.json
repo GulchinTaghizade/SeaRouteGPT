@@ -1,4 +1,4 @@
 {
   "request_id": "req_004",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The provided candidate set does not contain any cruises departing in March. While there are short 5-day cruises to the Bahamas and Caribbean, they are scheduled for February and August, and no sailings in the dataset match the requested March timeframe.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find a 5-day Bahamas cruise for under $2000 departing in March. Also, there is no all-inclusive information in the available cruise data. \"\n}\n```"
 }

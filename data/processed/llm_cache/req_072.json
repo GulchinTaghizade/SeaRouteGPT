@@ -1,0 +1,4 @@
+{
+  "request_id": "req_072",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"EyBHWUFTcWR5YDcqPTY7HmV5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise departs in April, has a duration of 14 nights (close to 14 days), and is labeled as a MSC Grand Voyages which suggests a longer voyage covering multiple continents. While the available data doesn't explicitly list all continents visited, the itinerary does indicate a transatlantic journey visiting South America and Europe.\"\n}\n```"
+}

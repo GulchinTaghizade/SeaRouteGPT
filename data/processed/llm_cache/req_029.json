@@ -1,0 +1,4 @@
+{
+  "request_id": "req_029",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises matching the requested duration (10 days) and destination (Canada and New England) and the number of guests (5) departing in September in the provided cruise options.\"}"
+}

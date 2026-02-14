@@ -1,0 +1,4 @@
+{
+  "request_id": "req_025",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the request for a 7-day Mexican Riviera cruise in July for four people. The provided cruises are either not in the Mexican Riviera, not 7 days, or not in July.\"\n}\n```"
+}

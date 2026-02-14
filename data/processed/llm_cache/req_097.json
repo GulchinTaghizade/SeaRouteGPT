@@ -1,0 +1,4 @@
+{
+  "request_id": "req_097",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the specified criteria. There are no cruises with a duration of 6 days departing in May with a destination in the Mediterranean for under $4000.\"\n}\n```"
+}

@@ -1,4 +1,4 @@
 {
   "request_id": "req_018",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Caribbean cruises departing in April with a 7-day duration in the provided candidate set. While several Caribbean cruises are available in February and August, all April departures are for cruises in the Mediterranean, the Canary Islands, or are Transatlantic voyages with durations of 13 nights or longer.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ADQnWUQjHmR_Y1JjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This Princess cruise departing on 2026-02-07 is the closest match. While it's not in April, it does fulfill the requirements of being a 7-day Caribbean cruise with a price of $1535, fitting the under $2500 per person requirement. No cruises in April match the Caribbean requirement. \"\n}\n```"
 }

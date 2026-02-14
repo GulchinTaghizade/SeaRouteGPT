@@ -1,0 +1,4 @@
+{
+  "request_id": "req_088",
+  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no 7-day Hawaiian cruises in May for 2 guests in the provided cruise list.\"}\n```"
+}

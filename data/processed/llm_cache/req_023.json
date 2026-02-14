@@ -1,0 +1,4 @@
+{
+  "request_id": "req_023",
+  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises in the list that match the user's request for a 7-day Iceland and Arctic cruise in August. The cruises available are either not in the specified location, not in the correct month, or not the specified duration.\"}\n```"
+}

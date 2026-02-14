@@ -1,0 +1,4 @@
+{
+  "request_id": "req_064",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that match the user's request. The user is looking for an 8-day European river cruise in August, but all cruises listed are ocean cruises, and there is no filter for river cruises, and no departure dates in August.\"\n}\n```"
+}

@@ -1,0 +1,4 @@
+{
+  "request_id": "req_047",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"BiAnWEciHh5_YlMicmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise is 10-days, departs in June, and visits Greece and Croatia, satisfying the user's request.\"\n}\n```"
+}

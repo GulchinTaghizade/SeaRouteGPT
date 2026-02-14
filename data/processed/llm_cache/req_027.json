@@ -1,0 +1,4 @@
+{
+  "request_id": "req_027",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"BiNFUD5Wc2QWYVVRREhEfUhJcXJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise is for 9-days and visits France and Spain. It also takes place in May. No cruise matches the full duration requested.\"\n}\n```"
+}

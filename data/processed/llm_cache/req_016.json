@@ -1,4 +1,4 @@
 {
   "request_id": "req_016",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that satisfy both the destination (Panama Canal transit) and the departure month (May) constraints. The available cruises departing in May 2026 are exclusively located in the Mediterranean, Northern Europe, or the Arctic Circle. The Panama Canal transit cruises in the provided data are only available in February, August, and November.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any Panama Canal transit cruises that depart in May and are around 10 days in duration. The available cruises either do not transit the Panama Canal, are not in May or are not around 10 days.\"\n}\n```"
 }

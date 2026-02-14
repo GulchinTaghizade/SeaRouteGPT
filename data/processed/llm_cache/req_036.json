@@ -1,0 +1,4 @@
+{
+  "request_id": "req_036",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"I could not find a cruise matching the user's request. There are no 9 day Eastern Mediterranean cruises visiting Greece and Turkey in September in the provided candidate cruises.\"}"
+}

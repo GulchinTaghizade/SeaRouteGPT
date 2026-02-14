@@ -1,0 +1,4 @@
+{
+  "request_id": "req_087",
+  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises in the provided list that are 9 days long and visit Australia, Sydney, and Melbourne in February. The available cruises are mainly to Alaska, the Caribbean, the Mediterranean, Northern Europe, or Japan, and they all depart in different months.\"}\n```"
+}

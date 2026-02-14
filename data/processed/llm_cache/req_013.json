@@ -1,4 +1,4 @@
 {
   "request_id": "req_013",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"While there are several Greek Islands and Mediterranean cruises departing in June 2026, none of them satisfy the requested duration of 10-12 days. The Greek Islands itineraries starting in June are either 7, 9, or 14 days long. The only 10-12 day Mediterranean cruises departing in June visit Western Mediterranean ports (Spain, Portugal, Italy, and France) and do not include the Greek Islands.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises matching the criteria of Greek Islands, departing in June, and lasting between 10-12 days could be found in the provided list.\"\n}\n```"
 }

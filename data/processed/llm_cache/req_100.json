@@ -1,0 +1,4 @@
+{
+  "request_id": "req_100",
+  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"No cruise in the candidate set matches the criteria of being 7 days in duration, all-inclusive (which isn't specified in the data), for a family of five (the number of guests is fixed at 2), and under $5500. The number of guests is fixed at 2, which doesn't work for a family of 5.\"}\n```"
+}

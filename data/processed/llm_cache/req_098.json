@@ -1,0 +1,4 @@
+{
+  "request_id": "req_098",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I am unable to fulfill the request. There is no 8-day cruise in August that specifically advertises scuba diving activities. The available cruises are primarily focused on Alaska, Caribbean, or Mediterranean destinations, with no explicit mention of scuba diving as a primary activity.\"\n}\n```"
+}

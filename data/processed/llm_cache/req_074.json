@@ -1,0 +1,4 @@
+{
+  "request_id": "req_074",
+  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"I could not find any 9-day New England and Canada cruises in October. All cruises in the candidate set are either not in the requested location or do not meet the specified criteria.\"}\n```"
+}

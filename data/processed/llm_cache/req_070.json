@@ -1,0 +1,4 @@
+{
+  "request_id": "req_070",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"BjFEWyZRcGkWYVVRREhEfUhJcXJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This Celebrity cruise is 12 days long and visits Europe (Iceland & Scotland) in June, which is the closest match to a May departure. It also visits multiple countries (BI, EA, NE).\"\n}\n```"
+}

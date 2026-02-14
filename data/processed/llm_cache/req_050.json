@@ -1,0 +1,4 @@
+{
+  "request_id": "req_050",
+  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"I could not find any cruises that go to both Iceland and Greenland. Also, I could not find any cruises that are exactly 8 days long. Finally, none of the cruises are specifically marketed toward adventure lovers.\"}\n```"
+}

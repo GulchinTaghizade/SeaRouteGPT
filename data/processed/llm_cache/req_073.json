@@ -1,0 +1,4 @@
+{
+  "request_id": "req_073",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ETZFXCRScWcWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise departs from Tampa in August, is 5 days long and is for 2 people.\"\n}\n```"
+}

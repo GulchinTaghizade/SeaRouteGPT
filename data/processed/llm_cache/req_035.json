@@ -1,0 +1,4 @@
+{
+  "request_id": "req_035",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises available from the provided list that match the criteria of being Disney, family-friendly (for four guests), in June, and under $6000. The Disney cruise available in June is far above the budget.\"\n}\n```"
+}

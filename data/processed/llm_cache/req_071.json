@@ -1,0 +1,4 @@
+{
+  "request_id": "req_071",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises that match your request. There are no cruises to Mexico Pacific, for a family of 4, departing in December, and under $4500.\"}"
+}

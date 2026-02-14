@@ -1,4 +1,4 @@
 {
   "request_id": "req_017",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AiUyWURVdxEAEVA8M1NGeUgtdTM8K0ZlQVBJU2VjcmUA\",\n  \"justification\": \"This 12-day Alaska cruisetour departing on June 1st, 2026, perfectly fits the requested 12-14 day duration and June timeframe. It provides an extensive glacier viewing experience by including scenic cruising at both Hubbard Glacier (USHG1) and the premier Glacier Bay National Park (USGB1), satisfying the specific glacier viewing requirement.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AkQmWUQkGGQFDC5VQV02S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The \\\"12-Day Denali & Yukon Y4L\\\" cruise, departing on June 1, 2026, for 12 days, fits the duration criteria (12-14 days in June). The itinerary includes Alaskan destinations, implying glacier viewing opportunities.\"\n}\n```"
 }

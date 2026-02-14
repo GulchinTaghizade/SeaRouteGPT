@@ -1,0 +1,4 @@
+{
+  "request_id": "req_044",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no transatlantic cruises from Europe to New York in May. The cruises available are either not transatlantic, not to New York, or not in May.\"\n}\n```"
+}

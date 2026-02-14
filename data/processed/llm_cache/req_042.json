@@ -1,0 +1,4 @@
+{
+  "request_id": "req_042",
+  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises to New Zealand in the provided cruise list. There are no cruises in February, and all cruises to the region are for other destinations. Additionally, since there are no New Zealand cruises, no cruises match the destination and budget criteria.\"}\n```"
+}

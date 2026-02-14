@@ -1,0 +1,4 @@
+{
+  "request_id": "req_082",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises matching the criteria of a 10-day Norwegian Fjords cruise with hiking activities in August. The available cruises are either not in the Norwegian Fjords, do not have hiking as a specified activity, are not 10 days long, or do not occur in August.\"}"
+}

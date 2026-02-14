@@ -1,0 +1,4 @@
+{
+  "request_id": "req_046",
+  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises in the candidate set that are 9 days in duration and visit both Sydney and Melbourne, Australia in February.\"}"
+}

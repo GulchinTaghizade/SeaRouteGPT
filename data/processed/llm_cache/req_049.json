@@ -1,0 +1,4 @@
+{
+  "request_id": "req_049",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises matching the requested criteria. Specifically, the cruise must be 10 days in duration, travel to the Mexican Caribbean, and cost less than $2800. None of the cruises listed in the provided JSON data satisfy these conditions.\"\n}\n```"
+}

@@ -1,4 +1,4 @@
 {
   "request_id": "req_003",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The available cruise list does not contain any cruises departing in July 2026. The Mediterranean cruises visiting Italy and Greece in the candidate set depart only in April, May, and June 2026.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I can't fulfill this request because I could not identify any cruises that occur in July, are approximately two weeks in duration, and visit both Italy and Greece. Therefore, there is no single best match from the provided list.\"\n}\n```"
 }

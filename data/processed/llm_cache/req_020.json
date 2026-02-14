@@ -1,4 +1,4 @@
 {
   "request_id": "req_020",
-  "llm_output": "{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"None of the Alaska cruises in the provided list satisfy the departure month constraint. All Alaska cruises (destinations including 'AK') in the candidate set depart on June 1, 2026, or later, while the user specifically requested a cruise in May.\"\n}"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Alaska cruises available in May. All Alaska cruises listed are in June, and none are under $4000 total.\"\n}\n```"
 }
