@@ -1,10 +1,12 @@
-
 from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
 
+# =========================
+# Data containers
+# =========================
 @dataclass
 class Itinerary:
     cruise_id: str
@@ -34,42 +36,53 @@ class ExperimentRun:
     error_msg: str = ""
 
 
+# =========================
+# Metrics engine
+# =========================
 class CruiseMetrics:
     """
     Thesis metrics:
       - Feasibility: strict hard-constraint satisfaction (binary)
       - Personalization: weighted soft-preference satisfaction (0..1)
       - Utility: alpha(1-C_hat)+beta(1-T_hat) among feasible candidates (0..1)
-    Unified failure handling: if no itinerary or infeasible -> all metrics = 0
+
+    Unified failure handling:
+      if no itinerary or infeasible -> all metrics = 0
     """
 
     def __init__(self, cruise_catalog: List[Dict[str, Any]]):
         self.cruise_catalog = cruise_catalog
-        # Your catalog uses "cruiseId" (not cruise_id)
-        self.catalog_index = {c.get("cruiseId"): c for c in cruise_catalog}
 
-    # ---------- conversion ----------
+        # Catalog uses cruiseId; support cruise_id too just in case
+        self.catalog_index: Dict[str, Dict[str, Any]] = {}
+        for c in cruise_catalog:
+            cid = c.get("cruiseId") or c.get("cruise_id")
+            if cid:
+                self.catalog_index[str(cid)] = c
+
+    # -------------------------
+    # Convert catalog item -> Itinerary
+    # -------------------------
     def to_itinerary(self, cruise: Optional[Dict[str, Any]]) -> Optional[Itinerary]:
-        if cruise is None:
+        if not cruise:
             return None
 
-        cruise_id = cruise.get("cruiseId")
-        if cruise_id is None:
+        cid = cruise.get("cruiseId") or cruise.get("cruise_id")
+        if not cid:
             return None
 
+        # price
         price = cruise.get("roomPriceWithTaxesFees")
         try:
-            total_price = float(price) if price is not None else float("nan")
+            total_price = float(price)
         except (ValueError, TypeError):
+            # if price can't be parsed, skip (utility can't be computed reliably)
             total_price = float("nan")
 
-        ports = cruise.get("itineraryPorts", []) or []
-        dests = cruise.get("itineraryDestinations", []) or []
-
         return Itinerary(
-            cruise_id=cruise_id,
-            ports=list(ports),
-            destinations=list(dests),
+            cruise_id=str(cid),
+            ports=list(cruise.get("itineraryPorts", []) or []),
+            destinations=list(cruise.get("itineraryDestinations", []) or []),
             departure_date=str(cruise.get("departureDate") or ""),
             duration_days=int(cruise.get("duration") or 0),
             total_price=total_price,
@@ -78,7 +91,9 @@ class CruiseMetrics:
             sold_out=bool(cruise.get("soldOut", False)),
         )
 
-    # ---------- feasibility ----------
+    # -------------------------
+    # 1) FEASIBILITY (binary)
+    # -------------------------
     def compute_feasibility(
         self,
         hard_constraints: Dict[str, Any],
@@ -96,10 +111,10 @@ class CruiseMetrics:
         cruise = self.catalog_index[itinerary.cruise_id]
 
         # 2) Availability
-        if bool(cruise.get("soldOut", False)) or itinerary.sold_out:
+        if bool(cruise.get("soldOut", False)) or bool(itinerary.sold_out):
             return 0.0, ["cruise_sold_out"]
 
-        # 3) Temporal validity (window + duration range)
+        # 3) Temporal validity
         dw = hard_constraints.get("departure_date_window")
         if dw:
             earliest = dw.get("earliest")
@@ -116,13 +131,18 @@ class CruiseMetrics:
 
         dr = hard_constraints.get("duration_range")
         if dr:
-            mn = int(dr.get("min_days"))
-            mx = int(dr.get("max_days"))
-            d = int(itinerary.duration_days)
-            if not (mn <= d <= mx):
-                violations.append("duration_out_of_range")
+            try:
+                mn = int(dr.get("min_days"))
+                mx = int(dr.get("max_days"))
+            except (TypeError, ValueError):
+                mn, mx = None, None
 
-        # 4) Destination validity: set intersection with allowed_destinations
+            if mn is not None and mx is not None:
+                d = int(itinerary.duration_days)
+                if not (mn <= d <= mx):
+                    violations.append("duration_out_of_range")
+
+        # 4) Destination validity: INTERSECTION with allowed destinations
         allowed = hard_constraints.get("allowed_destinations")
         if allowed:
             cruise_dests = set(itinerary.destinations or [])
@@ -139,7 +159,9 @@ class CruiseMetrics:
         itinerary.constraint_violations = violations
         return (0.0, violations) if violations else (1.0, [])
 
-    # ---------- personalization ----------
+    # -------------------------
+    # 2) PERSONALIZATION (0..1)
+    # -------------------------
     def compute_personalization(
         self,
         feasibility: float,
@@ -150,47 +172,48 @@ class CruiseMetrics:
         if feasibility < 0.5 or itinerary is None:
             return 0.0
 
-        # Use ONLY preferences you actually extract (keep it aligned with v1.txt)
-        prefs = {
-            "preferred_cruise_line": soft_preferences.get("preferred_cruise_line"),
-            "cruise_type": soft_preferences.get("cruise_type"),
-            "price_sensitivity": soft_preferences.get("price_sensitivity"),
-            "preferred_duration_days": soft_preferences.get("preferred_duration_days"),
-        }
+        # Keep this aligned with what you actually extract in v1.txt
+        pref_cruise_line = soft_preferences.get("preferred_cruise_line")
+        pref_duration = soft_preferences.get("preferred_duration_days")
+        pref_cruise_type = soft_preferences.get("cruise_type")
+        pref_price_sens = soft_preferences.get("price_sensitivity")
 
-        # Indicators
         indicators: Dict[str, bool] = {}
 
-        # cruise line
-        if prefs["preferred_cruise_line"] is not None:
-            indicators["preferred_cruise_line"] = (itinerary.cruise_line == prefs["preferred_cruise_line"])
-        else:
-            indicators["preferred_cruise_line"] = False
+        # cruise line match
+        indicators["preferred_cruise_line"] = (
+            pref_cruise_line is not None and itinerary.cruise_line == pref_cruise_line
+        )
 
-        # duration closeness (soft)
-        if prefs["preferred_duration_days"] is not None:
-            target = int(prefs["preferred_duration_days"])
-            indicators["preferred_duration_days"] = (abs(itinerary.duration_days - target) <= 1)
+        # duration closeness (soft) : within ±1 day
+        if pref_duration is not None:
+            try:
+                target = int(pref_duration)
+                indicators["preferred_duration_days"] = (abs(itinerary.duration_days - target) <= 1)
+            except Exception:
+                indicators["preferred_duration_days"] = False
         else:
             indicators["preferred_duration_days"] = False
 
-        # cruise_type / price_sensitivity are not reliably derivable from catalog unless you map them.
-        # Keep them as unmet unless you implement mappings later.
-        indicators["cruise_type"] = False if prefs["cruise_type"] is not None else False
-        indicators["price_sensitivity"] = False if prefs["price_sensitivity"] is not None else False
+        # cruise_type and price_sensitivity need a mapping from catalog fields;
+        # until you implement mapping, count as unmet when requested.
+        indicators["cruise_type"] = False if pref_cruise_type is not None else False
+        indicators["price_sensitivity"] = False if pref_price_sens is not None else False
 
         itinerary.preference_matches = indicators
 
+        # uniform weights by default across measured indicators
         if weights is None:
-            # uniform weights over the preference keys we measure
             k = len(indicators)
-            weights = {p: 1.0 / k for p in indicators}
+            weights = {k_: 1.0 / k for k_ in indicators}
 
-        num = sum(weights.get(p, 0.0) * (1.0 if indicators[p] else 0.0) for p in indicators)
+        num = sum(weights.get(k_, 0.0) * (1.0 if indicators[k_] else 0.0) for k_ in indicators)
         den = sum(weights.values()) if weights else 1.0
         return float(num / den) if den > 0 else 0.0
 
-    # ---------- utility ----------
+    # -------------------------
+    # 3) UTILITY (0..1)
+    # -------------------------
     def compute_optimization_utility(
         self,
         feasibility: float,
@@ -205,25 +228,29 @@ class CruiseMetrics:
         if feasibility < 0.5 or itinerary is None:
             return 0.0
 
-        # candidates: ideally all cruises that satisfy hard constraints (not just the chosen one)
         candidates = feasible_candidates or []
         if not candidates:
             return 0.0
 
-        prices = [c.total_price for c in candidates if c.total_price == c.total_price]  # not NaN
-        if not prices:
+        # prices for normalization (ignore NaN)
+        prices = [c.total_price for c in candidates if c.total_price == c.total_price]
+        if not prices or itinerary.total_price != itinerary.total_price:
             return 0.0
 
         cmin, cmax = min(prices), max(prices)
         cden = (cmax - cmin) if (cmax - cmin) != 0 else 1.0
         c_hat = (itinerary.total_price - cmin) / cden
 
-        preferred_duration = soft_preferences.get("preferred_duration_days")
-        if preferred_duration is None:
-            # if missing, treat deviation term as 0 (perfect)
+        # duration deviation normalization
+        pref_duration = soft_preferences.get("preferred_duration_days")
+        if pref_duration is None:
             t_hat = 0.0
         else:
-            d_star = float(preferred_duration)
+            try:
+                d_star = float(pref_duration)
+            except Exception:
+                d_star = float(itinerary.duration_days)
+
             deviations = [abs(c.duration_days - d_star) for c in candidates]
             tden = max(deviations) if max(deviations) != 0 else 1.0
             t_hat = abs(itinerary.duration_days - d_star) / tden
@@ -231,11 +258,10 @@ class CruiseMetrics:
         utility = alpha * (1.0 - c_hat) + beta * (1.0 - t_hat)
         return float(max(0.0, min(1.0, utility)))
 
-    # ---------- candidate filtering for utility ----------
-    def feasible_candidate_set(
-        self,
-        hard_constraints: Dict[str, Any],
-    ) -> List[Itinerary]:
+    # -------------------------
+    # Candidate set for utility normalization
+    # -------------------------
+    def feasible_candidate_set(self, hard_constraints: Dict[str, Any]) -> List[Itinerary]:
         out: List[Itinerary] = []
         for c in self.cruise_catalog:
             it = self.to_itinerary(c)

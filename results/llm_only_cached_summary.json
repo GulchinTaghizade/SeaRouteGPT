@@ -1,0 +1,25 @@
+{
+  "LLM_ONLY": {
+    "feasibility": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0,
+      "n_runs": 100
+    },
+    "personalization": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0,
+      "n_runs": 100
+    },
+    "utility": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0,
+      "n_runs": 100
+    }
+  }
+}

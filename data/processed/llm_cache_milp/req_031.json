@@ -1,0 +1,27 @@
+{
+  "hard_constraints": {
+    "departure_date_window": {
+      "earliest": "2026-12-01",
+      "latest": "2026-12-31"
+    },
+    "duration_range": {
+      "min_days": 7,
+      "max_days": 7
+    },
+    "max_budget": null,
+    "allowed_destinations": null,
+    "required_ports": [],
+    "num_guests": 4,
+    "exclude_sold_out": true
+  },
+  "soft_preferences": {
+    "preferred_cruise_line": null,
+    "cruise_type": null,
+    "price_sensitivity": null
+  },
+  "metadata": {
+    "request_id": "req_031",
+    "from_cache": false,
+    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-12-01\",\n      \"latest\": \"2026-12-31\"\n    },\n    \"duration_range\": {\n      \"min_days\": 7,\n      \"max_days\": 7\n    },\n    \"max_budget\": null,\n    \"allowed_destinations\": null,\n    \"required_ports\": [],\n    \"num_guests\": 4,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": null,\n    \"price_sensitivity\": null\n  }\n}\n```"
+  }
+}

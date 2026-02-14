@@ -1,0 +1,27 @@
+{
+  "hard_constraints": {
+    "departure_date_window": {
+      "earliest": "2026-11-01",
+      "latest": "2026-11-30"
+    },
+    "duration_range": {
+      "min_days": 6,
+      "max_days": 6
+    },
+    "max_budget": 3000,
+    "allowed_destinations": null,
+    "required_ports": [],
+    "num_guests": 2,
+    "exclude_sold_out": true
+  },
+  "soft_preferences": {
+    "preferred_cruise_line": null,
+    "cruise_type": "all-inclusive",
+    "price_sensitivity": null
+  },
+  "metadata": {
+    "request_id": "req_090",
+    "from_cache": false,
+    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-11-01\",\n      \"latest\": \"2026-11-30\"\n    },\n    \"duration_range\": {\n      \"min_days\": 6,\n      \"max_days\": 6\n    },\n    \"max_budget\": 3000,\n    \"allowed_destinations\": null,\n    \"required_ports\": [],\n    \"num_guests\": 2,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": \"all-inclusive\",\n    \"price_sensitivity\": null\n  }\n}\n```"
+  }
+}
