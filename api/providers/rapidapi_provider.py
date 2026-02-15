@@ -1,6 +1,6 @@
 import requests
 from datetime import date
-from models.schemas.cruise import Cruise
+from models.schemas import Cruise
 
 class RapidAPICruiseProvider:
     BASE_URL = "https://cruise-api1.p.rapidapi.com/cruises"

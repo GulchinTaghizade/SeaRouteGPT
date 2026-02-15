@@ -1,11 +1,48 @@
-from typing import Dict, List, Optional, Callable
+from __future__ import annotations
+
+from typing import Dict, List, Optional, Callable, Any
 from ortools.linear_solver import pywraplp
 
 
 class MILPSolver:
     """
     MILP solver for selecting ONE optimal cruise given hard constraints.
+    Robust to both RapidAPI schema and normalized UI schema.
     """
+
+    # ---------- small schema helpers ----------
+    @staticmethod
+    def _get_price(c: Dict[str, Any]) -> Optional[float]:
+        """Return numeric total price if present, else None."""
+        price = c.get("roomPriceWithTaxesFees", None)
+        if price is None:
+            price = c.get("price", None)
+
+        if price is None:
+            return None
+
+        try:
+            v = float(price)
+            # guard against NaN
+            if v != v:
+                return None
+            return v
+        except (ValueError, TypeError):
+            return None
+
+    @staticmethod
+    def _get_dests(c: Dict[str, Any]) -> List[str]:
+        d = c.get("itineraryDestinations", None)
+        if d is None:
+            d = c.get("destinations", None)
+        return [str(x) for x in d] if isinstance(d, list) else []
+
+    @staticmethod
+    def _get_ports(c: Dict[str, Any]) -> List[str]:
+        p = c.get("itineraryPorts", None)
+        if p is None:
+            p = c.get("ports", None)
+        return [str(x) for x in p] if isinstance(p, list) else []
 
     def solve(
         self,
@@ -22,20 +59,27 @@ class MILPSolver:
         if not solver:
             raise RuntimeError("CBC solver is not available.")
 
-        solver.SetTimeLimit(time_limit_seconds * 1000)
+        solver.SetTimeLimit(int(time_limit_seconds) * 1000)
 
-        # Filter cruises with valid numeric price
-        filtered = []
+        # IMPORTANT:
+        # - If user has a budget constraint, we must exclude cruises with missing price.
+        # - If no budget constraint, allow missing price cruises (but objective_fn may not like it).
+        hard = (constraints or {}).get("hard_constraints", constraints or {})  # tolerate both shapes
+        max_budget = hard.get("max_budget")
+
+        filtered: List[Dict[str, Any]] = []
         for c in cruises:
-            price = c.get("roomPriceWithTaxesFees")
-            if price is None:
+            price = self._get_price(c)
+
+            # If budget is specified, price must be known
+            if max_budget is not None and price is None:
                 continue
-            try:
-                c2 = dict(c)
-                c2["roomPriceWithTaxesFees"] = float(price)
-                filtered.append(c2)
-            except (ValueError, TypeError):
-                continue
+
+            c2 = dict(c)
+            if price is not None:
+                # normalize for internal use so objective_fn can rely on it
+                c2["roomPriceWithTaxesFees"] = price
+            filtered.append(c2)
 
         if not filtered:
             return None
@@ -49,33 +93,32 @@ class MILPSolver:
         # Select exactly one cruise
         solver.Add(sum(x.values()) == 1)
 
-        hard = constraints.get("hard_constraints", {})
-        soft = constraints.get("soft_preferences", {})
+        soft = (constraints or {}).get("soft_preferences", {})
 
         # Hard constraint enforcement
         for i, cruise in enumerate(cruises):
 
             # soldOut exclusion
-            if hard.get("exclude_sold_out") and cruise.get("soldOut", False):
+            if hard.get("exclude_sold_out") and bool(cruise.get("soldOut", False)):
                 solver.Add(x[i] == 0)
 
-            # budget
-            max_budget = hard.get("max_budget")
-            if max_budget is not None and cruise["roomPriceWithTaxesFees"] > float(max_budget):
-                solver.Add(x[i] == 0)
+            # budget (only safe because we filtered missing price when max_budget exists)
+            if max_budget is not None:
+                if float(cruise.get("roomPriceWithTaxesFees", 1e18)) > float(max_budget):
+                    solver.Add(x[i] == 0)
 
             # duration range
             dr = hard.get("duration_range")
             if dr is not None:
-                d = int(cruise.get("duration", 0))
+                d = int(cruise.get("duration", 0) or 0)
                 if not (int(dr["min_days"]) <= d <= int(dr["max_days"])):
                     solver.Add(x[i] == 0)
 
             # departure date window (string YYYY-MM-DD works lexicographically)
             dw = hard.get("departure_date_window")
             if dw is not None:
-                dep = cruise.get("departureDate")
-                if dep is None:
+                dep = cruise.get("departureDate") or ""
+                if not dep:
                     solver.Add(x[i] == 0)
                 else:
                     earliest = dw.get("earliest")
@@ -85,22 +128,22 @@ class MILPSolver:
                     if latest and dep > latest:
                         solver.Add(x[i] == 0)
 
-            # allowed destinations
-            allowed = hard.get("allowed_destinations")
+            # allowed destinations (match ANY allowed code)
+            allowed = hard.get("allowed_destinations") or []
             if allowed:
-                dests = cruise.get("itineraryDestinations", [])
-                if not any(d in dests for d in allowed):
+                dests = set(self._get_dests(cruise))
+                if dests.isdisjoint(set(allowed)):
                     solver.Add(x[i] == 0)
 
-            # required ports
+            # required ports (must include ALL required ports)
             required_ports = hard.get("required_ports") or []
             if required_ports:
-                ports = cruise.get("itineraryPorts", [])
-                if not any(p in ports for p in required_ports):
+                ports = set(self._get_ports(cruise))
+                if not set(required_ports).issubset(ports):
                     solver.Add(x[i] == 0)
 
         # Objective
-        preferred_duration = soft.get("preferred_duration_days")
+        preferred_duration = soft.get("preferred_duration_days", preferred_duration)
         objective_fn(
             solver=solver,
             x=x,
@@ -116,7 +159,7 @@ class MILPSolver:
 
         # Extract chosen cruise
         best_i = None
-        best_val = -1
+        best_val = -1.0
         for i in range(n):
             val = x[i].solution_value()
             if val > best_val:
