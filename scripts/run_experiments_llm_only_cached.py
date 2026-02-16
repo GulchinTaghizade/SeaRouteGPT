@@ -164,6 +164,7 @@ def main():
                 itinerary=itinerary,
             )
 
+            candidates = metrics_engine.utility_candidate_set(hard)
             util = metrics_engine.compute_optimization_utility(
                 feasibility=feas,
                 hard_constraints=hard,
@@ -171,7 +172,7 @@ def main():
                 itinerary=itinerary,
                 alpha=0.6,
                 beta=0.4,
-                feasible_candidates=None,  # ok if your function handles None -> 0 or uses full catalog internally
+                feasible_candidates=candidates,
             )
 
             run = ExperimentRun(

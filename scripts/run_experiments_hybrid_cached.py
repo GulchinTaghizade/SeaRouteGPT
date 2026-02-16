@@ -157,7 +157,7 @@ def main():
             feas, violations = metrics_engine.compute_feasibility(hard, itinerary)
             pers = metrics_engine.compute_personalization(feasibility=feas, soft_preferences=soft, itinerary=itinerary)
 
-            feasible_candidates = metrics_engine.feasible_candidate_set(hard)
+            candidates = metrics_engine.utility_candidate_set(hard)
             util = metrics_engine.compute_optimization_utility(
                 feasibility=feas,
                 hard_constraints=hard,
@@ -165,7 +165,7 @@ def main():
                 itinerary=itinerary,
                 alpha=0.6,
                 beta=0.4,
-                feasible_candidates=feasible_candidates,
+                feasible_candidates=candidates,
             )
 
             exp = ExperimentRun(

@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 from typing import Any, Dict, List
@@ -12,10 +11,12 @@ def aggregate_runs(runs: List[ExperimentRun], metric_name: str) -> Dict[str, Any
     if not runs:
         return {"mean": 0.0, "std": 0.0, "ci_lower": 0.0, "ci_upper": 0.0, "n_runs": 0}
 
-    vals = np.array([float(getattr(r, metric_name)) for r in runs], dtype=float)
-    mean = float(np.mean(vals))
-    n = len(vals)
-    std = float(np.std(vals, ddof=1)) if n > 1 else 0.0
+    vals = np.array([float(getattr(r, metric_name) or 0.0) for r in runs], dtype=float)
+
+    # NaN-safe in case any bug leaks NaNs
+    mean = float(np.nanmean(vals))
+    n = int(np.sum(np.isfinite(vals)))
+    std = float(np.nanstd(vals, ddof=1)) if n > 1 else 0.0
 
     if n > 1 and std > 0:
         ci = stats.t.interval(0.95, n - 1, loc=mean, scale=std / np.sqrt(n))
@@ -34,16 +35,25 @@ def group_by_method(runs: List[ExperimentRun]) -> Dict[str, List[ExperimentRun]]
 
 
 def compare_methods(method_a: List[ExperimentRun], method_b: List[ExperimentRun], metric_name: str) -> Dict[str, Any]:
-    # Pair by request_id + run_number for a clean paired test
-    index_a = {(r.request_id, r.run_number): getattr(r, metric_name) for r in method_a}
-    index_b = {(r.request_id, r.run_number): getattr(r, metric_name) for r in method_b}
+    index_a = {(r.request_id, r.run_number): float(getattr(r, metric_name) or 0.0) for r in method_a}
+    index_b = {(r.request_id, r.run_number): float(getattr(r, metric_name) or 0.0) for r in method_b}
     keys = sorted(set(index_a.keys()).intersection(index_b.keys()))
 
     if not keys:
         return {"t_statistic": 0.0, "p_value": 1.0, "cohens_d": 0.0, "significant": False}
 
-    a = np.array([float(index_a[k]) for k in keys], dtype=float)
-    b = np.array([float(index_b[k]) for k in keys], dtype=float)
+    a = np.array([index_a[k] for k in keys], dtype=float)
+    b = np.array([index_b[k] for k in keys], dtype=float)
+
+    mask = np.isfinite(a) & np.isfinite(b)
+    a, b = a[mask], b[mask]
+
+    if len(a) < 2:
+        return {
+            "t_statistic": 0.0, "p_value": 1.0, "cohens_d": 0.0, "significant": False,
+            "mean_a": float(np.mean(a)) if len(a) else 0.0,
+            "mean_b": float(np.mean(b)) if len(b) else 0.0,
+        }
 
     t_stat, p_val = stats.ttest_rel(a, b)
 

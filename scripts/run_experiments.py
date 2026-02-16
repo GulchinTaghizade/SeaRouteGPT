@@ -49,8 +49,7 @@ def main():
             text = req["text"]
 
             for run_idx in range(1, n_runs_per_request + 1):
-                seed = base_seed + (hash(rid) % 100000) + run_idx
-                random.seed(seed)
+                seed=0
 
                 try:
                     # 1) Extract constraints
@@ -69,7 +68,11 @@ def main():
                     if selected is not None:
                         sel_id = selected.get("cruiseId") or selected.get("cruise_id")
                         if sel_id:
-                            selected_full = next((c for c in cruises if c.get("cruiseId") == sel_id), None)
+                            sel_id = str(sel_id)
+                            selected_full = next(
+                                (c for c in cruises if str(c.get("cruiseId") or c.get("cruise_id")) == sel_id),
+                                None
+                            )
 
                     itinerary = metrics.to_itinerary(selected_full)
 
@@ -85,11 +88,11 @@ def main():
                         pers = metrics.compute_personalization(feas, soft, itinerary)
 
                         # Utility uses feasible candidate set for normalization
-                        feasible_candidates = metrics.feasible_candidate_set(hard)
+                        candidates = metrics.feasible_candidate_set(hard)
                         util = metrics.compute_optimization_utility(
                             feas, hard, soft, itinerary,
                             alpha=0.6, beta=0.4,
-                            feasible_candidates=feasible_candidates,
+                            feasible_candidates=candidates,
                         )
 
                     run = ExperimentRun(

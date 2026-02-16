@@ -149,12 +149,17 @@ class CruiseMetrics:
             if cruise_dests.isdisjoint(set(allowed)):
                 violations.append("destination_mismatch")
 
-        # required_ports: interpret as "must include ALL listed ports"
-        required_ports = hard_constraints.get("required_ports") or []
-        if required_ports:
-            ports = set(itinerary.ports or [])
-            if not set(required_ports).issubset(ports):
-                violations.append("missing_required_ports")
+        # 5) Budget validity (if present)
+        max_budget = hard_constraints.get("max_budget")
+        if max_budget is not None:
+            try:
+                if itinerary.total_price != itinerary.total_price:  # NaN check
+                    violations.append("missing_price_for_budget")
+                elif itinerary.total_price > float(max_budget):
+                    violations.append("budget_exceeded")
+            except Exception:
+                violations.append("invalid_budget_or_price")
+
 
         itinerary.constraint_violations = violations
         return (0.0, violations) if violations else (1.0, [])
@@ -163,70 +168,80 @@ class CruiseMetrics:
     # 2) PERSONALIZATION (0..1)
     # -------------------------
     def compute_personalization(
-        self,
-        feasibility: float,
-        soft_preferences: Dict[str, Any],
-        itinerary: Optional[Itinerary],
-        weights: Optional[Dict[str, float]] = None,
+            self,
+            feasibility: float,
+            soft_preferences: Dict[str, Any],
+            itinerary: Optional[Itinerary],
+            weights: Optional[Dict[str, float]] = None,
     ) -> float:
         if feasibility < 0.5 or itinerary is None:
             return 0.0
 
-        # Keep this aligned with what you actually extract in v1.txt
-        pref_cruise_line = soft_preferences.get("preferred_cruise_line")
-        pref_duration = soft_preferences.get("preferred_duration_days")
-        pref_cruise_type = soft_preferences.get("cruise_type")
-        pref_price_sens = soft_preferences.get("price_sensitivity")
-
         indicators: Dict[str, bool] = {}
 
-        # cruise line match
-        indicators["preferred_cruise_line"] = (
-            pref_cruise_line is not None and itinerary.cruise_line == pref_cruise_line
-        )
+        # --- cruise line ---
+        pref_line = soft_preferences.get("preferred_cruise_line")
+        if pref_line is not None:
+            indicators["preferred_cruise_line"] = (itinerary.cruise_line == pref_line)
 
-        # duration closeness (soft) : within ±1 day
+        # --- cabin category ---
+        pref_cabin = soft_preferences.get("preferred_cabin_category")
+        if pref_cabin is not None:
+            indicators["preferred_cabin_category"] = (itinerary.cabin_category == pref_cabin)
+
+        # --- preferred ports (intersection) ---
+        pref_ports = soft_preferences.get("preferred_ports")
+        if pref_ports:
+            ports = set(itinerary.ports or [])
+            indicators["preferred_ports"] = not ports.isdisjoint(set(pref_ports))
+
+        # --- duration closeness (±1 day) ---
+        pref_duration = soft_preferences.get("preferred_duration_days")
         if pref_duration is not None:
             try:
                 target = int(pref_duration)
                 indicators["preferred_duration_days"] = (abs(itinerary.duration_days - target) <= 1)
             except Exception:
                 indicators["preferred_duration_days"] = False
-        else:
-            indicators["preferred_duration_days"] = False
 
-        # cruise_type and price_sensitivity need a mapping from catalog fields;
-        # until you implement mapping, count as unmet when requested.
-        indicators["cruise_type"] = False if pref_cruise_type is not None else False
-        indicators["price_sensitivity"] = False if pref_price_sens is not None else False
-
+        # Save matches for debugging/analysis
         itinerary.preference_matches = indicators
 
-        # uniform weights by default across measured indicators
+        # If no measurable preferences were provided, personalization = 0 by definition
+        if not indicators:
+            return 0.0
+
+        # Weights: uniform over *only the included preferences* unless provided
         if weights is None:
             k = len(indicators)
             weights = {k_: 1.0 / k for k_ in indicators}
 
         num = sum(weights.get(k_, 0.0) * (1.0 if indicators[k_] else 0.0) for k_ in indicators)
-        den = sum(weights.values()) if weights else 1.0
+        den = sum(weights.get(k_, 0.0) for k_ in indicators)  # only included keys
         return float(num / den) if den > 0 else 0.0
 
     # -------------------------
     # 3) UTILITY (0..1)
     # -------------------------
     def compute_optimization_utility(
-        self,
-        feasibility: float,
-        hard_constraints: Dict[str, Any],
-        soft_preferences: Dict[str, Any],
-        itinerary: Optional[Itinerary],
-        *,
-        alpha: float = 0.6,
-        beta: float = 0.4,
-        feasible_candidates: Optional[List[Itinerary]] = None,
+            self,
+            feasibility: float,
+            hard_constraints: Dict[str, Any],
+            soft_preferences: Dict[str, Any],
+            itinerary: Optional[Itinerary],
+            *,
+            alpha: float = 0.6,
+            beta: float = 0.4,
+            feasible_candidates: Optional[List[Itinerary]] = None,
     ) -> float:
         if feasibility < 0.5 or itinerary is None:
             return 0.0
+
+        # thesis: alpha + beta = 1
+        s = alpha + beta
+        if s <= 0:
+            return 0.0
+        alpha, beta = alpha / s, beta / s
 
         candidates = feasible_candidates or []
         if not candidates:
@@ -240,6 +255,7 @@ class CruiseMetrics:
         cmin, cmax = min(prices), max(prices)
         cden = (cmax - cmin) if (cmax - cmin) != 0 else 1.0
         c_hat = (itinerary.total_price - cmin) / cden
+        c_hat = max(0.0, min(1.0, c_hat))
 
         # duration deviation normalization
         pref_duration = soft_preferences.get("preferred_duration_days")
@@ -254,6 +270,7 @@ class CruiseMetrics:
             deviations = [abs(c.duration_days - d_star) for c in candidates]
             tden = max(deviations) if max(deviations) != 0 else 1.0
             t_hat = abs(itinerary.duration_days - d_star) / tden
+            t_hat = max(0.0, min(1.0, t_hat))
 
         utility = alpha * (1.0 - c_hat) + beta * (1.0 - t_hat)
         return float(max(0.0, min(1.0, utility)))
@@ -271,3 +288,7 @@ class CruiseMetrics:
             if feas >= 0.5:
                 out.append(it)
         return out
+
+    def utility_candidate_set(self, hard_constraints: Dict[str, Any]) -> List[Itinerary]:
+        feas = self.feasible_candidate_set(hard_constraints)
+        return [it for it in feas if it.total_price == it.total_price]  # drop NaN
