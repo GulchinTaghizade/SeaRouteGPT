@@ -1,4 +1,8 @@
 {
   "request_id": "req_047",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"BiAnWEciHh5_YlMicmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise is 10-days, departs in June, and visits Greece and Croatia, satisfying the user's request.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 10-day Adriatic Sea cruise visiting Croatia and Greece in June.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set contains no cruise that explicitly lists Croatia (HR) and Greece (GR) as itineraryDestinations and has a duration of 10 days. ItineraryDestinations only contains the major regions.\"\n}\n```"
 }

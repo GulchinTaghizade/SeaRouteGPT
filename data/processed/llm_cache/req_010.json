@@ -1,4 +1,8 @@
 {
   "request_id": "req_010",
-  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no river cruises in the provided list, and none that visit Austria or Hungary. All cruises are ocean cruises.\"}"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 12-day river cruise through the Danube visiting Austria and Hungary in September.",
+  "llm_output": "{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"The candidate set contains no river cruises. The cruises are all OCEAN or OCEAN_TOUR. Additionally, none of them match the other hard constraints: duration 12 days, destinations Austria and Hungary, and departure in September.\"}"
 }

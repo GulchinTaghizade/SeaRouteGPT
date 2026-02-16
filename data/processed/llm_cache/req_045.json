@@ -1,4 +1,8 @@
 {
   "request_id": "req_045",
-  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"I am sorry, but there are no cruises that match your request. The cruise list has no 7-day Bermuda cruises for couples in July. \"}"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find a 7-day Bermuda cruise for couples in July, preferably with beach days.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no 7-day cruises to Bermuda in July in the candidate set. All cruises in the candidate set are in the Caribbean, Alaska, or Mediterranean and depart in months other than July.\"\n}\n```"
 }

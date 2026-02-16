@@ -1,4 +1,8 @@
 {
   "request_id": "req_082",
-  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises matching the criteria of a 10-day Norwegian Fjords cruise with hiking activities in August. The available cruises are either not in the Norwegian Fjords, do not have hiking as a specified activity, are not 10 days long, or do not occur in August.\"}"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a 10-day Norwegian Fjords cruise with hiking activities in August.",
+  "llm_output": "```json\n{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"The cruise must be in August with destination Norwegian Fjords and include hiking and be 10 days.  No cruise satisfies all constraints.\"}\n```"
 }

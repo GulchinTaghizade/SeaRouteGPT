@@ -1,47 +1,83 @@
 import os
 import json
 import time
+from dotenv import load_dotenv
+
 from data.synthetic.load_requests import load_user_requests
 from models.llm.llm_only_planner import LLMPlanner
 
-
-
-from dotenv import load_dotenv
 load_dotenv()
 
 
 def load_cached_cruises():
-    """
-    Loads a frozen snapshot of cruise data.
-    """
+    """Loads a frozen snapshot of cruise data."""
     with open("data/raw/cruises.json", "r") as f:
         return json.load(f)["data"]
 
-#LLM planner pipeline
+
 def main():
-    # 1️⃣ Load data
+    # 0) API key sanity check
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        raise RuntimeError("GOOGLE_API_KEY is missing. Set it in .env or export it in your shell.")
+
+    # 1) Load data
     user_requests = load_user_requests()
     cruises = load_cached_cruises()
 
-    planner = LLMPlanner(api_key=os.getenv("GOOGLE_API_KEY"))
+    planner = LLMPlanner(api_key=api_key)
+
+    # Optional: quick smoke test
+    # user_requests = user_requests[:5]
+
+    cache_hits = 0
+    api_calls = 0
 
     for i, req in enumerate(user_requests, start=1):
-        print(f"\n🔹 [{i}/{len(user_requests)}] Processing {req['request_id']}")
+        rid = req.get("request_id")
+        text = req.get("text", "")
 
-        # 2️⃣ Plan itinerary
+        print(f"\n🔹 [{i}/{len(user_requests)}] Processing {rid}")
+
         try:
             result = planner.plan(
                 cruises=cruises,
-                user_request=req["text"],
-                request_id=req["request_id"]
+                user_request=text,
+                request_id=rid
             )
-            print("  ✅ LLM completed")
+
+            # If you add from_cache into the planner output, use it here.
+            # For now, infer cache-hit if request_id file exists (planner caches raw output).
+            # Better: update LLMPlanner to return "from_cache": True/False explicitly.
+            from_cache = False
+            try:
+                # If your planner returns dict with llm_output always, you can detect cache-hit
+                # only if you add it. So we keep this as False by default.
+                from_cache = bool(result.get("from_cache", False))
+            except Exception:
+                pass
+
+            if from_cache:
+                cache_hits += 1
+                print("  ✅ LLM completed (cache hit)")
+            else:
+                api_calls += 1
+                print("  ✅ LLM completed (API call)")
+
+            # Helpful status
+            print(f"  ↳ valid={result.get('is_valid')} selected={result.get('selected_cruise_id')}")
 
         except Exception as e:
-            print("  ❌ LLM failed:", e)
+            print("  ❌ LLM failed:", repr(e))
 
-        # ⏱️ IMPORTANT: rate-limit safety
-        time.sleep(15)
+        # Rate-limit safety: sleep only when we likely called the API
+        # If you add from_cache, this becomes accurate.
+        if api_calls > 0:
+            time.sleep(15)
+
+    print("\n==== DONE ====")
+    print(f"API calls: {api_calls}")
+    print(f"Cache hits: {cache_hits}")
 
 
 if __name__ == "__main__":

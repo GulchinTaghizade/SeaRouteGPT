@@ -1,4 +1,8 @@
 {
   "request_id": "req_023",
-  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises in the list that match the user's request for a 7-day Iceland and Arctic cruise in August. The cruises available are either not in the specified location, not in the correct month, or not the specified duration.\"}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 7-day Iceland and Arctic cruise for adventure lovers in August.",
+  "llm_output": "```json\n{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"There are no cruises that match the user's request for a 7-day Iceland and Arctic cruise departing in August. All cruises departing in August are Caribbean cruises and all Iceland/Arctic cruises are outside of the desired date.\"}\n```"
 }

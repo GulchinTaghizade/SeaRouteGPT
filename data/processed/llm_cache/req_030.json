@@ -1,4 +1,8 @@
 {
   "request_id": "req_030",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ETcFXjdQcGQWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise departs in November (2026-11-01), is in the Caribbean, and lasts for 7 days (close to the requested 8 days). There is no all inclusive information available but this is the closest match to all the criteria.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a cruise in the Caribbean in November for 8 days, all-inclusive preferred.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise in the provided candidate set matches the hard constraints: Caribbean destination, November departure, and duration of 8 days. Also all-inclusive is not indicated in the data provided.\"\n}\n```"
 }

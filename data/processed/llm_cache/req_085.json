@@ -1,4 +1,8 @@
 {
   "request_id": "req_085",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no 14-day Mediterranean and Adriatic cruises departing in September. The cruises with those destinations are in different months, and the September cruises do not have the correct itinerary.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a 14-day Mediterranean and Adriatic cruise in September for two.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise matches the criteria of a 14-day Mediterranean and Adriatic cruise in September. The available cruises with 'Mediterranean' and 'Adriatic' in their names all depart in April, May, or June.\"\n}\n```"
 }

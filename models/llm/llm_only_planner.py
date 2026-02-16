@@ -1,154 +1,186 @@
 import json
-from google import genai
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Optional, Any
 
-CACHE_DIR = Path("data/processed/llm_cache")
-CACHE_DIR.mkdir(parents=True, exist_ok=True)
+from google import genai
+
 
 class LLMPlanner:
+    """
+    LLM-only cruise planner with:
+    - Candidate grounding
+    - Prompt loaded from txt file
+    - Persistent caching using request_id.json
+    - Post-LLM validation
+    """
+
+    MODEL_NAME = "models/gemini-2.0-flash"
+    PROMPT_VERSION = "v1"
+
     def __init__(self, api_key: str):
         self.client = genai.Client(api_key=api_key)
 
-    def plan(self, cruises: List[Dict], user_request: str, request_id: str) -> Dict:
-        """
-        Plan a cruise selection using LLM with validation.
+        project_root = Path(__file__).resolve().parents[2]
 
-        Step 1: Candidate Grounding - All candidates passed in structured JSON
-        Step 2: LLM Prompting - LLM selects exactly one cruise or responds NO_VALID_CRUISE
-        Step 3: Post-LLM Validation - Verify selected cruise ID exists in candidate set
+        self.prompt_path = project_root / "prompts" / "LLM_only_planner" / f"{self.PROMPT_VERSION}.txt"
+        if not self.prompt_path.exists():
+            raise FileNotFoundError(f"Prompt not found at {self.prompt_path}")
 
-        Args:
-            cruises: List of available cruises in structured format
-            user_request: User's preferences and constraints (natural language)
-            request_id: Unique identifier for this request
+        self.prompt_template = self.prompt_path.read_text(encoding="utf-8")
 
-        Returns:
-            Dictionary with selected cruise, validation status, and metrics
-        """
-        cache_file = CACHE_DIR / f"{request_id}.json"
+        self.cache_dir = project_root / "data" / "processed" / "llm_cache"
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
 
-        # Load from cache if exists
+    # -------------------------
+    # MAIN ENTRY
+    # -------------------------
+    def plan(self, cruises: List[Dict], user_request: str, request_id: str) -> Dict[str, Any]:
+
+        cache_file = self.cache_dir / f"{request_id}.json"
+
+        # -------------------------
+        # Load from cache
+        # -------------------------
         if cache_file.exists():
-            cached = json.loads(cache_file.read_text())
-            # Re-validate cached result in case validation logic changed
-            return self._process_llm_response(cached.get("llm_output"), cruises, request_id)
+            cached = json.loads(cache_file.read_text(encoding="utf-8"))
+            llm_output = cached.get("llm_output", "")
+            return self._process_llm_response(
+                llm_output,
+                cruises,
+                request_id,
+                from_cache=True
+            )
 
-        # Step 1 & 2: Build prompt with grounded candidates and get LLM response
+        # -------------------------
+        # Call LLM
+        # -------------------------
         prompt = self._build_prompt(cruises, user_request)
 
         response = self.client.models.generate_content(
-            model="models/gemini-2.0-flash",
+            model=self.MODEL_NAME,
             contents=prompt
         )
 
-        llm_output = response.text
+        llm_output = response.text or ""
 
-        # Cache the raw LLM output
+        # Save to cache
         cache_data = {
             "request_id": request_id,
+            "model": self.MODEL_NAME,
+            "prompt_version": self.PROMPT_VERSION,
+            "prompt_path": str(self.prompt_path),
+            "user_request": user_request,
             "llm_output": llm_output
         }
-        cache_file.write_text(json.dumps(cache_data, indent=2))
 
-        # Step 3: Validate and process LLM response
-        return self._process_llm_response(llm_output, cruises, request_id)
+        cache_file.write_text(json.dumps(cache_data, indent=2), encoding="utf-8")
 
-    def _process_llm_response(self, llm_output: str, cruises: List[Dict], request_id: str) -> Dict:
-        """
-        Step 3: Post-LLM Validation.
+        return self._process_llm_response(
+            llm_output,
+            cruises,
+            request_id,
+            from_cache=False
+        )
 
-        Validates:
-        - LLM output is valid JSON
-        - Selected cruise ID exists in candidate set
-        - Handles NO_VALID_CRUISE response
+    # -------------------------
+    # VALIDATION
+    # -------------------------
+    def _process_llm_response(
+        self,
+        llm_output: str,
+        cruises: List[Dict],
+        request_id: str,
+        from_cache: bool
+    ) -> Dict[str, Any]:
 
-        Failure cases:
-        - LLM outputs NO_VALID_CRUISE
-        - Selection of cruise ID not in candidate set
-        - Malformed or non-JSON output
-        """
-        result = {
+        result: Dict[str, Any] = {
             "request_id": request_id,
+            "from_cache": from_cache,
             "llm_output": llm_output,
             "is_valid": False,
             "selected_cruise_id": None,
             "justification": None,
-            "validation_error": None
+            "validation_error": None,
         }
 
-        # Create a set of valid cruise IDs for O(1) lookup
-        valid_cruise_ids = {c.get("cruiseId") or c.get("cruise_id") or c.get("id") for c in cruises}
+        valid_ids = {
+            c.get("cruiseId") or c.get("cruise_id") or c.get("id")
+            for c in cruises
+        }
+        valid_ids.discard(None)
 
-        # Try to parse LLM output as JSON
-        try:
-            parsed = json.loads(llm_output)
-        except json.JSONDecodeError as e:
-            result["validation_error"] = f"Malformed JSON output: {str(e)}"
+        parsed = self._safe_parse_json(llm_output)
+
+        if parsed is None:
+            result["validation_error"] = "Malformed JSON output"
             return result
 
-        # Check for NO_VALID_CRUISE response
-        if parsed.get("selectedCruiseId") == "NO_VALID_CRUISE":
-            result["validation_error"] = "LLM determined no valid cruise matches constraints"
-            return result
-
-        # Extract selected cruise ID and justification
-        selected_cruise_id = parsed.get("selectedCruiseId")
+        selected = parsed.get("selectedCruiseId")
         justification = parsed.get("justification", "")
 
-        if not selected_cruise_id:
-            result["validation_error"] = "Missing selectedCruiseId in LLM response"
+        if not selected:
+            result["validation_error"] = "Missing selectedCruiseId"
             return result
 
-        # Verify cruise ID exists in candidate set
-        if selected_cruise_id not in valid_cruise_ids:
-            result["validation_error"] = f"Selected cruise ID '{selected_cruise_id}' not found in candidate set"
+        if selected == "NO_VALID_CRUISE":
+            result["validation_error"] = "LLM returned NO_VALID_CRUISE"
+            result["selected_cruise_id"] = "NO_VALID_CRUISE"
+            result["justification"] = justification
             return result
 
-        # Validation passed
+        if selected not in valid_ids:
+            result["validation_error"] = f"Invalid cruise ID: {selected}"
+            return result
+
         result["is_valid"] = True
-        result["selected_cruise_id"] = selected_cruise_id
+        result["selected_cruise_id"] = selected
         result["justification"] = justification
-        result["validation_error"] = None
 
         return result
 
+    # -------------------------
+    # PROMPT
+    # -------------------------
     def _build_prompt(self, cruises: List[Dict], user_request: str) -> str:
-        """
-        Step 1 & 2: Build prompt with candidate grounding and explicit instructions.
-        """
-        cruises_json = json.dumps(cruises, indent=2)
+        cruises_json = json.dumps(cruises, indent=2, ensure_ascii=False)
 
-        return f"""You are a cruise itinerary planner.
-
-You are given:
-1) A list of available cruises (JSON) 
-2) A user request with preferences and constraints (natural language)
-
-Your task:
-Select the SINGLE BEST cruise that satisfies the user's preferences and constraints.
-
-CRITICAL RULES:
-- You MUST select exactly one cruise from the provided list
-- You MUST NOT invent or hallucinate cruises outside the candidate set
-- You MUST only use cruise data provided in the JSON
-- If NO cruise in the candidate set satisfies the user's constraints, respond with:
-  {{"selectedCruiseId": "NO_VALID_CRUISE", "justification": "explanation of why no cruise matches"}}
+        return f"""{self.prompt_template}
 
 Available Cruises (Candidate Set):
 {cruises_json}
 
 User Request:
 {user_request}
+"""
 
-Response Format (MUST be valid JSON):
-{{
-  "selectedCruiseId": "<cruise_id_from_list>",
-  "justification": "<brief explanation of why this cruise best matches the request>"
-}}
+    # -------------------------
+    # JSON PARSER (ROBUST)
+    # -------------------------
+    def _safe_parse_json(self, text: str) -> Optional[Dict[str, Any]]:
 
-If no suitable cruise exists, use:
-{{
-  "selectedCruiseId": "NO_VALID_CRUISE",
-  "justification": "<explanation>"
-}}"""
+        if not text:
+            return None
+
+        t = text.strip()
+
+        # Remove markdown fences
+        if "```" in t:
+            t = t.replace("```json", "").replace("```", "").strip()
+
+        # Try direct parse
+        try:
+            return json.loads(t)
+        except Exception:
+            pass
+
+        # Try extracting first JSON object
+        start = t.find("{")
+        end = t.rfind("}")
+        if start != -1 and end != -1 and end > start:
+            candidate = t[start:end + 1].strip()
+            try:
+                return json.loads(candidate)
+            except Exception:
+                return None
+
+        return None

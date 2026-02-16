@@ -1,4 +1,8 @@
 {
   "request_id": "req_076",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"DCpHWUFTcWZ5YiovMCo4CWV5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This is a 10-night Mediterranean cruise departing in May, visiting multiple countries. While I cannot determine \\\"luxury\\\" from the provided data, this cruise best meets the other criteria.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a luxury 10-day Mediterranean cruise visiting multiple countries in May.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"DCpHWUFTcWZ5YiovMCo4CWV5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise has a duration of 10 days, departs in May (2026-06-01), and visits multiple countries in the Mediterranean. The other cruise departing in May is only 7 days long. While the price is unknown, since there are not other valid options that have pricing, and it is likely a premium cruise, this cruise fits the request best.\"\n}\n```"
 }

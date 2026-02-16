@@ -1,4 +1,8 @@
 {
   "request_id": "req_042",
-  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises to New Zealand in the provided cruise list. There are no cruises in February, and all cruises to the region are for other destinations. Additionally, since there are no New Zealand cruises, no cruises match the destination and budget criteria.\"}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find me a 10-day New Zealand cruise in February for two people, under $5500.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises in the candidate set match the user's request for a 10-day New Zealand cruise departing in February under $5500.\"\n}\n```"
 }

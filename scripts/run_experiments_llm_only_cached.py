@@ -24,19 +24,23 @@ def load_json(path: Path) -> Any:
 
 
 def strip_json_fences(text: str) -> str:
+    """
+    Removes ```json fences and tries to extract the first JSON object from noisy output.
+    Handles cases where LLM adds extra text before/after JSON.
+    """
     t = (text or "").strip()
-    if "```" not in t:
-        return t
-    parts = t.split("```")
-    for block in parts:
-        b = block.strip()
-        if not b:
-            continue
-        if b.lower().startswith("json"):
-            b = b[4:].strip()
-        if b.startswith("{") and b.endswith("}"):
-            return b
-    return t.replace("```json", "").replace("```", "").strip()
+
+    # remove code fences
+    if "```" in t:
+        t = t.replace("```json", "").replace("```", "").strip()
+
+    # extract first JSON object by braces
+    start = t.find("{")
+    end = t.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        return t[start:end + 1].strip()
+
+    return t
 
 
 def parse_selected_cruise_id(llm_output: str) -> str:
@@ -95,7 +99,7 @@ def build_itinerary_from_catalog(selected_id: str, cruise_catalog: List[Dict[str
         price_val = 0.0
 
     return _make_itinerary_safe(
-        cruise_id=match.get("cruiseId", ""),
+        cruise_id=match.get("cruiseId", "") or "",
         ports=match.get("itineraryPorts", []) or [],
         departure_date=match.get("departureDate", "") or "",
         duration_days=int(match.get("duration") or 0),
@@ -107,6 +111,9 @@ def build_itinerary_from_catalog(selected_id: str, cruise_catalog: List[Dict[str
 
 
 def load_constraints_cached(request_id: str) -> Dict[str, Any]:
+    """
+    Loads cached constraint extraction output for the same reqID used in the LLM planner cache.
+    """
     p = CONSTRAINTS_CACHE_DIR / f"{request_id}.json"
     if not p.exists():
         raise FileNotFoundError(f"Missing constraints cache for {request_id}: {p}")
@@ -141,16 +148,34 @@ def main():
         for idx, cache_path in enumerate(cache_files, 1):
             cached = load_json(cache_path)
             request_id = cached.get("request_id") or cache_path.stem
-            llm_output = cached.get("llm_output", "")
+            llm_output = cached.get("llm_output", "") or ""
 
-            # Load cached constraints for THIS request
-            constraints = load_constraints_cached(request_id)
-            hard = constraints["hard_constraints"]
-            soft = constraints["soft_preferences"]
+            # Load cached constraints for THIS request (safe)
+            hard: Dict[str, Any] = {}
+            soft: Dict[str, Any] = {}
+            constraints_error = ""
+            try:
+                constraints = load_constraints_cached(request_id)
+                hard = constraints["hard_constraints"]
+                soft = constraints["soft_preferences"]
+            except FileNotFoundError:
+                constraints_error = "missing_constraints_cache"
 
             # Parse selected cruise
             selected_id = parse_selected_cruise_id(llm_output)
             itinerary = build_itinerary_from_catalog(selected_id, cruise_catalog)
+
+            # Debug-friendly error msg
+            error_msg = ""
+            if constraints_error:
+                error_msg = constraints_error
+            if not selected_id:
+                error_msg = (error_msg + "|" if error_msg else "") + "malformed_llm_output"
+            elif selected_id == "NO_VALID_CRUISE":
+                error_msg = (error_msg + "|" if error_msg else "") + "no_valid_cruise"
+            elif itinerary is not None and itinerary.departure_date == "":
+                # placeholder itinerary path for hallucinated ID
+                error_msg = (error_msg + "|" if error_msg else "") + "hallucinated_id"
 
             # ---- METRICS ----
             feas, violations = metrics_engine.compute_feasibility(
@@ -164,7 +189,7 @@ def main():
                 itinerary=itinerary,
             )
 
-            candidates = metrics_engine.utility_candidate_set(hard)
+            candidates = metrics_engine.feasible_candidate_set(hard)
             util = metrics_engine.compute_optimization_utility(
                 feasibility=feas,
                 hard_constraints=hard,
@@ -184,7 +209,7 @@ def main():
                 personalization=pers,
                 optimization_utility=util,
                 itinerary=itinerary,
-                error_msg="",
+                error_msg=error_msg,
             )
             runs.append(run)
 
@@ -195,6 +220,7 @@ def main():
                 "personalization": pers,
                 "optimization_utility": util,
                 "violations": violations,
+                "error_msg": error_msg,
             }) + "\n")
 
             if idx % 10 == 0:

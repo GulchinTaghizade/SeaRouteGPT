@@ -1,4 +1,8 @@
 {
   "request_id": "req_034",
-  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"I could not find any cruises to Australia and New Zealand with a duration of 14 days and a departure date in December.\"}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 14-day Australia and New Zealand cruise in December.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any cruises that match the request of a 14-day Australia and New Zealand cruise in December in the candidate set. I have checked itineraryDestinations, cruiseName and duration fields. So, I am returning NO_VALID_CRUISE.\"\n}\n```"
 }

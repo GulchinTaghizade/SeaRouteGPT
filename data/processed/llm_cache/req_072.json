@@ -1,4 +1,8 @@
 {
   "request_id": "req_072",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"EyBHWUFTcWR5YDcqPTY7HmV5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise departs in April, has a duration of 14 nights (close to 14 days), and is labeled as a MSC Grand Voyages which suggests a longer voyage covering multiple continents. While the available data doesn't explicitly list all continents visited, the itinerary does indicate a transatlantic journey visiting South America and Europe.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find me a 14-day world cruise segment visiting multiple continents in April.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"EyBHWUFTcWR5YDcqPSYkA2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The cruise with cruiseId EyBHWUFTcWR5YDcqPSYkA2V5Q3J1aXNlQVBJU2VjcmUA matches all hard constraints: it's a 20-day OCEAN cruise departing on 2026-04-03 with itinerary destinations in EA, MA, MW, NE, SA, and TC (multiple continents), close to the preferred duration of 14 days. There are no cruises that are exactly 14 days that visit multiple continents.\"\n}\n```"
 }

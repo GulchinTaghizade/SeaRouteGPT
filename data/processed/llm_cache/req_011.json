@@ -1,4 +1,8 @@
 {
   "request_id": "req_011",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises to Bermuda for the month of May in the provided list. Furthermore, there are no cruises to Bermuda of 8-10 days duration in the provided dataset, regardless of the month.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a Bermuda cruise in May, 8-10 days, for two people under $6000 total.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Bermuda cruises within the candidate set that depart in May and have a duration between 8 and 10 days. Therefore, no cruise satisfies the hard constraints.\"\n}\n```"
 }

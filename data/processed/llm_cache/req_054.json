@@ -1,4 +1,8 @@
 {
   "request_id": "req_054",
-  "llm_output": "{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"There are no cruises in the candidate set that are 7 days in duration, located in the Caribbean, and depart in July. Additionally, there's no information regarding kid's activities or cruises for families of four.\"}"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find me a 7-day cruise with kids activities in the Caribbean for a family of four in July.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that satisfy all the hard constraints. The user is asking for a cruise with kids activities in July. There are no cruises that are specifically mentioned as having kids activities. The only July cruises are for Alaska.\"\n}\n```"
 }

@@ -1,4 +1,8 @@
 {
   "request_id": "req_093",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise departing from New Orleans for 5 days in June is available in the provided cruise options. The only cruise from New Orleans is on 2026-02-07, which doesn't match the June request.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find a 5-day getaway cruise from New Orleans for two in June under $2000.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no 5-day cruises departing from New Orleans in June under $2000 in the candidate set.  The request specifies a hard constraint on duration (5 days), departure port (USMSY), departure month (June), and budget (<= $2000).\"\n}\n```"
 }

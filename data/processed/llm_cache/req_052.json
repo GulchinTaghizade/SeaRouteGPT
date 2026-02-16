@@ -1,4 +1,8 @@
 {
   "request_id": "req_052",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise in the candidate set matches all of the user's criteria. The user requested a 5-day Caribbean cruise departing in June with a total price under $2500. There are no Caribbean cruises departing in June in the provided list. While there are many Caribbean cruises available on different dates, none of them match the June departure constraint.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a 5-day cruise in the Caribbean for two in June under $2500.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the specified criteria. There are no 5 day cruises departing in June with destination in the Caribbean for under $2500.\"\n}\n```"
 }

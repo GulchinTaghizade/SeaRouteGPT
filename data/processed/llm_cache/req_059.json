@@ -1,4 +1,8 @@
 {
   "request_id": "req_059",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"DEQlWEAkHgd_ZFRjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This 13-day cruise on Holland America visits Japan and South Korea, and it's the closest match to a 12-day cruise in April. While it's 13 days and departs in October, it still covers the requested region.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 12-day Japan and South Korea cruise in April for two people.",
+  "llm_output": "```json\n{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"There are no cruises that match your criteria of 12 day cruises in April with destinations of Japan and South Korea.  Many cruises include Japan and South Korea, but they all occur in October or later.\"}\n```"
 }

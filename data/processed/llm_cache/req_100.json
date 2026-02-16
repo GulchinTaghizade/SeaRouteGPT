@@ -1,4 +1,8 @@
 {
   "request_id": "req_100",
-  "llm_output": "```json\n{\"selectedCruiseId\": \"NO_VALID_CRUISE\", \"justification\": \"No cruise in the candidate set matches the criteria of being 7 days in duration, all-inclusive (which isn't specified in the data), for a family of five (the number of guests is fixed at 2), and under $5500. The number of guests is fixed at 2, which doesn't work for a family of 5.\"}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a 7-day all-inclusive cruise for a family of five in April under $5500.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that fit the criteria of 7 days, with prices for 5 guests under $5500 departing in April. All listed cruises are for 2 guests.  The prices for the available cruises also greatly exceed the budget when considering they are for 2 guests.\"\n}\n```"
 }

@@ -1,4 +1,8 @@
 {
   "request_id": "req_020",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Alaska cruises available in May. All Alaska cruises listed are in June, and none are under $4000 total.\"\n}\n```"
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find me an Alaska cruise in May for two people, preferably with wildlife viewing, under $4000.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises departing in May and going to Alaska, also the maximum budget is $4000 and most of cruises don't satisfy that constraint.\"\n}\n```"
 }
