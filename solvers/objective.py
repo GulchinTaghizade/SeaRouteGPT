@@ -1,5 +1,20 @@
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 from ortools.linear_solver import pywraplp
+
+
+def _safe_price(c: Dict[str, Any], default: float) -> float:
+    p = c.get("roomPriceWithTaxesFees")
+    try:
+        return float(p)
+    except (TypeError, ValueError):
+        return default
+
+
+def _safe_int(x: Any, default: int = 0) -> int:
+    try:
+        return int(x)
+    except (TypeError, ValueError):
+        return default
 
 
 def utility_objective(
@@ -21,23 +36,38 @@ def utility_objective(
     OR-Tools CBC minimizes, so we minimize (-U).
     """
 
-    # Collect numeric prices
-    prices = [float(c["roomPriceWithTaxesFees"]) for c in cruises]
+    # ---- prices (robust) ----
+    known_prices: List[float] = []
+    for c in cruises:
+        p = c.get("roomPriceWithTaxesFees")
+        try:
+            known_prices.append(float(p))
+        except (TypeError, ValueError):
+            pass
+
+    # If everything is missing, use 1.0 just to avoid division by 0.
+    # (Then C_hat becomes 0 for all, so price doesn't affect the objective.)
+    default_price = max(known_prices) if known_prices else 1.0
+
+    prices = [_safe_price(c, default=default_price) for c in cruises]
+
     cmin, cmax = min(prices), max(prices)
     cden = (cmax - cmin) if (cmax - cmin) != 0 else 1.0
 
-    # Duration deviation normalization
+    # ---- duration deviation normalization (robust) ----
     if preferred_duration is None:
-        tden = 1.0
         deviations = [0.0 for _ in cruises]
+        tden = 1.0
     else:
-        deviations = [abs(int(c["duration"]) - int(preferred_duration)) for c in cruises]
-        tden = max(deviations) if max(deviations) != 0 else 1.0
+        d_star = _safe_int(preferred_duration, default=0)
+        deviations = [abs(_safe_int(c.get("duration"), default=0) - d_star) for c in cruises]
+        tmax = max(deviations) if deviations else 0.0
+        tden = tmax if tmax != 0 else 1.0
 
-    # Build linear objective: minimize (-U)
-    utility_terms=[]
+    # ---- linear objective: minimize (-U) ----
+    utility_terms = []
     for i, c in enumerate(cruises):
-        price = float(c["roomPriceWithTaxesFees"])
+        price = prices[i]  # safe float
         c_hat = (price - cmin) / cden
 
         if preferred_duration is None:

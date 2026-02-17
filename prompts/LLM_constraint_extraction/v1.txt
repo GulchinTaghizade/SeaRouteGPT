@@ -6,57 +6,124 @@ IMPORTANT:
 Assume the travel year is 2026 unless the user explicitly specifies a different year.
 All generated dates must use year 2026 by default.
 
-IMPORTANT CONSTRAINTS TO EXTRACT:
+DO NOT invent, infer, or guess constraints that are not explicitly stated.
+If information is missing or ambiguous, return null (or [] where specified).
+Never hallucinate regions or ports.
 
-1. departure_date_window: Extract the month or date range the user wants to travel
-   - Format: {"earliest": "YYYY-MM-DD", "latest": "YYYY-MM-DD"}
-   - If month mentioned, use the full month range (e.g., August = 2026-08-01 to 2026-08-31)
-   - If season mentioned, map appropriately (spring, summer, fall, winter)
-   - Set to null if no date specified
+------------------------------------------------------------
+HARD CONSTRAINTS
+------------------------------------------------------------
 
-2. duration_range: Extract the desired cruise duration
-   - Format: {"min_days": number, "max_days": number}
-   - Support all duration formats:
-     * Written numbers: "two weeks" = 14 days, "three days" = 3 days
-     * Hyphenated: "7-day cruise", "14-day"
-     * Spaced: "7 day cruise", "14 day"
-     * Ranges: "7-14 days", "1-2 weeks"
-     * Fuzzy: "around 8 days" = 6-10 days, "about 10 days" = 8-12 days
-   - Set to null if no duration mentioned
+1. departure_date_window
+- Extract the month or date range the user wants to travel.
+- Format:
+  {"earliest": "YYYY-MM-DD", "latest": "YYYY-MM-DD"}
+- If month mentioned, use full month range:
+  August → 2026-08-01 to 2026-08-31
+- If season mentioned, map to:
+  Spring → 2026-03-01 to 2026-05-31
+  Summer → 2026-06-01 to 2026-08-31
+  Fall → 2026-09-01 to 2026-11-30
+  Winter → 2026-12-01 to 2026-02-28
+- If no date specified → return null.
 
-3. max_budget: Extract the maximum budget if mentioned
-   - Format: number (dollars)
-   - Set to null if no budget mentioned
+2. duration_range
+- Extract cruise duration.
+- Format:
+  {"min_days": number, "max_days": number}
 
-4. allowed_destinations: Extract desired cruise regions
-   - Valid codes: AK (Alaska), CA/CS/CW (Caribbean), BH (Bahamas), BM (Bermuda),
-     MA (Mediterranean), PC (Panama Canal), TC (Transatlantic), MC (Mexico & Central America),
-     NO (Norway), GI (Greek Islands)
-   - Format: ["CODE1", "CODE2", ...]
-   - Set to null if no destination mentioned
+Support:
+- Written numbers: "two weeks" = 14
+- Hyphenated: "7-day"
+- Spaced: "7 day"
+- Ranges: "7-14 days", "1-2 weeks"
+- Fuzzy:
+  "around 8 days" → 6-10
+  "about 10 days" → 8-12
 
-5. required_ports: List of specific ports required
-   - Format: ["PORT_CODE", ...]
-   - Set to [] if none mentioned
+If no duration mentioned → return null.
 
-6. num_guests: Number of people traveling
-   - Format: number
-   - Set to null if not mentioned
+3. max_budget
+- Extract maximum budget in USD.
+- Return number only (e.g., 1500).
+- If not mentioned → null.
 
-7. exclude_sold_out: Always set to true
+4. allowed_destinations
+Extract cruise regions ONLY if explicitly mentioned by name.
 
-SOFT PREFERENCES (optional):
-- preferred_cruise_line: Brand preference (e.g., "Royal Caribbean")
-- cruise_type: Type preference (e.g., "luxury", "budget", "entertainment", "all-inclusive")
-- price_sensitivity: "low" (luxury/premium), "high" (budget/cheap), or null
+Valid codes:
+AK (Alaska)
+CA / CS / CW (Caribbean)
+BH (Bahamas)
+BM (Bermuda)
+MA (Mediterranean)
+PC (Panama Canal)
+TC (Transatlantic)
+MC (Mexico & Central America)
+NO (Norway)
+GI (Greek Islands)
 
-RESPONSE FORMAT (MUST BE VALID JSON):
+IMPORTANT RULES:
+- Only extract if the region name appears explicitly.
+- DO NOT infer region from port.
+- DO NOT infer region from cruise line.
+- DO NOT infer region from “weekend cruise”.
+- DO NOT infer from departure city.
+- If no region name appears → return null.
+
+Examples:
+- "Caribbean cruise" → ["CA","CS","CW"]
+- "Bahamas cruise" → ["BH"]
+- "Alaska cruise" → ["AK"]
+- "Cruise from Tampa" → null
+- "Weekend cruise in August" → null
+
+If multiple regions are explicitly mentioned → include all relevant codes.
+
+5. required_ports
+- Extract ONLY if user explicitly requires a departure port.
+Examples:
+  "departing from Tampa"
+  "leaving from Miami"
+
+- Format: ["PORT_CODE"]
+- Use full code if known (e.g., USTPA, USMIA).
+- If not explicitly required → return [].
+
+6. num_guests
+- Extract number of travelers.
+- If not mentioned → null.
+
+7. exclude_sold_out
+- Always set to true.
+
+------------------------------------------------------------
+SOFT PREFERENCES
+------------------------------------------------------------
+
+preferred_cruise_line:
+- Only if explicitly mentioned (e.g., "Royal Caribbean").
+- Otherwise null.
+
+cruise_type:
+- If user says "luxury", "budget", "family-friendly", etc.
+- Otherwise null.
+
+price_sensitivity:
+- "high" → budget/cheap
+- "low" → luxury/premium
+- Otherwise null.
+
+------------------------------------------------------------
+RESPONSE FORMAT (MUST BE VALID JSON)
+------------------------------------------------------------
+
 {
   "hard_constraints": {
     "departure_date_window": {"earliest": "YYYY-MM-DD", "latest": "YYYY-MM-DD"} or null,
     "duration_range": {"min_days": number, "max_days": number} or null,
     "max_budget": number or null,
-    "allowed_destinations": ["CODE1", "CODE2"] or null,
+    "allowed_destinations": ["CODE1","CODE2"] or null,
     "required_ports": [],
     "num_guests": number or null,
     "exclude_sold_out": true

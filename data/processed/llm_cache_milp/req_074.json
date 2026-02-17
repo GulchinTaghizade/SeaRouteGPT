@@ -5,8 +5,8 @@
       "latest": "2026-10-31"
     },
     "duration_range": {
-      "min_days": 9,
-      "max_days": 9
+      "min_days": 7,
+      "max_days": 11
     },
     "max_budget": null,
     "allowed_destinations": null,
@@ -22,6 +22,6 @@
   "metadata": {
     "request_id": "req_074",
     "from_cache": false,
-    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-10-01\",\n      \"latest\": \"2026-10-31\"\n    },\n    \"duration_range\": {\n      \"min_days\": 9,\n      \"max_days\": 9\n    },\n    \"max_budget\": null,\n    \"allowed_destinations\": null,\n    \"required_ports\": [],\n    \"num_guests\": null,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": null,\n    \"price_sensitivity\": null\n  }\n}\n```"
+    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-10-01\",\n      \"latest\": \"2026-10-31\"\n    },\n    \"duration_range\": {\n      \"min_days\": 7,\n      \"max_days\": 11\n    },\n    \"max_budget\": null,\n    \"allowed_destinations\": null,\n    \"required_ports\": [],\n    \"num_guests\": null,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": null,\n    \"price_sensitivity\": null\n  }\n}\n```"
   }
 }

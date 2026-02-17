@@ -18,12 +18,12 @@
   },
   "soft_preferences": {
     "preferred_cruise_line": null,
-    "cruise_type": null,
+    "cruise_type": "romantic",
     "price_sensitivity": null
   },
   "metadata": {
     "request_id": "req_097",
     "from_cache": false,
-    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-05-01\",\n      \"latest\": \"2026-05-31\"\n    },\n    \"duration_range\": {\n      \"min_days\": 6,\n      \"max_days\": 6\n    },\n    \"max_budget\": 4000,\n    \"allowed_destinations\": [\n      \"MA\"\n    ],\n    \"required_ports\": [],\n    \"num_guests\": 2,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": null,\n    \"price_sensitivity\": null\n  }\n}\n```"
+    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-05-01\",\n      \"latest\": \"2026-05-31\"\n    },\n    \"duration_range\": {\n      \"min_days\": 6,\n      \"max_days\": 6\n    },\n    \"max_budget\": 4000,\n    \"allowed_destinations\": [\n      \"MA\"\n    ],\n    \"required_ports\": [],\n    \"num_guests\": 2,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": \"romantic\",\n    \"price_sensitivity\": null\n  }\n}\n```"
   }
 }

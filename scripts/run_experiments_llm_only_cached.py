@@ -85,6 +85,7 @@ def build_itinerary_from_catalog(selected_id: str, cruise_catalog: List[Dict[str
         return _make_itinerary_safe(
             cruise_id=selected_id,
             ports=[],
+            destinations=[],
             departure_date="",
             duration_days=0,
             total_price=0.0,
@@ -101,6 +102,7 @@ def build_itinerary_from_catalog(selected_id: str, cruise_catalog: List[Dict[str
     return _make_itinerary_safe(
         cruise_id=match.get("cruiseId", "") or "",
         ports=match.get("itineraryPorts", []) or [],
+        destinations=match.get("itineraryDestinations", []) or [],
         departure_date=match.get("departureDate", "") or "",
         duration_days=int(match.get("duration") or 0),
         total_price=price_val,

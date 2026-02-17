@@ -15,12 +15,12 @@
   },
   "soft_preferences": {
     "preferred_cruise_line": null,
-    "cruise_type": "wildlife viewing",
+    "cruise_type": null,
     "price_sensitivity": null
   },
   "metadata": {
     "request_id": "req_020",
     "from_cache": false,
-    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-05-01\",\n      \"latest\": \"2026-05-31\"\n    },\n    \"duration_range\": null,\n    \"max_budget\": 4000,\n    \"allowed_destinations\": [\n      \"AK\"\n    ],\n    \"required_ports\": [],\n    \"num_guests\": 2,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": \"wildlife viewing\",\n    \"price_sensitivity\": null\n  }\n}\n```"
+    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-05-01\",\n      \"latest\": \"2026-05-31\"\n    },\n    \"duration_range\": null,\n    \"max_budget\": 4000,\n    \"allowed_destinations\": [\n      \"AK\"\n    ],\n    \"required_ports\": [],\n    \"num_guests\": 2,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": null,\n    \"price_sensitivity\": null\n  }\n}\n```"
   }
 }

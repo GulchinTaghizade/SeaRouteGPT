@@ -9,14 +9,9 @@
       "max_days": 4
     },
     "max_budget": null,
-    "allowed_destinations": [
-      "BH",
-      "CA",
-      "CS",
-      "CW"
-    ],
+    "allowed_destinations": null,
     "required_ports": [
-      "MIA"
+      "USMIA"
     ],
     "num_guests": 2,
     "exclude_sold_out": true
@@ -29,6 +24,6 @@
   "metadata": {
     "request_id": "req_055",
     "from_cache": false,
-    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-10-01\",\n      \"latest\": \"2026-10-31\"\n    },\n    \"duration_range\": {\n      \"min_days\": 4,\n      \"max_days\": 4\n    },\n    \"max_budget\": null,\n    \"allowed_destinations\": [\n      \"BH\",\n      \"CA\",\n      \"CS\",\n      \"CW\"\n    ],\n    \"required_ports\": [\n      \"MIA\"\n    ],\n    \"num_guests\": 2,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": null,\n    \"price_sensitivity\": \"high\"\n  }\n}\n```"
+    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-10-01\",\n      \"latest\": \"2026-10-31\"\n    },\n    \"duration_range\": {\n      \"min_days\": 4,\n      \"max_days\": 4\n    },\n    \"max_budget\": null,\n    \"allowed_destinations\": null,\n    \"required_ports\": [\n      \"USMIA\"\n    ],\n    \"num_guests\": 2,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": null,\n    \"price_sensitivity\": \"high\"\n  }\n}\n```"
   }
 }
