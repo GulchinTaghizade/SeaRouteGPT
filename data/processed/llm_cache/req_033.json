@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 15-day round-trip Alaska cruise with Denali extension in July.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No Alaska cruises with a duration of 15 days and a Denali extension are available in July. The available Alaska cruises are primarily 7-14 days in June, and some are ocean tours which may include Denali.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set has no cruises that match the requested criteria. The user is asking for a 15-day round-trip Alaska cruise in July with a Denali extension. There are cruises to Alaska, some with Denali extensions, but none that are round-trip, exactly 15 days in length, and in the month of July.\"\n}\n```"
 }

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 7-day Mexico Pacific cruise for a family of four in December under $4500.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that match the duration (7 days), destination (Mexico Pacific) and month (December) specified. I checked the itineraryPorts and Destinations for \\\"MX\\\" and departure dates for December.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set does not contain any Mexico Pacific cruises. The cruises in the candidate set are primarily Alaska, Caribbean, or European cruises. There are no cruises that satisfy the user's destination constraint for Mexico Pacific.\"\n}\n```"
 }

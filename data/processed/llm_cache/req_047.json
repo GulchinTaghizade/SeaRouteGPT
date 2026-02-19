@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 10-day Adriatic Sea cruise visiting Croatia and Greece in June.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set contains no cruise that explicitly lists Croatia (HR) and Greece (GR) as itineraryDestinations and has a duration of 10 days. ItineraryDestinations only contains the major regions.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that match the specified duration (10 days) and destinations (Adriatic Sea, Croatia and Greece). The best options are a 7 day cruise departing 2026-06-01 (FUREWDI6F2Z4YiRjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA) and a 7-Day Mediterranean & Adriatic (BiAnWUQiHh5_YlNjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA) with ports in Greece and Croatia, but neither of these are 10 days. Therefore, no cruise can satisfy the duration HARD constraint.\"\n}\n```"
 }

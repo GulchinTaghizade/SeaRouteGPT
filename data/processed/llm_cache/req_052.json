@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 5-day cruise in the Caribbean for two in June under $2500.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the specified criteria. There are no 5 day cruises departing in June with destination in the Caribbean for under $2500.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set departing in June to the Caribbean with duration 5 and price under 2500. The available Alaska cruises are not relevant.\"\n}\n```"
 }

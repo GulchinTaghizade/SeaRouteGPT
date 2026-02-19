@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find a 6-day cruise for a corporate team building in Southeast Asia in February.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The cruise must be in February, but all cruises are in other months. Therefore, no cruise satisfies all hard constraints.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set contains cruises to Southeast Asia, but no cruise that departs in February or has a duration of 6 days.\"\n}\n```"
 }

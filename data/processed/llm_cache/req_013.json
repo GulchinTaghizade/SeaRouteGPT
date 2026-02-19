@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me a Greek Islands cruise starting in June, lasting 10-12 days.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises matching the Greek Islands destination with a duration of 10-12 days in June. I checked itineraryDestinations and duration fields of cruises departing in June.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that satisfy the hard constraints. Specifically, I need a cruise to the Greek Isles, with a duration of 10-12 days, and departing in June. While there are cruises to the Greek Isles departing in June, none are between 10 and 12 days duration. The destinations should include GI and the duration should be between 10 and 12, and the departure date should be in June.\"\n}\n```"
 }

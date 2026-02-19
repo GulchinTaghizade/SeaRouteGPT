@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 11-day Northern Europe cruise visiting Scandinavia in July for two people.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the request. The candidate cruises are either not in Northern Europe, are not in July, or do not include Scandinavia, or do not match the duration requirement.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that depart in July and are 11 days long, visiting Scandinavia.\"\n}\n```"
 }

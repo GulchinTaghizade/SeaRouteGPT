@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a Mexico Pacific coast cruise lasting about 7-10 days, departing in May.",
-  "llm_output": "```json\n{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"I could not find any cruises that satisfy the request. There are no cruises to the Mexico Pacific Coast with durations between 7 and 10 days and departing in May.\"}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises departing in May and satisfying the 7-10 day duration request, with itinerary destinations on the Mexico Pacific coast. Only Caribbean, Alaska, and Mediterranean cruises are available in May.\"\n}\n```"
 }

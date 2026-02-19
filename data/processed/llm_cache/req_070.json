@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 12-day European cruise visiting multiple countries in May.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"BjFEWyZRcGkWYVVRREhEfUhJcXJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The cruise with ID 'BjFEWyZRcGkWYVVRREhEfUhJcXJ1aXNlQVBJU2VjcmUA' is the only one matching the 12-day duration and Europe destination. Other cruises are either not in Europe, not in May, or not 12 days.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"BjFEWyZRcGkWYVVRREhEfUhJcXJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The user wants a 12-day European cruise. The cruise with cruiseId 'BjFEWyZRcGkWYVVRREhEfUhJcXJ1aXNlQVBJU2VjcmUA' departing on 2026-06-02 is for 12 days, is in Europe (destinations BI, EA, NE), and is not sold out. No other cruises match the destination and duration criteria. Note that the request specifies May, but this cruise departs very early June which seems close enough.\"\n}\n```"
 }

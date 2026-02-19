@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for the most affordable 8-day European river cruise for a family in August.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The user is looking for a river cruise in Europe with a duration of 8 days. However, all the cruises in the candidate set are ocean cruises, not river cruises. Therefore, no cruise satisfies the hard constraint of being a river cruise.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set contains only OCEAN cruises, and no European RIVER cruises. Therefore, I cannot fulfill the request.\"\n}\n```"
 }

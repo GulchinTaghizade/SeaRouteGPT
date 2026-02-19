@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find a 11-day South American adventure cruise visiting Argentina and Chile in January.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise in the candidate set matches the required criteria. Specifically, I could not find any 11-day cruise to South America visiting both Argentina and Chile.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that are 11 days long, visit both Argentina and Chile, and depart in January.  I reviewed all cruise itineraryDestinations and duration fields.\"\n}\n```"
 }

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 14-day Asian cruise visiting Singapore, Thailand, and Malaysia in April.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise satisfies all the hard constraints. The user wants a 14-day cruise to Asia (Singapore, Thailand, Malaysia) in April. There are cruises to Asia with 14 days, but not with destinations specifically requested, and not in April.  For instance, cruiseId \\\"cUFGWUVRcGIWZlJaQFB0S2V5Q3J1aXNlQVBJU2VjcmUA\\\" is 14 days to AK and PA departing in June.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that match the user's destinations (Singapore, Thailand, Malaysia) and duration (14 days) in April. Several cruises to Asia are available, but none fulfill all the hard constraints.\"\n}\n```"
 }

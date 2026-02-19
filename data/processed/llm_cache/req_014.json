@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a luxury transatlantic cruise from Europe to New York in June.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The cruise needs to start in Europe and end in New York in June 2026. There are no cruises in the candidate set that satisfy both of these HARD constraints, as all cruises departing in June either cruise to Alaska or stay within Europe. There are transatlantic cruises but none of them end in New York and fit the given time frame and direction.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not identify a cruise that starts in Europe and ends in New York. There are cruises departing from the US and ending in Europe, but none that match the user's request to go from Europe to New York in June. Therefore, no cruise satisfies the hard constraints.\"\n}\n```"
 }

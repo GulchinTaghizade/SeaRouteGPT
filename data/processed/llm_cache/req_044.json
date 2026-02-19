@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a transatlantic repositioning cruise from Europe to New York in May.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any cruises that start in Europe and end in New York in May. All cruises departing in May do not reposition from Europe to New York, therefore there is no valid cruise.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set contains no cruises that are Transatlantic, repositioning from Europe to New York, and departing in May. There are cruises that are transatlantic but either do not stop in New York or do not depart in May. Therefore, no cruise satisfies all hard constraints.\"\n}\n```"
 }

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 10\u201314 day Alaska cruise in May under $5000 for two people.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No Alaska cruises are available in May. The cruises in the candidate set departing in May are to Northern Europe or have departure dates outside the specified month (e.g., February, August, October, November).\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Alaska cruises within the duration of 10-14 days in May. There is one cruise departing on 2026-05-15 but the destinations are not in Alaska. \"\n}\n```"
 }

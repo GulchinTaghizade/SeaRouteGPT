@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for an 8-day Alaskan Inside Passage cruise in June for nature enthusiasts.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises with a duration of 8 days to Alaska in June.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that meet the duration (8 days) and destination (Alaskan Inside Passage) criteria. The cruises that mention Alaska all have either a 7 day or longer duration, or are Ocean Tours with a duration of longer than 8 days.\"\n}\n```"
 }

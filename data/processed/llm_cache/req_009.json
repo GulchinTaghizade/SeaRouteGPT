@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me the cheapest Alaska cruise in July, I'm flexible on everything else.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in July to Alaska. All the Alaska cruises are in June. Therefore, I cannot fulfill the request.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises departing in July. All cruises that go to AK depart in June or earlier, so I cannot fulfill this request.\"\n}\n```"
 }

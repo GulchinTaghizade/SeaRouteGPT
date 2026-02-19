@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 10-day cruise visiting multiple islands in March.",
-  "llm_output": "```json\n{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"I am unable to fulfill this request as I could not find any cruises that depart in March, are 10 days in length, and visit multiple islands.\"}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in March, or that are 10 days in duration, and visit islands. Therefore, there is no cruise that satisfies the user's request.\"\n}\n```"
 }

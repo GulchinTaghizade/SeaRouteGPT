@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 5-day budget cruise for a solo traveler in February under $1200.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match all the HARD constraints. All cruises have 'numberOfGuests': 2, but user is a solo traveler.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"All cruises in the candidate set are for 2 guests.  There are no cruises that fulfill the criteria of a solo traveler. Therefore, no valid cruise can be selected.\"\n}\n```"
 }

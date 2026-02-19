@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 7-day all-inclusive cruise for a family of five in April under $5500.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that fit the criteria of 7 days, with prices for 5 guests under $5500 departing in April. All listed cruises are for 2 guests.  The prices for the available cruises also greatly exceed the budget when considering they are for 2 guests.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The request is for a family of 5, but the cruise options are for 2 guests. Since the HARD constraint is number of guests equal to 5, no cruises in the candidate set are valid.\"\n}\n```"
 }

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 12-day Gal\u00e1pagos cruise for nature lovers in December.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises to the Galapagos Islands in December. The candidate set does contain Galapagos cruises, but the month is outside the specified range of December.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The provided cruise data does not contain any cruises that match the user's request. Specifically, no cruises have a duration of 12 days and destinations including the Galapagos departing in December.\"\n}\n```"
 }

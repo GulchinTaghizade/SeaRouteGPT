@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me a Mediterranean cruise visiting Italy and Greece in July for two weeks.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Mediterranean cruises in July (no cruises between July 1st and July 31st) that visit both Italy and Greece and have a duration of around 14 days. The available cruises visit the Mediterranean, and Italy and Greece are mentioned in the itineraryDestinations or itineraryPorts, but the cruises are either not in July or the duration is not approximately two weeks.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any Mediterranean cruises that meet the user's request in July and are two weeks in duration. There are cruises to the Mediterranean but they are in different months (April, May, June) or they are not a full two weeks long. \"\n}\n```"
 }

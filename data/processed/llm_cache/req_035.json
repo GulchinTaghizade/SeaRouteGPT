@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me a family-friendly Disney cruise for four people in June under $6000.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Disney cruises in the candidate set with the required number of guests and within the specified budget. Therefore, no valid cruise can be selected.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The request specifies a family-friendly Disney cruise for four people in June under $6000. However, the candidate set only has cruises for 2 people, and only one cruise line 'DI' which is Disney. Further, there are no cruises departing in June that satisfy the budget constraint. Therefore, there is no cruise that satisfies all the hard constraints.\"\n}\n```"
 }

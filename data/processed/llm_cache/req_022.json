@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find a 10-day river cruise through the Rhine and Moselle in Germany for two in October.",
-  "llm_output": "{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"The candidate set contains OCEAN and OCEAN_TOUR cruises. There are no RIVER cruises. The destinations are also not limited to Germany or the Rhine/Moselle rivers.\"}"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The cruise type requested (river) is not available in the candidate cruises. Furthermore, no cruises are available in the Rhine or Moselle regions of Germany. Therefore, no cruise in the candidate set satisfies the user's request.\"\n}\n```"
 }

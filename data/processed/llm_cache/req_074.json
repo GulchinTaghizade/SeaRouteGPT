@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 9-day New England and Canada cruise in October for leaf peeping.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the request for a 9-day New England and Canada cruise departing in October. None of the cruises listed have itineraryDestinations that include both New England and Canada.  The candidate cruises focus on Alaska, the Caribbean, the Mediterranean, or Asia.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set has no cruise that is both 9 days long, in October, and has a New England/Canada itinerary. Therefore no cruise satisfies the hard constraints.\"\n}\n```"
 }

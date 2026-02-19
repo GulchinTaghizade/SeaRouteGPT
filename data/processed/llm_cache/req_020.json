@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me an Alaska cruise in May for two people, preferably with wildlife viewing, under $4000.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises departing in May and going to Alaska, also the maximum budget is $4000 and most of cruises don't satisfy that constraint.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises to Alaska departing in May. All Alaska cruises depart in June or later. Therefore, there is no cruise that meets the hard constraints of the request.\"\n}\n```"
 }

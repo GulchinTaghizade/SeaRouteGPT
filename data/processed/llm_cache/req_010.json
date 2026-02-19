@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 12-day river cruise through the Danube visiting Austria and Hungary in September.",
-  "llm_output": "{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"The candidate set contains no river cruises. The cruises are all OCEAN or OCEAN_TOUR. Additionally, none of them match the other hard constraints: duration 12 days, destinations Austria and Hungary, and departure in September.\"}"
+  "llm_output": "{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"The cruise type is limited to ocean cruises and ocean tours only. There is no river cruise in the available cruises. The user also requested Austria and Hungary destinations for a cruise in September, but there are no cruises in the candidate with these destinations.\"}"
 }

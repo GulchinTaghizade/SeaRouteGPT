@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 7-day Iceland and Greenland adventure cruise in July for two people.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises with the requested duration (7 days) in July and itinerary destinations of Iceland and Greenland.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that match the requested duration of 7 days and destinations of Iceland and Greenland in July. All cruises to this region occur in different months. The candidate set does not satisfy hard constraints.\"\n}\n```"
 }

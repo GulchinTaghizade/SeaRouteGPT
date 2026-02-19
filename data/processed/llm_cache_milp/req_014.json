@@ -15,12 +15,17 @@
   },
   "soft_preferences": {
     "preferred_cruise_line": null,
-    "cruise_type": "luxury",
-    "price_sensitivity": "low"
+    "preferred_cabin_category": null,
+    "preferred_ports": [],
+    "preferred_duration_days": null,
+    "price_sensitivity": "low",
+    "cruise_type": "luxury"
   },
   "metadata": {
     "request_id": "req_014",
     "from_cache": false,
-    "llm_response": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-06-01\",\n      \"latest\": \"2026-06-30\"\n    },\n    \"duration_range\": null,\n    \"max_budget\": null,\n    \"allowed_destinations\": [\n      \"TC\"\n    ],\n    \"required_ports\": [],\n    \"num_guests\": null,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"cruise_type\": \"luxury\",\n    \"price_sensitivity\": \"low\"\n  }\n}\n```"
+    "model": "models/gemini-2.0-flash",
+    "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_constraint_extraction/v1.txt",
+    "raw_llm_response_truncated": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-06-01\",\n      \"latest\": \"2026-06-30\"\n    },\n    \"duration_range\": null,\n    \"max_budget\": null,\n    \"allowed_destinations\": [\n      \"TC\"\n    ],\n    \"required_ports\": [],\n    \"num_guests\": null,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"preferred_cabin_category\": null,\n    \"preferred_ports\": [],\n    \"preferred_duration_days\": null,\n    \"price_sensitivity\": \"low\",\n    \"cruise_type\": \"luxury\"\n  }\n}\n```"
   }
 }

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find the best value 7-day Mexican Riviera cruise for a family of four in July.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The user is requesting a 7-day Mexican Riviera cruise departing in July for a family of four. The candidate set does not include any cruises that meet these criteria. There are cruises to the Caribbean, Alaska, Mediterranean, and Northern Europe. Since no cruises satisfying these hard constraints are present in the candidate set, the only valid response is NO_VALID_CRUISE.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the criteria of a 7-day Mexican Riviera cruise in July for a family of four.  There are many cruises with duration of 7 days and departing in July and August, but none of them match the 'Mexican Riviera' itinerary requirement.\"\n}\n```"
 }

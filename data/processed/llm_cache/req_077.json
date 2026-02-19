@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 6-day Baja California cruise from San Diego in March under $1800.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise departing in March, with a duration of 6 days, a destination of Baja California, and departure port USSAN (San Diego) can be found in the candidate set within the specified budget.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Baja California cruises departing from San Diego in March with a duration of 6 days and a price under $1800. The search considered all cruises in the candidate set.\"\n}\n```"
 }

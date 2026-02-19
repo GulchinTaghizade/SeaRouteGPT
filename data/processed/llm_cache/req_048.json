@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me a luxury River Rhine cruise through Germany in September for two people.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The provided cruise options are primarily ocean cruises to destinations like Alaska, the Caribbean, the Mediterranean, and Asia. There are no cruises listed that are specifically River Rhine cruises, nor do any have Rhine ports listed in their itineraries, therefore, I cannot fulfill the request.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The provided cruise list does not contain any cruises that are River cruises, on the Rhine river, in Germany, or in the month of September. Therefore, there is no valid cruise for this request.\"\n}\n```"
 }

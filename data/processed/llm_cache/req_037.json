@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 6-day Mexico Pacific coast cruise for honeymooners in May.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in May and with a duration of 6 days and itinerary destinations that include Mexico's Pacific Coast. Therefore, I cannot fulfill the request.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match the requested destination of \\\"Mexico Pacific coast\\\" for a 6 day cruise in May. All cruises departing in May are in the Mediterranean or Northern Europe. Several Caribbean cruises are available, but these are for the Caribbean and not the Mexico Pacific coast.\"\n}\n```"
 }

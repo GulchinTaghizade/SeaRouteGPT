@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me a 10-day New Zealand cruise in February for two people, under $5500.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises in the candidate set match the user's request for a 10-day New Zealand cruise departing in February under $5500.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match the duration, destination (New Zealand), and budget constraints. There is no cruise with destination code 'NZ' or cruiseName including 'New Zealand'.\"\n}\n```"
 }

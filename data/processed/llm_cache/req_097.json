@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 6-day romantic Mediterranean getaway for two in May under $4000.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match the specified criteria. Specifically, there are no cruises in May with a duration of 6 days and a price under $4000 that visit Mediterranean destinations.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the requested duration of 6 days, a departure in May, and a Mediterranean destination within the budget of $4000.\"\n}\n```"
 }

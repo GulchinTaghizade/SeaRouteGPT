@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a budget-friendly Caribbean cruise anytime in the summer under $1500 per person.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"cUNAX0JlQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This Carnival cruise (cUNAX0JlQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA) departing on 2026-08-01 fits the request. It is in August (summer), is a Caribbean cruise based on itineraryDestinations and meets the budget with a roomPriceWithTaxesFees of $799 which is $399.5 per person which is less than $1500 max budget per person. All other cruises are either not in the caribbean, exceed the budget or depart at a different time of year.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ETpFXjdQcGQWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise departs in August (summer), visits the Caribbean, is not sold out, and the total price of $754.67 for 2 people is well under the $3000 budget for 2.  Other cruises are either more expensive or do not have pricing information.\"\n}\n```"
 }

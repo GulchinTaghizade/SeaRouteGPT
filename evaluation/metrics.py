@@ -173,6 +173,7 @@ class CruiseMetrics:
             soft_preferences: Dict[str, Any],
             itinerary: Optional[Itinerary],
             weights: Optional[Dict[str, float]] = None,
+            hard_constraints: Optional[Dict[str, Any]] = None,
     ) -> float:
         if feasibility < 0.5 or itinerary is None:
             return 0.0
@@ -204,20 +205,50 @@ class CruiseMetrics:
             except Exception:
                 indicators["preferred_duration_days"] = False
 
-        # Save matches for debugging/analysis
+
+        #  price preference proxy (budget/luxury)
+        price_sens = soft_preferences.get("price_sensitivity")  # "high"|"low"|None
+        cruise_type = soft_preferences.get("cruise_type")  # "budget"|"luxury"|...
+
+        # only attempt if we have constraints to build a candidate set
+        if (price_sens is not None or cruise_type is not None) and hard_constraints:
+            feasible = self.feasible_candidate_set(hard_constraints)  # or utility_candidate_set
+            prices = []
+            for c in feasible:
+                try:
+                    prices.append(float(c.get("roomPriceWithTaxesFees")))
+                except Exception:
+                    pass
+
+            if prices:
+                prices.sort()
+                # thresholds: bottom/top 25%
+                q = max(1, int(0.25 * len(prices)))
+                cheap_thresh = prices[q - 1]
+                expensive_thresh = prices[-q]
+
+                if price_sens == "high":
+                    indicators["price_sensitivity"] = (itinerary.total_price <= cheap_thresh)
+                elif price_sens == "low":
+                    indicators["price_sensitivity"] = (itinerary.total_price >= expensive_thresh)
+
+                if cruise_type == "budget":
+                    indicators["cruise_type"] = (itinerary.total_price <= cheap_thresh)
+                elif cruise_type == "luxury":
+                    indicators["cruise_type"] = (itinerary.total_price >= expensive_thresh)
+
+
         itinerary.preference_matches = indicators
 
-        # If no measurable preferences were provided, personalization = 0 by definition
         if not indicators:
             return 0.0
 
-        # Weights: uniform over *only the included preferences* unless provided
         if weights is None:
             k = len(indicators)
             weights = {k_: 1.0 / k for k_ in indicators}
 
         num = sum(weights.get(k_, 0.0) * (1.0 if indicators[k_] else 0.0) for k_ in indicators)
-        den = sum(weights.get(k_, 0.0) for k_ in indicators)  # only included keys
+        den = sum(weights.get(k_, 0.0) for k_ in indicators)
         return float(num / den) if den > 0 else 0.0
 
     # -------------------------

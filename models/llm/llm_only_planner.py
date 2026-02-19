@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import List, Dict, Optional, Any
+from typing import Any, Dict, List, Optional
 
 from google import genai
 
@@ -11,7 +11,7 @@ class LLMPlanner:
     - Candidate grounding
     - Prompt loaded from txt file
     - Persistent caching using request_id.json
-    - Post-LLM validation
+    - Post-LLM validation (including cache re-validation)
     """
 
     MODEL_NAME = "models/gemini-2.0-flash"
@@ -22,7 +22,9 @@ class LLMPlanner:
 
         project_root = Path(__file__).resolve().parents[2]
 
-        self.prompt_path = project_root / "prompts" / "LLM_only_planner" / f"{self.PROMPT_VERSION}.txt"
+        self.prompt_path = (
+            project_root / "prompts" / "LLM_only_planner" / f"{self.PROMPT_VERSION}.txt"
+        )
         if not self.prompt_path.exists():
             raise FileNotFoundError(f"Prompt not found at {self.prompt_path}")
 
@@ -35,51 +37,45 @@ class LLMPlanner:
     # MAIN ENTRY
     # -------------------------
     def plan(self, cruises: List[Dict], user_request: str, request_id: str) -> Dict[str, Any]:
-
         cache_file = self.cache_dir / f"{request_id}.json"
 
-        # -------------------------
         # Load from cache
-        # -------------------------
         if cache_file.exists():
             cached = json.loads(cache_file.read_text(encoding="utf-8"))
-            llm_output = cached.get("llm_output", "")
+            llm_output = cached.get("llm_output", "") or ""
+            # Re-validate cached output against current candidate set
             return self._process_llm_response(
-                llm_output,
-                cruises,
-                request_id,
-                from_cache=True
+                llm_output=llm_output,
+                cruises=cruises,
+                request_id=request_id,
+                from_cache=True,
             )
 
-        # -------------------------
         # Call LLM
-        # -------------------------
         prompt = self._build_prompt(cruises, user_request)
 
         response = self.client.models.generate_content(
             model=self.MODEL_NAME,
-            contents=prompt
+            contents=prompt,
         )
+        llm_output = getattr(response, "text", "") or ""
 
-        llm_output = response.text or ""
-
-        # Save to cache
+        # Save raw LLM output to cache under reqID.json
         cache_data = {
             "request_id": request_id,
             "model": self.MODEL_NAME,
             "prompt_version": self.PROMPT_VERSION,
             "prompt_path": str(self.prompt_path),
             "user_request": user_request,
-            "llm_output": llm_output
+            "llm_output": llm_output,
         }
-
         cache_file.write_text(json.dumps(cache_data, indent=2), encoding="utf-8")
 
         return self._process_llm_response(
-            llm_output,
-            cruises,
-            request_id,
-            from_cache=False
+            llm_output=llm_output,
+            cruises=cruises,
+            request_id=request_id,
+            from_cache=False,
         )
 
     # -------------------------
@@ -90,7 +86,7 @@ class LLMPlanner:
         llm_output: str,
         cruises: List[Dict],
         request_id: str,
-        from_cache: bool
+        from_cache: bool,
     ) -> Dict[str, Any]:
 
         result: Dict[str, Any] = {
@@ -110,24 +106,25 @@ class LLMPlanner:
         valid_ids.discard(None)
 
         parsed = self._safe_parse_json(llm_output)
-
         if parsed is None:
             result["validation_error"] = "Malformed JSON output"
             return result
 
         selected = parsed.get("selectedCruiseId")
-        justification = parsed.get("justification", "")
+        justification = parsed.get("justification", "") or ""
 
         if not selected:
             result["validation_error"] = "Missing selectedCruiseId"
             return result
 
+        # Allow NO_VALID_CRUISE
         if selected == "NO_VALID_CRUISE":
-            result["validation_error"] = "LLM returned NO_VALID_CRUISE"
             result["selected_cruise_id"] = "NO_VALID_CRUISE"
             result["justification"] = justification
+            result["validation_error"] = "LLM returned NO_VALID_CRUISE"
             return result
 
+        # Must be grounded in candidate set
         if selected not in valid_ids:
             result["validation_error"] = f"Invalid cruise ID: {selected}"
             return result
@@ -135,7 +132,6 @@ class LLMPlanner:
         result["is_valid"] = True
         result["selected_cruise_id"] = selected
         result["justification"] = justification
-
         return result
 
     # -------------------------
@@ -144,32 +140,29 @@ class LLMPlanner:
     def _build_prompt(self, cruises: List[Dict], user_request: str) -> str:
         cruises_json = json.dumps(cruises, indent=2, ensure_ascii=False)
 
-        return f"""{self.prompt_template}
-
-Available Cruises (Candidate Set):
-{cruises_json}
-
-User Request:
-{user_request}
-"""
+        # prompt_template should already contain the "return only JSON" rule.
+        return (
+            f"{self.prompt_template}\n\n"
+            f"Available Cruises (Candidate Set):\n{cruises_json}\n\n"
+            f"User Request:\n{user_request}\n"
+        )
 
     # -------------------------
     # JSON PARSER (ROBUST)
     # -------------------------
     def _safe_parse_json(self, text: str) -> Optional[Dict[str, Any]]:
-
         if not text:
             return None
 
         t = text.strip()
 
         # Remove markdown fences
-        if "```" in t:
-            t = t.replace("```json", "").replace("```", "").strip()
+        t = t.replace("```json", "").replace("```", "").strip()
 
         # Try direct parse
         try:
-            return json.loads(t)
+            obj = json.loads(t)
+            return obj if isinstance(obj, dict) else None
         except Exception:
             pass
 
@@ -177,9 +170,10 @@ User Request:
         start = t.find("{")
         end = t.rfind("}")
         if start != -1 and end != -1 and end > start:
-            candidate = t[start:end + 1].strip()
+            candidate = t[start : end + 1].strip()
             try:
-                return json.loads(candidate)
+                obj = json.loads(candidate)
+                return obj if isinstance(obj, dict) else None
             except Exception:
                 return None
 

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 10-day Scandinavian and Russian Baltic cruise in July for two people.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set with itinerary destinations matching 'Scandinavian and Russian Baltic' and departing in July.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set contains cruises to Alaska, the Mediterranean, the Caribbean, and Japan, but no cruises to the Scandinavian and Russian Baltic region, and no cruises in July. Therefore, the request cannot be satisfied.\"\n}\n```"
 }

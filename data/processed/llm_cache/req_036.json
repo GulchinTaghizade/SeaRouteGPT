@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 9-day Eastern Mediterranean cruise visiting Greece and Turkey in September.",
-  "llm_output": "{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"There are no 9-day Eastern Mediterranean cruises visiting Greece and Turkey in September. The valid dates are 2026-09-01 to 2026-09-30.\"}"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I cannot fulfill the request. There are no cruises in the candidate set that meet the specified criteria: duration of 9 days, destinations including Greece and Turkey, and a departure date in September.\"\n}\n```"
 }

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 10-day Norwegian Fjords cruise with hiking activities in August.",
-  "llm_output": "```json\n{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"The cruise must be in August with destination Norwegian Fjords and include hiking and be 10 days.  No cruise satisfies all constraints.\"}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises to Norwegian Fjords. There is also no mention of activities and no 10 days cruise.\"\n}\n```"
 }

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 7-day Caribbean cruise in June, around $3500 total for two people",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I couldn't find any 7-day Caribbean cruises departing in June with a price at or below $3500.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no 7-day Caribbean cruises in June. Cruises found are in February, August, April and November, and do not meet the date requirements.\"\n}\n```"
 }

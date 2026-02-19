@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a 5-day weekend cruise for two in Tampa departing in August.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ETZFXCRScWcWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The user wants a 5-day cruise departing from Tampa in August. The cruise with cruiseId ETZFXCRScWcWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA satisfies these requirements as it is a 5 day cruise, departs on 2026-08-01 and includes USTPA (Tampa) in the itineraryPorts.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ETZFXCRScWcWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The user is looking for a 5-day cruise departing from Tampa in August. Only cruise ETZFXCRScWcWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA matches these hard constraints, departing from USTPA (Tampa) on 2026-08-01 for 5 days. The cruise is not sold out and has itinerary destinations in the CA, CW, MC, SE, and US. The price is $1033.27.\"\n}\n```"
 }

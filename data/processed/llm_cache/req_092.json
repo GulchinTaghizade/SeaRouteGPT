@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 10-day cruise for a family reunion of eight in July.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise satisfies the hard constraints. The request specifies a cruise in July and for a group of 8. All the cruises departing in July are not for Alaska and are not suitable for a group of 8.  Therefore, no valid cruise exists.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the request. There are no cruises in July and the cruises available have a guest capacity of 2.\"\n}\n```"
 }

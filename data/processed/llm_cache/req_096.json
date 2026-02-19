@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me the most affordable 9-day Alaska cruise for a group of four in June.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"cUBDWUFddmgWZlJaRlB0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The cruise with cruiseId cUBDWUFddmgWZlJaRlB0S2V5Q3J1aXNlQVBJU2VjcmUA is the only cruise with a duration of 9 days, departs in June (2026-06-01), and is not sold out. Since the request specified 4 guests, I checked the cruises with 2 guests and doubled the price. The price for 4 guests is still the lowest among cruises satisfying the Hard constraints.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match the request. The request specified an Alaska cruise for 4 people with a duration of 9 days in June. While there are several Alaska cruises, the number of guests is fixed to 2 for all cruises, and there are only two 9-day cruises and both of them don't have the Alaska destination.\"\n}\n```"
 }

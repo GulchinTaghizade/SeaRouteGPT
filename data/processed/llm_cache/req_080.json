@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want the best value 10-day Alaska cruise with glacier activities in July.",
-  "llm_output": "```json\n{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"The candidate set contains no Alaska cruises in July. All Alaska cruises occur on June 1st and June 2nd 2026, while Caribbean cruises occur on February 7th, 2026 and August 1st 2026, and Mediterranean Cruises occur in April, May, and June 2026, October, and November 2026. Since there is no valid cruise that meets the requirements a NO_VALID_CRUISE is returned.\"}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Alaska cruises available in July with duration of 10 days. Therefore, no cruise satisfies the hard constraints.\"\n}\n```"
 }

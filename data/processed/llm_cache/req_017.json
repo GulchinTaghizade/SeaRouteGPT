@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a summer Alaska cruise with glacier viewing, 12-14 days in June.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AkQyWUcnGGQFDC5VQV02S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise matches the request best. It is an OCEAN_TOUR to Alaska departing in June (2026-06-01). It is 12 days, which falls within the 12-14 day duration requested. The itinerary includes Alaskan destinations (itineraryDestinations includes AK and PA) and ports like USSGY and USEA1.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AkQyWUcnGGQFDC5VQV02S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The user wants a cruise to Alaska in June with a duration of 12-14 days.  The cruise with cruiseId AkQyWUcnGGQFDC5VQV02S2V5Q3J1aXNlQVBJU2VjcmUA matches all the hard constraints, as it departs on 2026-06-01, has a duration of 12 days and visits Alaska (itineraryDestinations includes AK). Also, the cruise name includes Yukon, suggesting it's a tour with glacier viewing.\"\n}\n```"
 }

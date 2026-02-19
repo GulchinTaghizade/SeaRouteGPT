@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a 7-day Iceland and Arctic cruise for adventure lovers in August.",
-  "llm_output": "```json\n{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"There are no cruises that match the user's request for a 7-day Iceland and Arctic cruise departing in August. All cruises departing in August are Caribbean cruises and all Iceland/Arctic cruises are outside of the desired date.\"}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There is no cruise available in the candidate set that is 7 days long, has Iceland in its itineraryDestinations, and occurs in August.\"\n}\n```"
 }

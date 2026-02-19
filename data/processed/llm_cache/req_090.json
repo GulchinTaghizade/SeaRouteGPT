@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me a 6-day all-inclusive cruise for two in November under $3000.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises matching the specified criteria. No cruise has a duration of 6 days in November under $3000. Also, \\\"all-inclusive\\\" is not a filterable attribute.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that match the specified criteria. The duration must be exactly 6 days and must depart in November. There are cruises in November but none that last 6 days.\"\n}\n```"
 }

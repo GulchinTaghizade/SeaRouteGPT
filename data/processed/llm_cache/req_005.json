@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Looking for a luxury Norwegian Fjords cruise in August, around 10 days, for two people.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that depart in August and visit the Norwegian Fjords. The cruises with itineraryDestinations including 'NO' depart in months other than August. Thus, no cruise satisfies the hard constraint on date window and destination.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise in the candidate set matches the requested destination (Norwegian Fjords) and departure date (August). There are cruises to the Arctic Circle in June, but not Norwegian Fjords in August. There is also no filter for luxury in the prompt.\"\n}\n```"
 }

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find a 4-day weekend cruise from Miami in August under $1500 per person.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find a cruise from Miami in August that is 4 days long and under $3000 (since the request is for $1500 per person with 2 guests).\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any 4 day cruises departing from Miami in August under $3000 (or $1500 per person). The closest I can find is cruise \\\"ETZFXCRScWcWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA\\\", it is a 5 days cruise but is priced above the max budget.\"\n}\n```"
 }

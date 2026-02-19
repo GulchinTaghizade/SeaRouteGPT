@@ -1,16 +1,15 @@
+from typing import Optional, Dict, Any, List
+
 from models.llm.llm_constraint_extractor import LLMConstraintExtractor
 from solvers.milp_solver import MILPSolver
 from solvers.objective import utility_objective
-import uuid
-from typing import Optional, Dict, Any, List
 
 
 class HybridSolver:
     """
     Hybrid LLM + MILP solver for cruise planning.
 
-    Pipeline:
-    1) LLM extracts structured constraints from natural language
+    1) LLM extracts structured constraints from natural language (cached by request_id)
     2) MILP selects best cruise under hard constraints using utility objective
     """
 
@@ -20,7 +19,6 @@ class HybridSolver:
 
     @staticmethod
     def _midpoint_duration(duration_range: Optional[Dict[str, Any]]) -> Optional[int]:
-        """Return midpoint of duration range if present."""
         if not duration_range:
             return None
         try:
@@ -40,32 +38,29 @@ class HybridSolver:
         request_id: Optional[str] = None,
         time_limit_seconds: int = 10,
     ) -> Dict[str, Any]:
-        """
-        Args:
-            user_request: Natural language user request
-            cruises: Candidate cruise list
-            preferred_duration: Optional override (days). If None, inferred from LLM duration_range midpoint.
-            alpha/beta: Utility weights (alpha+beta should be 1 in your thesis metric)
-            request_id: Optional stable ID (e.g., "req_001"). If None, random UUID is used.
-            time_limit_seconds: MILP time limit
 
-        Returns:
-            Dict with selected cruise + extracted constraints + metadata
-        """
-        rid = request_id or str(uuid.uuid4())
+        if request_id is None:
+            raise ValueError("request_id is required (e.g., 'req_001') for stable caching/reproducibility.")
+        rid = request_id
 
-        # 1) LLM constraint extraction
+        # 1) LLM constraint extraction (cached by rid)
         extracted = self.llm_extractor.extract_constraints(user_request, rid)
         hard = extracted.get("hard_constraints", {}) or {}
         soft = extracted.get("soft_preferences", {}) or {}
 
-        # 2) Determine preferred duration:
-        #    - If caller passed preferred_duration, use it.
-        #    - Else infer from extracted duration_range midpoint.
-        inferred_pref_duration = self._midpoint_duration(hard.get("duration_range"))
-        pref_duration = preferred_duration if preferred_duration is not None else inferred_pref_duration
+        # 2) Preferred duration selection logic (for objective + metrics)
+        # Priority:
+        #   (a) explicit override argument
+        #   (b) LLM soft preference
+        #   (c) midpoint of hard duration_range
+        if preferred_duration is not None:
+            pref_duration = preferred_duration
+        else:
+            pref_duration = soft.get("preferred_duration_days")
+            if pref_duration is None:
+                pref_duration = self._midpoint_duration(hard.get("duration_range"))
 
-        # Keep it in soft prefs for logging/metrics, but also pass it into objective via kwargs.
+        # ensure it's stored for later metrics/logging
         soft = {**soft, "preferred_duration_days": pref_duration}
 
         constraints = {
@@ -73,7 +68,7 @@ class HybridSolver:
             "soft_preferences": soft,
         }
 
-        # 3) MILP optimization (objective MUST receive preferred_duration to use duration term)
+        # 3) MILP solve
         selected_cruise = self.milp_solver.solve(
             cruises=cruises,
             constraints=constraints,
@@ -87,12 +82,12 @@ class HybridSolver:
         if selected_cruise is None:
             return {
                 "status": "no_valid_cruises",
-                "message": "No cruises satisfy the extracted constraints (or solver hit infeasible/time limit).",
+                "message": "No cruises satisfy extracted constraints (or solver infeasible/time-limit).",
                 "request_id": rid,
                 "constraints_extracted": hard,
                 "preferences_extracted": soft,
+                "llm_metadata": extracted.get("metadata", {}) or {},
             }
-        print(extracted["metadata"]["llm_response"])
 
         return {
             "status": "success",
@@ -100,4 +95,5 @@ class HybridSolver:
             "selected_cruise": selected_cruise,
             "constraints_extracted": hard,
             "preferences_extracted": soft,
+            "llm_metadata": extracted.get("metadata", {}) or {},
         }

@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Plan a Panama Canal transit cruise for two people in May, around 10 days.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises that transit the Panama Canal and depart in May.  While there are several cruises that include Panama as a destination, these depart in other months.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Panama Canal cruises with a departure date in May and a duration of approximately 10 days.\"\n}\n```"
 }

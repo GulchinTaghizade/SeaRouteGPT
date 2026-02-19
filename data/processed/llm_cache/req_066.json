@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me a 7-day cruise in the Caribbean for adults-only in March.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any cruises that satisfy the HARD constraints. The request specified the month of March for a 7 day cruise in the Caribbean, however there are no cruises with departure dates in March. There are also no cruises which specify \\\"adults-only\\\" cruises.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any cruises that matched the user's request for a 7-day Caribbean cruise departing in March that explicitly caters to adults-only. The candidate set does not have information regarding adult-only cruises. There are no cruises in March in the dataset.\"\n}\n```"
 }

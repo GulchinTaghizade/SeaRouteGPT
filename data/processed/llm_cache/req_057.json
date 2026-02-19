@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find a 6-day yacht-style luxury cruise in the Mediterranean for two in February.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any cruises matching the request for a 6-day yacht-style luxury cruise in the Mediterranean for two in February. There are no cruises of type YACHT or with a duration of 6 days. There are some cruises in February, but they are Caribbean and not Mediterranean.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match all the hard constraints. Specifically, there are no cruises of 6-day duration, with a cruise type of YACHT, and with a 'luxury' type available to select.\"\n}\n```"
 }

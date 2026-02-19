@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "Find me a 7-day cruise with kids activities in the Caribbean for a family of four in July.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that satisfy all the hard constraints. The user is asking for a cruise with kids activities in July. There are no cruises that are specifically mentioned as having kids activities. The only July cruises are for Alaska.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The request specifies a cruise for a family of four, but the candidate cruises are all for 2 guests only (numberOfGuests=2). Additionally, the request is for a cruise in July, but all available cruises depart in February, April, June, August, October, or November.  Therefore, no cruise satisfies the hard constraints.\"\n}\n```"
 }

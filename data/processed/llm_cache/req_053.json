@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a romantic 9-day Mediterranean cruise for anniversary celebration in September.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match the requested month of September and duration of 9 days. The cruises available are in different months (February, April, May, June, August, October, November, January).\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises in the candidate set match the user's request for a 9-day Mediterranean cruise in September (or near September).\"\n}\n```"
 }

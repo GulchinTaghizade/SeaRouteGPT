@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want a luxury 7-day cruise for an executive retreat in February.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ByVHWEtdQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The user is requesting a luxury 7-day cruise in February. The Disney cruise (cruiseId: ByVHWEtdQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA) fits the duration and date, but the price is very high at $18306.50. While the user wants \\\"luxury\\\", there's no max_budget specified. The cruise fits all hard constraints. The other cruises are not a good fit.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ByVHWEtdQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The Disney Cruise (DI) 7-Night Alaskan Cruise is selected because it's the only 7-day cruise available in February and no budget or other constraints are specified. While the price is very high, the request mentioned \\\"luxury\\\", and Disney cruises are generally perceived as luxurious. Other cruises are either not in February, not 7 days, or sold out. Therefore, this is the best option available.\"\n}\n```"
 }

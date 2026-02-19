@@ -4,5 +4,5 @@
   "prompt_version": "v1",
   "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
   "user_request": "I want an 8-day Europe and Mediterranean cruise for two in April under $3500.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"EzNFUUFTcWR5YGVjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The cruiseId 'EzNFUUFTcWR5YGVjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA' matches the duration requirement (8 days), the departure date requirement (April), and the destinations requirement (Europe and Mediterranean) because it has itineraryDestinations includes EA,MA,MW, furthermore, the roomPriceWithTaxesFees is also satisfy the budget requirement(under $3500), roomPriceWithTaxesFees:849.3.\"\n}\n```"
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"EzNFUUFTcWR5ZGVjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise from Costa (CO) has a duration of 8 days and a destinations of Europe and Mediterranean, departing in April (2026-04-03) for a total price of $1484.80, fitting into the budget. Other cruises were either out of the Mediterranean region, or were not available in April.\"\n}\n```"
 }
