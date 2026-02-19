@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import time
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -12,6 +12,7 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from models.hybrid.hybrid_planner import HybridSolver
+from models.llm.llm_constraint_extractor import LLMConstraintExtractor
 
 load_dotenv()
 
@@ -184,7 +185,7 @@ def load_local_catalog(path: Path) -> List[Dict[str, Any]]:
 
 
 # ----------------------------
-# RAPIDAPI (POST /cruises/search) – matches your cache_cruises.py
+# RAPIDAPI (POST /cruises/search)
 # ----------------------------
 @st.cache_data(ttl=300, show_spinner=False)
 def fetch_cruises_search_cached(
@@ -215,8 +216,8 @@ def fetch_cruises_search_cached(
 
         try:
             r = requests.post(api_url, headers=headers, json=payload_page, timeout=timeout_s)
+
             if r.status_code == 429:
-                # In UI: backoff smaller than your batch script (we don't want to freeze the app for 60s).
                 wait = min(12, 2 ** (page - 1))
                 time.sleep(wait)
                 continue
@@ -239,7 +240,7 @@ def fetch_cruises_search_cached(
                 break
 
             page += 1
-            time.sleep(0.6)  # gentle pacing
+            time.sleep(0.6)
         except Exception as e:
             last_error = f"Fetch error: {str(e)}"
             break
@@ -247,22 +248,60 @@ def fetch_cruises_search_cached(
     return all_cruises, last_error
 
 
-def build_payload_from_user_request(user_request: str) -> Dict[str, Any]:
+# ----------------------------
+# CONSTRAINTS -> PAYLOAD
+# ----------------------------
+def build_payload_from_constraints(extracted: Dict[str, Any]) -> Dict[str, Any]:
     """
-    We fetch a broad candidate set; your solver will do the real filtering.
+    Build RapidAPI /cruises/search payload from extracted HARD constraints.
+    Keep it moderately broad; MILP does the final filtering.
     """
-    today = date.today()
-    earliest = today + timedelta(days=1)  # safest (avoids timezone edge cases)
-    latest = date(today.year + 3, 12, 31)  # broad window
+    hard = extracted.get("hard_constraints", {}) or {}
 
-    return {
-        "destinations": [],
-        "earliestStartDate": earliest.isoformat(),
-        "latestStartDate": latest.isoformat(),
-        "durationMin": 3,
-        "durationMax": 30,
-        "numberOfGuests": [2],
+    # Dates (default to 2026 if user didn't specify)
+    dw = hard.get("departure_date_window")
+    if dw and dw.get("earliest") and dw.get("latest"):
+        earliest = str(dw["earliest"])
+        latest = str(dw["latest"])
+    else:
+        earliest = "2026-01-01"
+        latest = "2026-12-31"
+
+    # Duration
+    dr = hard.get("duration_range")
+    duration_min = int(dr["min_days"]) if (dr and dr.get("min_days") is not None) else 3
+    duration_max = int(dr["max_days"]) if (dr and dr.get("max_days") is not None) else 30
+
+    # Guests (API expects array!)
+    num_guests = hard.get("num_guests") or 2
+    number_of_guests = [int(num_guests)]
+
+    # Destinations (API allows max 2)
+    dests = hard.get("allowed_destinations")
+    if isinstance(dests, list):
+        destinations = dests[:2]
+    else:
+        destinations = []
+
+    payload = {
+        "destinations": destinations,
+        "earliestStartDate": earliest,
+        "latestStartDate": latest,
+        "durationMin": duration_min,
+        "durationMax": duration_max,
+        "numberOfGuests": number_of_guests,
     }
+
+    return payload
+
+
+def extract_constraints_ui(user_request: str, request_id: str) -> Dict[str, Any]:
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        return {"error": "GOOGLE_API_KEY not found in environment."}
+
+    extractor = LLMConstraintExtractor(api_key=api_key)
+    return extractor.extract_constraints(user_request=user_request, request_id=request_id)
 
 
 # ----------------------------
@@ -376,30 +415,36 @@ def render_input() -> str:
 
 
 def debug_solver_result(result: Dict[str, Any], cruises: List[Dict[str, Any]]) -> None:
-    """Display detailed constraint extraction and sample cruises for debugging."""
     st.markdown("### 🐛 Debug Information")
 
     with st.expander("Extracted Constraints (These filtered your cruises)", expanded=True):
         constraints = result.get("constraints_extracted", {})
         st.json(constraints)
-        st.markdown("""
-        **These hard constraints were extracted from your request.** 
+        st.markdown(
+            """
+        **These hard constraints were extracted from your request.**
         If no cruises match, one or more constraints may be:
-        - **Too strict** (e.g., exact dates, high price threshold)
-        - **Misaligned** (e.g., destination keywords don't match actual cruise data)
-        - **Data format mismatch** (e.g., dates in different format than API returns)
-        """)
+        - **Too strict** (e.g., exact dates, very low budget)
+        - **Mis-extracted** (e.g., wrong destination code)
+        - **Data mismatch** (API returns missing prices or unexpected destination codes)
+        """
+        )
 
     with st.expander("Full Solver Response", expanded=False):
         st.json(result)
 
 
-def render_result(result: Dict[str, Any], fetch_debug: Optional[str] = None, cruises: List[Dict[str, Any]] = None) -> None:
+def render_result(
+    result: Dict[str, Any],
+    fetch_debug: Optional[str] = None,
+    cruises: Optional[List[Dict[str, Any]]] = None,
+) -> None:
     if fetch_debug:
         with st.expander("Show fetch error details", expanded=False):
             st.code(fetch_debug)
 
-    if result.get("constraints_extracted"):
+    # Only show this "no feasible" info when NOT success
+    if result.get("status") != "success" and result.get("constraints_extracted"):
         st.info("No feasible cruises. Here are the extracted constraints:")
         st.json(result.get("constraints_extracted", {}))
         if cruises:
@@ -451,8 +496,6 @@ def render_result(result: Dict[str, Any], fetch_debug: Optional[str] = None, cru
         st.markdown("#### Raw Result (minus selected_cruise)")
         st.json({k: v for k, v in result.items() if k != "selected_cruise"})
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
 
 def main() -> None:
     inject_premium_css()
@@ -475,12 +518,26 @@ def main() -> None:
     cruises: List[Dict[str, Any]] = []
     fetch_err: Optional[str] = None
 
+    # Stable request id for BOTH: extraction + solver (so caches line up)
+    ui_request_id = f"ui_req_{int(time.time())}"
+
     if sidebar["mode"].startswith("LIVE"):
         if not sidebar["rapid_key"]:
             st.error("RAPIDAPI_KEY missing in your .env. Add it and restart Streamlit.")
             return
 
-        payload = build_payload_from_user_request(user_request)
+        with st.spinner("🧠 Extracting constraints (LLM)..."):
+            extracted = extract_constraints_ui(user_request.strip(), ui_request_id)
+
+        if "error" in extracted:
+            st.error(extracted["error"])
+            return
+
+        payload = build_payload_from_constraints(extracted)
+
+        with st.expander("🔍 Debug: extracted constraints & API payload", expanded=False):
+            st.json(extracted)
+            st.json(payload)
 
         with st.spinner("📡 Fetching live cruise candidates (POST /cruises/search)..."):
             cruises, fetch_err = fetch_cruises_search_cached(
@@ -508,13 +565,13 @@ def main() -> None:
 
     st.success(f"🚢 Loaded {len(cruises)} cruises")
 
-    with st.spinner("🔄 Extracting constraints & optimizing..."):
+    with st.spinner("🔄 Optimizing with Hybrid (LLM + MILP)..."):
         result = run_hybrid(
             user_request=user_request.strip(),
             cruises=cruises,
             alpha=sidebar["alpha"],
             beta=sidebar["beta"],
-            request_id=f"ui_req_{int(time.time())}",
+            request_id=ui_request_id,
             time_limit=sidebar["time_limit"],
         )
 
