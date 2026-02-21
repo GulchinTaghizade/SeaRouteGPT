@@ -1,8 +1,0 @@
-{
-  "request_id": "req_051",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "Find a 12-day South African cruise visiting Cape Town and safari experiences in November.",
-  "llm_output": "{\"selectedCruiseId\":\"NO_VALID_CRUISE\",\"justification\":\"The user is requesting a South African cruise visiting Cape Town with safari experiences in November.  There are no cruises that include 'South Africa' in the itineraryDestinations, nor do any of the itineraries mention 'safari' or any South African ports. Therefore, no valid cruise can be selected.\"}"
-}

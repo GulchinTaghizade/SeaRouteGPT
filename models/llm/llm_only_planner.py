@@ -1,8 +1,11 @@
 import json
+import types
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+
 from google import genai
+from google.genai import types
 
 
 class LLMPlanner:
@@ -57,6 +60,10 @@ class LLMPlanner:
         response = self.client.models.generate_content(
             model=self.MODEL_NAME,
             contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.3,
+                top_p=0.9,
+            ),
         )
         llm_output = getattr(response, "text", "") or ""
 

@@ -1,0 +1,8 @@
+{
+  "request_id": "req_044",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a transatlantic repositioning cruise from Europe to New York in May.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any cruises that depart from Europe and end in New York in May. Therefore, there is no valid cruise.\"\n}\n```"
+}

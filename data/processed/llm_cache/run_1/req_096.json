@@ -1,0 +1,8 @@
+{
+  "request_id": "req_096",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find me the most affordable 9-day Alaska cruise for a group of four in June.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match the request. The user is looking for a 9-day Alaska cruise for 4 people in June. The candidate set does not have the ability to specify the number of guests, and there are no cruises that are exactly 9 days in duration that go to Alaska in June.\"\n}\n```"
+}

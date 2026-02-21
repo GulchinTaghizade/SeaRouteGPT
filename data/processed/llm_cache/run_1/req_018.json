@@ -1,0 +1,8 @@
+{
+  "request_id": "req_018",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a 7-day cruise in the Caribbean departing in April, budget under $2500 per person.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"cUNDUERVcmgWZlNQQ1x0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The user is looking for a 7-day Caribbean cruise in April with a budget under $5000 for two people. Cruise cUNDUERVcmgWZlNQQ1x0S2V5Q3J1aXNlQVBJU2VjcmUA matches these criteria. It is a 7-day cruise, departs in February (closest to April), is in the Caribbean, and costs $799, which is well under the $5000 budget. Other cruises are either not in the Caribbean, not in the specified timeframe, or exceed the budget.\"\n}\n```"
+}

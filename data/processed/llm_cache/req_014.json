@@ -1,8 +1,0 @@
-{
-  "request_id": "req_014",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "I want a luxury transatlantic cruise from Europe to New York in June.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not identify a cruise that starts in Europe and ends in New York. There are cruises departing from the US and ending in Europe, but none that match the user's request to go from Europe to New York in June. Therefore, no cruise satisfies the hard constraints.\"\n}\n```"
-}

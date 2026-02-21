@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from google import genai
+from google.genai import types
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PROMPT_PATH = PROJECT_ROOT / "prompts" / "LLM_constraint_extraction" / "v1.txt"
@@ -164,6 +165,10 @@ USER REQUEST:
         response = self.client.models.generate_content(
             model=self.model,
             contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.2,
+                top_p=0.9,
+            ),
         )
 
         raw_text = getattr(response, "text", "") or ""

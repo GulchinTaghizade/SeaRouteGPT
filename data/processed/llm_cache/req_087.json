@@ -1,8 +1,0 @@
-{
-  "request_id": "req_087",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "Find a 9-day Australia cruise visiting Sydney and Melbourne in February.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set contains cruises with destinations in AK, PA, CD, AR, BI, EA, NE, NO, CA, CS, CW, MC, PC, SA, US, GA, AN, AZ, SI, GA, TP, AS but none in Australia. Also the available cruises in February are in the Caribbean. Therefore there is no cruise which satisfies all the user's HARD constraints.\"\n}\n```"
-}

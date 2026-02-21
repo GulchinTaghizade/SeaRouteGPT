@@ -1,8 +1,0 @@
-{
-  "request_id": "req_089",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "I want a 10-day river cruise through France visiting wine regions in October.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The user is requesting a river cruise through France in October for 10 days visiting wine regions, but all available cruises are ocean cruises, not river cruises. Furthermore, no cruises specifically mention visiting wine regions in France or have a duration of 10 days. Therefore, no cruise satisfies the user's requirements.\"\n}\n```"
-}

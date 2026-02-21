@@ -27,8 +27,6 @@ def main():
 
     planner = LLMPlanner(api_key=api_key)
 
-    # Optional: quick smoke test
-    # user_requests = user_requests[:5]
 
     cache_hits = 0
     api_calls = 0
@@ -45,14 +43,8 @@ def main():
                 user_request=text,
                 request_id=rid
             )
-
-            # If you add from_cache into the planner output, use it here.
-            # For now, infer cache-hit if request_id file exists (planner caches raw output).
-            # Better: update LLMPlanner to return "from_cache": True/False explicitly.
             from_cache = False
             try:
-                # If your planner returns dict with llm_output always, you can detect cache-hit
-                # only if you add it. So we keep this as False by default.
                 from_cache = bool(result.get("from_cache", False))
             except Exception:
                 pass

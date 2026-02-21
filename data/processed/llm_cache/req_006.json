@@ -1,8 +1,0 @@
-{
-  "request_id": "req_006",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "I want a budget-friendly Caribbean cruise anytime in the summer under $1500 per person.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ETpFXjdQcGQWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise departs in August (summer), visits the Caribbean, is not sold out, and the total price of $754.67 for 2 people is well under the $3000 budget for 2.  Other cruises are either more expensive or do not have pricing information.\"\n}\n```"
-}

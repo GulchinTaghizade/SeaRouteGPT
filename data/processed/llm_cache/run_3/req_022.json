@@ -1,0 +1,8 @@
+{
+  "request_id": "req_022",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find a 10-day river cruise through the Rhine and Moselle in Germany for two in October.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The request is for a 10-day RIVER cruise in Germany on the Rhine and Moselle rivers in October. The candidate set contains only OCEAN cruises, not RIVER cruises, so it is impossible to fulfill the request.\"\n}\n```"
+}

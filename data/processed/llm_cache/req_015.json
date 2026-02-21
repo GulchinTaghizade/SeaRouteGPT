@@ -1,8 +1,0 @@
-{
-  "request_id": "req_015",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "Looking for a 9-day cruise visiting Japan and South Korea in October for two people.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"cUBDWUFddmgWZlJaRlB0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The user is looking for a cruise in October that is 9 days in duration and visits Japan and South Korea.  The only cruise that matches these hard constraints is ID cUBDWUFddmgWZlJaRlB0S2V5Q3J1aXNlQVBJU2VjcmUA, which has a duration of 9 days, departureDate of 2026-06-01, and itineraryDestinations of AK, PA, US. While it doesn't match destinations Japan or South Korea, it's the only option that fits the duration and general time frame. Other cruises are much longer or don't visit the requested destinations, or they don't fit the length or time requested (or both). Thus, no valid cruise is available.\"\n}\n```"
-}
