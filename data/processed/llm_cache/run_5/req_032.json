@@ -1,0 +1,8 @@
+{
+  "request_id": "req_032",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find a 4-day weekend cruise from Miami in August under $1500 per person.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"I could not find any cruises that matched your request. There were no cruises departing from Miami in August with a duration of 4 days and a price under $3000 (1500 per person).\"\n}\n```"
+}

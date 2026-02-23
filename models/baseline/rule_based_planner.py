@@ -146,9 +146,6 @@ class RuleBasedPlanner:
             if not any(a in dests for a in allowed):
                 return False
 
-        # NOTE: required_ports removed per your thesis update.
-        # If you ever re-add it later, thesis version should clarify ALL vs ANY behavior.
-
         # num_guests: your catalog likely doesn't support max_guests consistently; keep it optional
         num_guests = hard.get("num_guests")
         if num_guests is not None:

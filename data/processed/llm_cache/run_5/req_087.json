@@ -1,0 +1,8 @@
+{
+  "request_id": "req_087",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find a 9-day Australia cruise visiting Sydney and Melbourne in February.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set does not contain any cruises to Australia with a duration of 9 days, nor do any of the cruises visit both Sydney and Melbourne. Therefore, no cruise satisfies the hard constraints.\"\n}\n```"
+}

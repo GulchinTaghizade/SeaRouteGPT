@@ -1,7 +1,7 @@
 {
   "hard_constraints": {
     "departure_date_window": {
-      "earliest": "2027-02-01",
+      "earliest": "2026-12-01",
       "latest": "2027-02-28"
     },
     "duration_range": {
@@ -27,6 +27,6 @@
     "from_cache": false,
     "model": "models/gemini-2.0-flash",
     "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_constraint_extraction/v1.txt",
-    "raw_llm_response_truncated": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2027-02-01\",\n      \"latest\": \"2027-02-28\"\n    },\n    \"duration_range\": {\n      \"min_days\": 7,\n      \"max_days\": 7\n    },\n    \"max_budget\": null,\n    \"allowed_destinations\": null,\n    \"required_ports\": [],\n    \"num_guests\": null,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"preferred_cabin_category\": null,\n    \"preferred_ports\": [],\n    \"preferred_duration_days\": 7,\n    \"price_sensitivity\": \"low\",\n    \"cruise_type\": \"luxury\"\n  }\n}\n```"
+    "raw_llm_response_truncated": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\n      \"earliest\": \"2026-12-01\",\n      \"latest\": \"2027-02-28\"\n    },\n    \"duration_range\": {\n      \"min_days\": 7,\n      \"max_days\": 7\n    },\n    \"max_budget\": null,\n    \"allowed_destinations\": null,\n    \"required_ports\": [],\n    \"num_guests\": null,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"preferred_cabin_category\": null,\n    \"preferred_ports\": [],\n    \"preferred_duration_days\": 7,\n    \"price_sensitivity\": \"low\",\n    \"cruise_type\": \"luxury\"\n  }\n}\n```"
   }
 }

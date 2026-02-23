@@ -21,7 +21,7 @@
 {"request_id": "req_021", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_022", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_023", "selected_cruise_id": "ACInWUQmHhJ_YVBjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA", "feasibility": 1.0, "personalization": 1.0, "optimization_utility": 1.0, "violations": []}
-{"request_id": "req_024", "selected_cruise_id": "DjNFUCRXcWgWYVVRREhEeUhJdHJ1aXNlQVBJU2VjcmUA", "feasibility": 1.0, "personalization": 1.0, "optimization_utility": 1.0, "violations": []}
+{"request_id": "req_024", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_025", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_026", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_027", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
@@ -44,7 +44,7 @@
 {"request_id": "req_044", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_045", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_046", "selected_cruise_id": "DjNFUCRXcWgWYVVRREhEeUhJdHJ1aXNlQVBJU2VjcmUA", "feasibility": 1.0, "personalization": 1.0, "optimization_utility": 1.0, "violations": []}
-{"request_id": "req_047", "selected_cruise_id": "DCREWzEucGIWYVVRREhEfUhJcXJ1aXNlQVBJU2VjcmUA", "feasibility": 1.0, "personalization": 1.0, "optimization_utility": 1.0, "violations": []}
+{"request_id": "req_047", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_048", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_049", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_050", "selected_cruise_id": "cUNAX0JlQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA", "feasibility": 1.0, "personalization": 1.0, "optimization_utility": 1.0, "violations": []}
@@ -70,7 +70,7 @@
 {"request_id": "req_070", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_071", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_072", "selected_cruise_id": "BztHWUFTcWR5aigqMyYxGmV5Q3J1aXNlQVBJU2VjcmUA", "feasibility": 1.0, "personalization": 1.0, "optimization_utility": 1.0, "violations": []}
-{"request_id": "req_073", "selected_cruise_id": "ETZFXCRScWcWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA", "feasibility": 1.0, "personalization": 1.0, "optimization_utility": 0.9494072580149292, "violations": []}
+{"request_id": "req_073", "selected_cruise_id": "cUJNUUJlQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA", "feasibility": 1.0, "personalization": 1.0, "optimization_utility": 1.0, "violations": []}
 {"request_id": "req_074", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_075", "selected_cruise_id": "NO_ITINERARY", "feasibility": 0.0, "personalization": 0.0, "optimization_utility": 0.0, "violations": ["no_itinerary_returned"]}
 {"request_id": "req_076", "selected_cruise_id": "BiAnWEMiHh5_YlctcmV0S2V5Q3J1aXNlQVBJU2VjcmUA", "feasibility": 1.0, "personalization": 1.0, "optimization_utility": 1.0, "violations": []}

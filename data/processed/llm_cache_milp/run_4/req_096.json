@@ -22,13 +22,13 @@
     "preferred_ports": [],
     "preferred_duration_days": 9,
     "price_sensitivity": "high",
-    "cruise_type": "budget"
+    "cruise_type": null
   },
   "metadata": {
     "request_id": "req_096",
     "from_cache": false,
     "model": "models/gemini-2.0-flash",
     "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_constraint_extraction/v1.txt",
-    "raw_llm_response_truncated": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\"earliest\": \"2026-06-01\", \"latest\": \"2026-06-30\"},\n    \"duration_range\": {\"min_days\": 9, \"max_days\": 9},\n    \"max_budget\": null,\n    \"allowed_destinations\": [\"AK\"],\n    \"required_ports\": [],\n    \"num_guests\": 4,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"preferred_cabin_category\": null,\n    \"preferred_ports\": [],\n    \"preferred_duration_days\": 9,\n    \"price_sensitivity\": \"high\",\n    \"cruise_type\": \"budget\"\n  }\n}\n```"
+    "raw_llm_response_truncated": "```json\n{\n  \"hard_constraints\": {\n    \"departure_date_window\": {\"earliest\": \"2026-06-01\", \"latest\": \"2026-06-30\"},\n    \"duration_range\": {\"min_days\": 9, \"max_days\": 9},\n    \"max_budget\": null,\n    \"allowed_destinations\": [\"AK\"],\n    \"required_ports\": [],\n    \"num_guests\": 4,\n    \"exclude_sold_out\": true\n  },\n  \"soft_preferences\": {\n    \"preferred_cruise_line\": null,\n    \"preferred_cabin_category\": null,\n    \"preferred_ports\": [],\n    \"preferred_duration_days\": 9,\n    \"price_sensitivity\": \"high\",\n    \"cruise_type\": null\n  }\n}\n```"
   }
 }

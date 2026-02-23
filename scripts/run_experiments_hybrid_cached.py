@@ -9,15 +9,15 @@ from solvers.milp_solver import MILPSolver
 from solvers.objective import utility_objective
 
 
-# ===== PATHS (edit if your folders differ) =====
+# ===== PATHS  =====
 CRUISE_CATALOG_PATH = Path("data/raw/cruises.json")
 USER_REQUESTS_PATH = Path("data/synthetic/user_requests.json")
 
-# cached constraints per request_id (your hybrid constraint extraction cache)
+# cached constraints per request_id
 CONSTRAINTS_CACHE_DIR = Path("data/processed/llm_cache_milp")
 
-OUT_RAW = Path("results/hybrid_raw_runs_4.jsonl")
-OUT_SUMMARY = Path("results/hybrid_summary_run_4.json")
+OUT_RAW = Path("results/hybrid_raw_runs_5.jsonl")
+OUT_SUMMARY = Path("results/hybrid_summary_run_5.json")
 
 
 # ===== HELPERS =====

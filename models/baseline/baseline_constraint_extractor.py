@@ -4,10 +4,10 @@ from typing import Dict, Any, Optional, List, Tuple
 
 DESTINATION_KEYWORDS = {
     "alaska": ["AK"],
-    "caribbean": ["CA", "CE", "CS", "CW"],
+    "caribbean": ["CA", "CS", "CW"],
     "bahamas": ["BH"],
     "bermuda": ["BM"],
-    "mediterranean": ["MA", "ME", "MW"],
+    "mediterranean": ["MA"],
     "panama": ["PC"],
     "panama canal": ["PC"],
     "transatlantic": ["TC"],
@@ -332,8 +332,7 @@ class ConstraintExtractor:
         dur = self._extract_duration(text)
         if dur is None:
             warnings.append("No duration specified")
-            # Keep hard duration unset; set a reasonable soft default
-            soft_preferences["preferred_duration_days"] = 7
+            soft_preferences["preferred_duration_days"] = None
         else:
             hard_constraints["duration_range"] = dur
             soft_preferences["preferred_duration_days"] = (dur["min_days"] + dur["max_days"]) // 2

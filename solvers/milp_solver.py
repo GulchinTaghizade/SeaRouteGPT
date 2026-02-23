@@ -135,12 +135,6 @@ class MILPSolver:
                 if dests.isdisjoint(set(allowed)):
                     solver.Add(x[i] == 0)
 
-            # required ports (must include ALL required ports)
-            required_ports = hard.get("required_ports") or []
-            if required_ports:
-                ports = set(self._get_ports(cruise))
-                if not set(required_ports).issubset(ports):
-                    solver.Add(x[i] == 0)
 
         # Objective
         preferred_duration = soft.get("preferred_duration_days", preferred_duration)
