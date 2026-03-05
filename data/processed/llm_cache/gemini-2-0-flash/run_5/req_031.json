@@ -1,0 +1,8 @@
+{
+  "request_id": "req_031",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 7-day South Pacific cruise visiting Fiji and Samoa in December for two couples.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The candidate set does not contain any cruises that match the requested destination (South Pacific) and duration (7 days).\"\n}\n```"
+}

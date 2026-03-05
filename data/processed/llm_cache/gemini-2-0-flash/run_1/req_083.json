@@ -1,0 +1,8 @@
+{
+  "request_id": "req_083",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want an 8-day Europe and Mediterranean cruise for two in April under $3500.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"EzNFUUFTcWR5Z2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The user is looking for an 8-day Europe and Mediterranean cruise in April under $3500. The cruise with cruiseId 'EzNFUUFTcWR5Z2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA' satisfies all the hard constraints. It is 8 days long, departs in April (2026-04-03), has itineraryDestinations including EA, MA, and MW, and the price of $1484.8 is less than $3500.\"\n}\n```"
+}

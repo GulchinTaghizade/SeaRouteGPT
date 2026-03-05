@@ -1,0 +1,8 @@
+{
+  "request_id": "req_030",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a cruise in the Caribbean in November for 8 days, all-inclusive preferred.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises available in the provided list that go to the Caribbean, depart in November, and have a duration of exactly 8 days.\"\n}\n```"
+}

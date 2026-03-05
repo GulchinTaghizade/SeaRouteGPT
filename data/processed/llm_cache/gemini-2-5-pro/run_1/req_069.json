@@ -1,0 +1,8 @@
+{
+  "request_id": "req_069",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find a 6-day cruise for a corporate team building in Southeast Asia in February.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no available cruises that go to Southeast Asia in February. All cruises to Southeast Asia in the provided list depart in October or November.\"\n}\n```"
+}

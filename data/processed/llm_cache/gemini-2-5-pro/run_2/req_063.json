@@ -1,0 +1,8 @@
+{
+  "request_id": "req_063",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find a 9-day cruise visiting islands in April for spring vacation.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no available cruises that match the user's hard constraints. Specifically, no cruises with a duration of exactly 9 days are available for departure in April.\"\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "request_id": "req_100",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a 7-day all-inclusive cruise for a family of five in April under $5500.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"The request specifies a family of 5, but all cruises in the candidate set are for 2 guests. Also, the request specifies 'all-inclusive', but this is not a filterable attribute. Therefore, no cruise satisfies the hard constraints.\"\n}\n```"
+}

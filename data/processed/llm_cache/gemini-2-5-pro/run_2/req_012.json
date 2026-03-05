@@ -1,0 +1,8 @@
+{
+  "request_id": "req_012",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want an all-inclusive activity cruise with water sports in August for two weeks in Southeast Asia.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no available cruises that go to Southeast Asia in August 2026. The available cruises in August are to other destinations like the Caribbean, and the cruises to Asia are scheduled for October and November.\"\n}\n```"
+}

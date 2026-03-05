@@ -1,0 +1,8 @@
+{
+  "request_id": "req_023",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 7-day Iceland and Arctic cruise for adventure lovers in August.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruise was found that matches all hard constraints. The request is for a 7-day cruise to Iceland or the Arctic in August, but no available cruises meet all three of these criteria simultaneously.\"\n}\n```"
+}

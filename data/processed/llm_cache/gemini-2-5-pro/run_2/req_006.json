@@ -1,0 +1,8 @@
+{
+  "request_id": "req_006",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a budget-friendly Caribbean cruise anytime in the summer under $1500 per person.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"cUNNUEJlQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise is the most budget-friendly option that meets all your criteria. It's a Caribbean cruise departing in summer (August 2, 2026) and the total price of $509 is well under your budget of $3000 ($1500 per person).\"\n}\n```"
+}

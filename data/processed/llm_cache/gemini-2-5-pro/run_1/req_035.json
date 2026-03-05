@@ -1,0 +1,8 @@
+{
+  "request_id": "req_035",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find me a family-friendly Disney cruise for four people in June under $6000.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No valid cruise was found. The user requested a cruise for four people, but all available cruises in the provided list are for two guests.\"\n}\n```"
+}

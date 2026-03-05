@@ -1,0 +1,8 @@
+{
+  "request_id": "req_066",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find me a 7-day cruise in the Caribbean for adults-only in March.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match the specified criteria. The user is looking for a 7-day adults-only cruise in the Caribbean in March. There are cruises to the Caribbean, and some are 7 days, but there are no adults-only cruises in March.\"\n}\n```"
+}

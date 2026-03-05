@@ -1,0 +1,8 @@
+{
+  "request_id": "req_026",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 5-day New England cruise in October with fall foliage viewing for two people.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match the requested destination (New England) and duration (5 days) in October.  The available cruises are primarily in the Caribbean, Mediterranean, Alaska and other destinations, and the durations vary but none are specifically 5 days in New England.\"\n}\n```"
+}

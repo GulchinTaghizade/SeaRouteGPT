@@ -1,0 +1,8 @@
+{
+  "request_id": "req_002",
+  "model": "models/gemini-2.0-flash",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a 7-day Caribbean cruise in June, around $3500 total for two people",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"No cruises match the destination (Caribbean), duration (7 days), and departure date (June) constraints. There are cruises departing in June, but they are to Alaska or the Mediterranean. There are Caribbean cruises, but they depart in February or August.\"\n}\n```"
+}

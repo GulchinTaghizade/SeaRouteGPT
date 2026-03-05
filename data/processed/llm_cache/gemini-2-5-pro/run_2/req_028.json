@@ -1,0 +1,8 @@
+{
+  "request_id": "req_028",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find me a 12-day Southeast Asia cruise visiting Vietnam, Thailand, and Cambodia in March.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises available in the candidate set that depart in March. Additionally, no available cruises visit all requested countries (Vietnam, Thailand, and Cambodia).\"\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "request_id": "req_058",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for an 8-day Alaskan Inside Passage cruise in June for nature enthusiasts.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"EkREXCw0d2F8U2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This 9-day Alaskan cruise is the best match. It departs in June as requested and its duration is very close to the user's preference for 8 days. The itinerary includes classic Inside Passage ports like Juneau, Sitka, and Ketchikan, making it ideal for nature enthusiasts. At $829, it is also the most affordable option among the top contenders.\"\n}\n```"
+}
