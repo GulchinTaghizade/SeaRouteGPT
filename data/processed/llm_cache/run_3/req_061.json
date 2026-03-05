@@ -1,8 +1,0 @@
-{
-  "request_id": "req_061",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "Looking for a 10-day Panama Canal cruise with Costa Rica stops in December.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in the candidate set that match the requested criteria. Specifically, there are no 10-day Panama Canal cruises that include Costa Rica and depart in December.\"\n}\n```"
-}

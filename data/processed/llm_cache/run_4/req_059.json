@@ -1,8 +1,0 @@
-{
-  "request_id": "req_059",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "I want a 12-day Japan and South Korea cruise in April for two people.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in April that visit both Japan and South Korea and have a duration of 12 days. The cruises to Japan and South Korea are in October and November.\"\n}\n```"
-}

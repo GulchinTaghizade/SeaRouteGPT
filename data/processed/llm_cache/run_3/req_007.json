@@ -1,8 +1,0 @@
-{
-  "request_id": "req_007",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "Plan an Alaska cruise for two people sometime in June or July.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"Ez1HWUFTcWZ5YjYmMzYxCmV5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The user is looking for an Alaska cruise in June or July. The cruise with cruiseId Ez1HWUFTcWZ5YjYmMzYxCmV5Q3J1aXNlQVBJU2VjcmUA is the cheapest Alaska cruise in June, departing on 2026-06-01 for 7 days, with a price of $938. All other cruises are more expensive.\"\n}\n```"
-}

@@ -1,8 +1,0 @@
-{
-  "request_id": "req_095",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "I want a luxury 7-day cruise for an executive retreat in February.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ByVHWEtdQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"The Disney Cruise (cruiseId: ByVHWEtdQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA) is the only 7-day cruise in February. While it is very expensive at $18306.50, it is a Disney cruise, which is generally considered a luxury cruise line. All other cruises either have a different duration or are sold out.\"\n}\n```"
-}

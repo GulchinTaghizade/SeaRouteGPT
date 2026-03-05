@@ -1,8 +1,0 @@
-{
-  "request_id": "req_069",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "Find a 6-day cruise for a corporate team building in Southeast Asia in February.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises in February with a duration of 6 days and itinerary destinations in Southeast Asia. The cruises available in February are primarily in the Caribbean, and the cruises to Southeast Asia are in October and November with durations longer than 6 days.\"\n}\n```"
-}

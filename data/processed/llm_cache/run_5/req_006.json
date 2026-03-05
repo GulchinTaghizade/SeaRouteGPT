@@ -1,8 +1,0 @@
-{
-  "request_id": "req_006",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "I want a budget-friendly Caribbean cruise anytime in the summer under $1500 per person.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ETpFXjdQcGQWYVVRREhEc0hJcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise to the Southern Caribbean departing on 2026-08-01 is the only one that satisfies the hard constraints. The price of $754.67 for 2 people is under the $3000 budget ($1500 per person), and it is in the summer. Other cruises are either too expensive or not in the Caribbean.\"\n}\n```"
-}

@@ -1,8 +1,0 @@
-{
-  "request_id": "req_027",
-  "model": "models/gemini-2.0-flash",
-  "prompt_version": "v1",
-  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
-  "user_request": "Looking for a 12-day Western Mediterranean cruise visiting France and Spain in May.",
-  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"BiNFUD5Wc2QWYVVRREhEfUhJcXJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise is 9 days, departing on 2026-06-02, and visits France (FRNCE) and Spain (ESBCN). While it is not exactly 12 days, it is the closest duration to the preferred 12 days, and it satisfies the destinations constraint. The other cruises are either sold out, do not visit both France and Spain, or are not in the Western Mediterranean.\"\n}\n```"
-}

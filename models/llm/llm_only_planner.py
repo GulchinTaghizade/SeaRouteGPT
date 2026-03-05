@@ -17,7 +17,7 @@ class LLMPlanner:
     - Post-LLM validation (including cache re-validation)
     """
 
-    MODEL_NAME = "models/gemini-2.0-flash"
+    MODEL_NAME = "models/gemini-2.5-pro"
     PROMPT_VERSION = "v1"
 
     def __init__(self, api_key: str):

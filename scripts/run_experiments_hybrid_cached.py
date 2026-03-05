@@ -16,8 +16,8 @@ USER_REQUESTS_PATH = Path("data/synthetic/user_requests.json")
 # cached constraints per request_id
 CONSTRAINTS_CACHE_DIR = Path("data/processed/llm_cache_milp")
 
-OUT_RAW = Path("results/hybrid_raw_runs_5.jsonl")
-OUT_SUMMARY = Path("results/hybrid_summary_run_5.json")
+OUT_RAW = Path("results/hybrid_raw_runs_2.jsonl")
+OUT_SUMMARY = Path("results/hybrid_summary_run_2.json")
 
 
 # ===== HELPERS =====

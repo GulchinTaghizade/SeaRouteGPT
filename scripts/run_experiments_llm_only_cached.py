@@ -12,8 +12,8 @@ CONSTRAINTS_CACHE_DIR = Path("data/processed/llm_cache_milp")
 
 CRUISE_CATALOG_PATH = Path("data/raw/cruises.json")
 
-OUT_RAW = Path("results/llm_only_cached_raw_runs_5.jsonl")
-OUT_SUMMARY = Path("results/llm_only_cached_summary_run_5.json")
+OUT_RAW = Path("results/llm_only_cached_raw_runs_2.jsonl")
+OUT_SUMMARY = Path("results/llm_only_cached_summary_run_2.json")
 
 
 # ========= HELPERS =========

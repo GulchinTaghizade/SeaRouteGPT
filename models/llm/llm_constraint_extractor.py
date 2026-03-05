@@ -18,7 +18,7 @@ class LLMConstraintExtractor:
       user_request -> LLM -> {hard_constraints, soft_preferences} -> cache(reqID.json)
     """
 
-    def __init__(self, api_key: str = None, model: str = "models/gemini-2.0-flash"):
+    def __init__(self, api_key: str = None, model: str = "models/gemini-2.5-pro"):
         if api_key is None:
             import os
             api_key = os.getenv("GOOGLE_API_KEY")
