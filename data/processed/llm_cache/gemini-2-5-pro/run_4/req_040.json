@@ -1,0 +1,8 @@
+{
+  "request_id": "req_040",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for an 8-day Baltic Sea cruise visiting multiple countries in August.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no cruises available in the provided set that sail to the Baltic Sea or Northern Europe in August. All available cruises in August are to the Caribbean.\"\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "request_id": "req_019",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a Mediterranean cruise visiting Spain, France, and Italy in June, around 8 days.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"DidHWUFTcWZ5YiY1JCYiHWV5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise departs on 2026-06-01, which is within the requested June window. It visits all requested countries: Italy (ITCVV, ITPTF), France (FRMRS), and Spain (ESVLC, ESIBZ). Its 7-day duration is close to the user's preference for around 8 days. Among all cruises that meet these criteria, this one has the lowest price at $891.\"\n}\n```"
+}

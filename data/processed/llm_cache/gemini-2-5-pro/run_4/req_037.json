@@ -1,0 +1,8 @@
+{
+  "request_id": "req_037",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a 6-day Mexico Pacific coast cruise for honeymooners in May.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no available cruises that match all the hard constraints. No cruises were found that are 6 days long, visit the Mexico Pacific coast, and depart in May.\"\n}\n```"
+}

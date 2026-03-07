@@ -1,0 +1,8 @@
+{
+  "request_id": "req_095",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a luxury 7-day cruise for an executive retreat in February.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AipFXiRSd2EWYVVRREhEeUhJdHJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This 7-day Celebrity cruise departing on February 7, 2026, perfectly matches your hard constraints for duration and date. Celebrity Cruises is a premium line known for its 'modern luxury' experience, making it an excellent choice for a luxury executive retreat.\"\n}\n```"
+}

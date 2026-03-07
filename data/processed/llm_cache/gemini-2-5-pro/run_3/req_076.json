@@ -1,0 +1,8 @@
+{
+  "request_id": "req_076",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a luxury 10-day Mediterranean cruise visiting multiple countries in May.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"BiAnWEMiHh5_YlctcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This Princess cruise is the best match as it perfectly meets the user's request for a 10-day Mediterranean cruise in May. It departs on May 2, 2026, has a duration of exactly 10 days, and visits five countries (Italy, Greece, Montenegro, Croatia, and Malta), satisfying the multi-country preference. Princess is a premium cruise line, aligning with the user's desire for a luxury experience.\"\n}\n```"
+}

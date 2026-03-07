@@ -1,0 +1,8 @@
+{
+  "request_id": "req_079",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Looking for a 7-day Bermuda cruise for a second honeymoon in September.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no available cruises that match all the hard constraints: a 7-day duration, a destination of Bermuda, and a departure in September.\"\n}\n```"
+}

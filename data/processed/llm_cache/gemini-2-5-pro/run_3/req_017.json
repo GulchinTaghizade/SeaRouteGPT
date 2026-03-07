@@ -1,0 +1,8 @@
+{
+  "request_id": "req_017",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a summer Alaska cruise with glacier viewing, 12-14 days in June.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AiUyWURVdxEAEVA8M1NGeUgtdTM8K0ZlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise perfectly matches your request for a 12-14 day Alaska cruise in June. It departs on June 1, 2026, has a duration of 12 days, and includes glacier viewing at both Hubbard Glacier (USHG1) and Glacier Bay (USGB1). Among all the options that fit your criteria, it is the most affordable at $2234.\"\n}\n```"
+}

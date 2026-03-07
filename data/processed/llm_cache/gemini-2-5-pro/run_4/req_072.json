@@ -1,0 +1,8 @@
+{
+  "request_id": "req_072",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "Find me a 14-day world cruise segment visiting multiple continents in April.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"BztHWUFTcWR5aigqMyYxGmV5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This is the lowest-priced cruise that meets all your criteria. It is a 14-day transatlantic cruise departing on April 9, 2026, visiting destinations in both the US and Europe, fulfilling your request for a world cruise segment visiting multiple continents.\"\n}\n```"
+}

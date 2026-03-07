@@ -1,0 +1,8 @@
+{
+  "request_id": "req_014",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a luxury transatlantic cruise from Europe to New York in June.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no available cruises that are transatlantic from Europe to New York with a departure date in June. The available transatlantic cruises are in other months and do not go to New York.\"\n}\n```"
+}

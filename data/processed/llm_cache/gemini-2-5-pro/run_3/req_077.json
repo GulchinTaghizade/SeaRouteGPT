@@ -1,0 +1,8 @@
+{
+  "request_id": "req_077",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 6-day Baja California cruise from San Diego in March under $1800.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"Your request for a 6-day cruise from San Diego in March under $1800 could not be met. There are no cruises in the provided list that match the departure port (San Diego), duration (6 days), and date window (March).\"\n}\n```"
+}

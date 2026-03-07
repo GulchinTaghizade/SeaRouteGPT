@@ -1,0 +1,8 @@
+{
+  "request_id": "req_031",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a 7-day South Pacific cruise visiting Fiji and Samoa in December for two couples.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no available cruises that match the user's hard constraints. The request is for a cruise in December, but no cruises in the candidate set depart in December. Additionally, no available cruises visit the requested South Pacific destinations of Fiji and Samoa.\"\n}\n```"
+}

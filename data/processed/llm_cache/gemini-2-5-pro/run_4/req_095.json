@@ -1,0 +1,8 @@
+{
+  "request_id": "req_095",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "I want a luxury 7-day cruise for an executive retreat in February.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"ckVCXENlQVBJU2VjcmV0S2V5Q3J1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This 7-day cruise departs on February 7, 2026, satisfying your date and duration requirements. It best matches your preference for a luxury executive retreat as it is the highest-priced option among the valid cruises and offers a Suite room type (roomTypeCategoryCode: 'S').\"\n}\n```"
+}
