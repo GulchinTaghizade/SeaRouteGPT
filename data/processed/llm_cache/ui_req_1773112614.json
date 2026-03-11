@@ -1,0 +1,8 @@
+{
+  "request_id": "ui_req_1773112614",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "7-day Caribbean cruise in June 2026 for 2 people under $3000. Prefer Bahamas and Cayman Islands.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AStFXjZReGUWYVVRREhEfUhLcnJ1aXNlQVBJU2VjcmUA\",\n  \"justification\": \"This cruise meets all hard constraints: it is a 7-day cruise departing in June 2026 (2026-06-21) and its price of $978.30 is well under the $3000 budget. It is the best match for soft preferences as its itinerary includes the Bahamas ('BH'), a preferred destination. It is also the lowest-priced option that visits the Bahamas.\"\n}\n```"
+}

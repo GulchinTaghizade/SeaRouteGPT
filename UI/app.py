@@ -11,8 +11,11 @@ import requests
 import streamlit as st
 from dotenv import load_dotenv
 
+from models.baseline.baseline_constraint_extractor import ConstraintExtractor
+from models.baseline.rule_based_planner import RuleBasedPlanner
 from models.hybrid.hybrid_planner import HybridSolver
 from models.llm.llm_constraint_extractor import LLMConstraintExtractor
+from models.llm.llm_only_planner import LLMPlanner
 
 load_dotenv()
 
@@ -52,7 +55,6 @@ def inject_premium_css() -> None:
         }
 
         h1,h2,h3{ font-family:'Syne',sans-serif !important; letter-spacing:-0.02em; }
-        #MainMenu{visibility:hidden;} footer{visibility:hidden;} header{visibility:hidden;}
 
         section[data-testid="stSidebar"]{
             background: linear-gradient(180deg, rgba(7, 11, 20, 0.92), rgba(7, 20, 36, 0.92)) !important;
@@ -162,8 +164,7 @@ def render_hero() -> None:
         """
         <div class="hero">
           <div class="hero-title">🧭 SeaRouteGPT</div>
-          <div class="hero-sub">Elegant cruise recommendations powered by constraint extraction + optimization.</div>
-          <div class="badge">⚡ Hybrid LLM + MILP Planner</div>
+          <div class="hero-sub">Cruise recommendations powered by constraint extraction + optimization.</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -304,6 +305,14 @@ def extract_constraints_ui(user_request: str, request_id: str) -> Dict[str, Any]
     return extractor.extract_constraints(user_request=user_request, request_id=request_id)
 
 
+def extract_constraints_baseline(user_request: str, request_id: str) -> Dict[str, Any]:
+    try:
+        extractor = ConstraintExtractor()
+        return extractor.extract_constraints(user_request=user_request, request_id=request_id)
+    except Exception as e:
+        return {"error": str(e)}
+
+
 # ----------------------------
 # SOLVER
 # ----------------------------
@@ -338,6 +347,72 @@ def run_hybrid(
         return {"status": "error", "error_type": "solver_error", "message": str(e)}
 
 
+def run_llm_only(
+    user_request: str,
+    cruises: List[Dict[str, Any]],
+    *,
+    request_id: str,
+    time_limit: int,
+) -> Dict[str, Any]:
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        return {
+            "status": "error",
+            "error_type": "missing_google_api_key",
+            "message": "GOOGLE_API_KEY not found in environment.",
+        }
+
+    try:
+        planner = LLMPlanner(api_key=api_key)
+        result = planner.plan(cruises=cruises, user_request=user_request, request_id=request_id)
+        # Normalize to match hybrid output format
+        if result.get("selected_cruise"):
+            return {
+                "status": "success",
+                "selected_cruise": result["selected_cruise"],
+                "constraints_extracted": result.get("constraints_extracted", {}),
+                "preferences_extracted": result.get("preferences_extracted", {}),
+            }
+        else:
+            return {
+                "status": "error",
+                "message": "No feasible cruise found by LLM planner.",
+                "constraints_extracted": result.get("constraints_extracted", {}),
+            }
+    except Exception as e:
+        return {"status": "error", "error_type": "solver_error", "message": str(e)}
+
+
+def run_baseline(
+    user_request: str,
+    cruises: List[Dict[str, Any]],
+    *,
+    request_id: str,
+    time_limit: int,
+) -> Dict[str, Any]:
+    try:
+        extractor = ConstraintExtractor()
+        constraints = extractor.extract_constraints(user_request=user_request, request_id=request_id)
+
+        planner = RuleBasedPlanner()
+        selected_cruise = planner.plan(cruises=cruises, constraints=constraints)
+
+        if selected_cruise:
+            return {
+                "status": "success",
+                "selected_cruise": selected_cruise,
+                "constraints_extracted": constraints,
+            }
+        else:
+            return {
+                "status": "error",
+                "message": "No feasible cruise found by baseline planner.",
+                "constraints_extracted": constraints,
+            }
+    except Exception as e:
+        return {"status": "error", "error_type": "solver_error", "message": str(e)}
+
+
 # ----------------------------
 # HELPERS (display)
 # ----------------------------
@@ -367,38 +442,31 @@ def guess_url(cruise: Dict[str, Any]) -> str:
 # ----------------------------
 def render_sidebar() -> Dict[str, Any]:
     with st.sidebar:
+        st.header("SeaRouteGPT Settings")
         st.markdown("### ⚙️ Controls")
+
+        model = st.selectbox("Planning Model", ["Hybrid (LLM + MILP)", "LLM-only", "Baseline (Rule-based)"], index=0)
 
         alpha = st.slider("Cost Weight (α)", 0.0, 1.0, 0.6, 0.05)
         beta = 1.0 - alpha
-        time_limit = st.slider("MILP Time Limit (sec)", 5, 60, 10, 5)
 
         st.divider()
         st.markdown("### 📡 Data Source")
         mode = st.radio("Cruise data", ["LIVE (RapidAPI)", "LOCAL (cruises.json)"], index=0)
 
-        st.divider()
-        st.markdown("### 🔌 RapidAPI Settings")
-
-        api_url = st.text_input("Search endpoint", value=DEFAULT_API_URL)
-        host = st.text_input("X-RapidAPI-Host", value=DEFAULT_HOST)
-
-        max_pages = st.slider("Max pages (10 cruises/page)", 1, 10, 10, 1)
-
         rapid_key = os.getenv("RAPIDAPI_KEY", "")
         if not rapid_key and mode.startswith("LIVE"):
             st.warning("RAPIDAPI_KEY missing in .env", icon="🔑")
 
-        st.caption("This UI uses POST /cruises/search (same as your cache_cruises.py).")
-
         return {
+            "model": model,
             "alpha": float(alpha),
             "beta": float(beta),
-            "time_limit": int(time_limit),
+            "time_limit": 10,  # default time limit
             "mode": mode,
-            "api_url": api_url,
-            "host": host,
-            "max_pages": int(max_pages),
+            "api_url": DEFAULT_API_URL,
+            "host": DEFAULT_HOST,
+            "max_pages": 10,  # default max pages
             "rapid_key": rapid_key,
         }
 
@@ -526,8 +594,16 @@ def main() -> None:
             st.error("RAPIDAPI_KEY missing in your .env. Add it and restart Streamlit.")
             return
 
-        with st.spinner("🧠 Extracting constraints (LLM)..."):
-            extracted = extract_constraints_ui(user_request.strip(), ui_request_id)
+        model = sidebar["model"]
+        if model == "Baseline (Rule-based)":
+            spinner_text = "🧠 Extracting constraints (Rule-based)..."
+            extract_func = extract_constraints_baseline
+        else:
+            spinner_text = "🧠 Extracting constraints (LLM)..."
+            extract_func = extract_constraints_ui
+
+        with st.spinner(spinner_text):
+            extracted = extract_func(user_request.strip(), ui_request_id)
 
         if "error" in extracted:
             st.error(extracted["error"])
@@ -565,15 +641,34 @@ def main() -> None:
 
     st.success(f"🚢 Loaded {len(cruises)} cruises")
 
-    with st.spinner("🔄 Optimizing with Hybrid (LLM + MILP)..."):
-        result = run_hybrid(
-            user_request=user_request.strip(),
-            cruises=cruises,
-            alpha=sidebar["alpha"],
-            beta=sidebar["beta"],
-            request_id=ui_request_id,
-            time_limit=sidebar["time_limit"],
-        )
+    model = sidebar["model"]
+    with st.spinner(f"🔄 Optimizing with {model}..."):
+        if model == "Hybrid (LLM + MILP)":
+            result = run_hybrid(
+                user_request=user_request.strip(),
+                cruises=cruises,
+                alpha=sidebar["alpha"],
+                beta=sidebar["beta"],
+                request_id=ui_request_id,
+                time_limit=sidebar["time_limit"],
+            )
+        elif model == "LLM-only":
+            result = run_llm_only(
+                user_request=user_request.strip(),
+                cruises=cruises,
+                request_id=ui_request_id,
+                time_limit=sidebar["time_limit"],
+            )
+        elif model == "Baseline (Rule-based)":
+            result = run_baseline(
+                user_request=user_request.strip(),
+                cruises=cruises,
+                request_id=ui_request_id,
+                time_limit=sidebar["time_limit"],
+            )
+        else:
+            st.error(f"Unknown model: {model}")
+            return
 
     render_result(result, fetch_debug=fetch_err, cruises=cruises)
 

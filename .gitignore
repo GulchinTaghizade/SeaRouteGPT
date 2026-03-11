@@ -26,3 +26,6 @@ experiments/logs/
 # Temporary files
 *.tmp
 *.log
+
+
+.env

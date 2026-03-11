@@ -1,0 +1,8 @@
+{
+  "request_id": "ui_req_1773112796",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "7-day Caribbean cruise in June 2026 for 2 people under $3000. Prefer Bahamas and Cayman Islands.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"NO_VALID_CRUISE\",\n  \"justification\": \"There are no Caribbean cruises available in the candidate set that depart in June 2026. All available cruises for that month are to other destinations like Alaska or Europe.\"\n}\n```"
+}

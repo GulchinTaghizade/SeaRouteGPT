@@ -1,0 +1,8 @@
+{
+  "request_id": "ui_req_1773113880",
+  "model": "models/gemini-2.5-pro",
+  "prompt_version": "v1",
+  "prompt_path": "/Users/gulchinnl/PycharmProjects/SeaRouteGPT/prompts/LLM_only_planner/v1.txt",
+  "user_request": "10 day Alaska tour for 2 people under $3000 in June.",
+  "llm_output": "```json\n{\n  \"selectedCruiseId\": \"AjwyWUQkdxELElY8RFNFekgtdTM3KEBlQVBJU2VjcmUA\",\n  \"justification\": \"This 10-day Alaska cruise departs in June and is well within the $3000 budget at $1194. Among all the options that meet the user's requirements, this is the lowest priced.\"\n}\n```"
+}
