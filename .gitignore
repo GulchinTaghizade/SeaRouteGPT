@@ -28,4 +28,4 @@ experiments/logs/
 *.log
 
 
-.env.env
+.env
